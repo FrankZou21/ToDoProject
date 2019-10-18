@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Home Page</title>
@@ -37,10 +37,10 @@
     <nav>
         <span id="leftnav">List It!</span>
         <span class="rightnav">
-          <form action="/users" method="POST">
+          <form id = "searchvalue" action="/" method="POST">
             <textarea class="input" rows="1" name="text" placeholder="What are you interested in?"></textarea><input id="navbutton" type="submit" width = 20px value="Find It!">
-            </form>
-          </span>
+          </form>
+        </span>
 
       </nav>
       <main class="container">
@@ -90,8 +90,11 @@
           </table>
       </div>
     </main>
-      <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
     </body>
+
+    <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+    <!-- App JS -->
+    <script type="text/javascript" src="../public/scripts/app.js"></script>
 
     </html>
 </html>
