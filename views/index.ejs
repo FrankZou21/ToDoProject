@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>List It!</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -21,7 +21,7 @@
 
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="../vendor/normalize-4.1.1.css" type="text/css" />
 
 
   <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
@@ -32,7 +32,7 @@
   <!-- External Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Arvo|Modak&display=swap" rel="stylesheet">
   </head>
-
+  <body>
     <!-- Top nav bar (fixed) -->
     <nav>
         <span id="leftnav">List It!</span>
@@ -55,34 +55,29 @@
 
           <table>
             <tr>
-              <td>
-              <section class="category">
-                <div>
+              <td class="category">
                   <h3>Things to Watch</h3>
                 </div>
-              </section>
+
             </td>
-            <td>
-              <section class="category">
-                <div>
+            <td class="category">
                     <h3>Your To-Read Pile</h3>
                 </div>
-              </section>
+
             </td>
           </tr>
+
           <tr>
-            <td>
-          <section class="category">
+            <td class="category">
               <div>
                 <h3>Places to Eat</h3>
               </div>
             </section>
           </td>
-
-            <td>
-            <section class="category">
+          <td class="category">
               <div>
                   <h3>Things to Buy</h3>
+                  <p></p>
               </div>
             </section>
           </td>
@@ -90,8 +85,5 @@
           </table>
       </div>
     </main>
-      <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
     </body>
-
-    </html>
 </html>
