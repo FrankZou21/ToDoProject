@@ -63,13 +63,14 @@ span {
 
   .leftColumn {
     margin-top: 120px;
-    width: 30vw;
+    flex-direction: column;
+    width: 40vw;
 
   }
 
   .rightColumn {
     display: flex;
     flex-direction: column;
-    width: 70vw;
+    width: 50vw;
   }
 }
