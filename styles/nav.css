@@ -1,0 +1,78 @@
+
+nav {
+  font-family: 'Arvo', cursive;
+  width: 100%;
+  height: 100px;
+  background-color: #001d53;
+  background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+  color: #FFFFFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: auto;
+  padding: 1em;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+}
+
+/* Laptops / Desktops: minimum width of 1024px */
+@media only screen and (min-width: 1024px) {
+  nav{
+  background-color: #001d53;
+  }
+}
+
+#leftnav {
+  font-family: 'Modak', cursive;
+  font-size: 40px;
+}
+
+.rightnav {
+  display: flex;
+  width: 30vw;
+  flex-direction: column;
+  align-content: center;
+}
+
+#navbutton {
+  color:white;
+  background-color: #001d53;
+  transition: all 0.5s;
+  font-family: 'Source Sans Pro', sans-serif;
+  border: none;
+}
+
+#navbutton:hover {
+
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#navarrow {
+  color: #41e78c;
+  border: none;
+  padding-bottom: 5px;
+  transition: all 0.5s;
+  animation: bounce 0.8s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+@-webkit-keyframes bounce {
+  from {
+    transform: translateY(5px);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}

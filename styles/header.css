@@ -1,0 +1,36 @@
+.siteheader {
+  display: flex;
+  flex-direction: column;
+  background-color: #30335d;
+  background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+  color: rgb(182, 235, 217);
+  position: relative;
+  padding: 100px;
+  height: 200px;
+  width: 100%;
+  vertical-align: top;
+  text-align: center;
+
+}
+
+h2 {
+  font-weight: normal;
+  color: rgb(255, 187, 0);
+  font-family: Arvo, sans-serif;
+}
+
+.profilepic {
+  vertical-align: text-top;
+  margin: auto;
+  position: relative;
+  margin-top: 10px;
+}
+
+
+
+/* Laptops / Desktops: minimum width of 1024px */
+@media only screen and (min-width: 1024px) {
+  .paddingDown{
+    padding-top: 80px;
+  }
+}
