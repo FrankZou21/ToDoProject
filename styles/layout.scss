@@ -48,14 +48,22 @@ span {
   vertical-align: text-top;
 }
 
-
+table {
+  border: 3px solid deepskyblue;
+  border-radius: 30px;
+td {
+  margin: auto;
+  padding: 30px;
+  border-radius: 30px;
+}
+}
 
 
 /* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
 
   .containAll {
-    background-color: rgb(24, 54, 54);
+    background-color: rgb(61, 78, 77);
     display: flex;
     flex-direction: row;
     vertical-align: top;
