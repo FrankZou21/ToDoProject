@@ -15,8 +15,8 @@
 }
 
 body {
-  color: #ffc831;
-  background-color:#283b70;
+  color: #8b0061;
+  background-color:#dadada;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -27,14 +27,20 @@ div {
 
 main {
   width: 95vw;
-  background-color: #5e6375;
+  background-color: #252525;
   position: relative;
-  margin: auto;
+  // margin: auto;
+  // align-content: center;
 }
 
 .container {
-  width: 90%;
+  width: 90vw;
   margin: auto;
+  justify-content: center;
+}
+
+.categories {
+  background-color: lightgray;
 }
 
 .columns {
@@ -45,26 +51,24 @@ main {
 .column {
   display: flex;
   flex-direction: column;
-}
+  margin: auto;
 
-.holdCategories {
-  background-color: cornflowerblue;
 }
 
 span {
   vertical-align: text-top;
 }
 
-table {
-  border: 3px solid deepskyblue;
-  border-radius: 30px;
-td {
-  margin: auto;
+.category {
+  background-color: #88b1c8;
+  font-family: Garamond, sans-serif;
+  width: 40vw;
+  color: #08002a;
+  border: 3px solid rgb(87, 87, 87);
+  border-radius: 20px;
   padding: 30px;
-  border-radius: 30px;
+  margin: 30px;
 }
-}
-
 
 /* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
@@ -81,27 +85,37 @@ td {
   .container {
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding: 50px 25px;
+    padding-top: 80px;
 
   }
+
+  .columnheader {
+    display: flex;
+    font-family: Leckerli One, cursive;
+    color: skyblue;
+    font-size: 50px;
+    margin: auto;
+  }
+
+#mylist {
+  font-family: Leckerli One, cursive;
+  font-size: 50px;
+  color: skyblue;
+}
+
 
   .columns {
     display: flex;
     flex-direction: row;
-    padding-top: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding: 50px 25px;
+    padding-top: 10px;
 
   }
 
   .column {
-    margin-top: 120px;
+    margin-top: 10px;
     flex-direction: column;
     width: 40vw;
+    align-content: center;
 
   }
 }

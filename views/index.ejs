@@ -28,10 +28,12 @@
   <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="../styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="../styles/header.css" type="text/css" />
-  <link rel="stylesheet" href="../styles/todo-boxes.css" type="text/css" />
 
   <!-- External Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Arvo|Modak&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Patua+One|Prompt&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Chicle|Leckerli+One&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -39,59 +41,59 @@
   <nav>
     <span id="leftnav">List It!</span>
     <span id="rightnav">
-      Logged in as you, the user
+      Logged in as you, the gentle user
     </span>
 
   </nav>
   <main class="container">
 
     <header class="siteheader">
-      <h2>Add something that interests you!</h2>
+      <h2>Add what interests you!</h2>
 
       <form id="searchvalue" action="/" method="POST">
-        <textarea class="input" rows="1" name="text" placeholder="What are you interested in?"></textarea><input
+        <textarea class="input" rows="1" name="text" placeholder="I've been wanting to check out..."></textarea><input
           id="navbutton" type="submit" width=20px value="Find It!">
 
       </form>
 
     </header>
 
-    <!-- Page-specific (main) content here -->
+
+    <div class="columnheader">
+        <h2 id="mylist">My List</h2>
+      </div>
 
     <div class="columns">
 
       <div class="column">
+
         <div class="category">
           <h3>Things to Watch</h3>
-          <ul">
-            <li> Lord of the Rings: The Fellowship of the Ring</li>
-            <li> The Shining</li>
-            <li> Braveheart</li>
-            </ul>
+          <ul>
+            <li> Film 1</li>
+            <li> Film 2</li>
+            <li> Film 3</li>
+          </ul>
         </div>
 
+        <div class="category">
+          <h3>Your To-Read Pile</h3>
+          <ul>
+              <li>Book 1 (Author)</li>
+              <li>Book 2 (Author)</li>
+              <li>Book 3 (Author)</li>
+          </ul>
+        </div>
 
-
-        <section class="category">
-          <div>
-            <h3>Your To-Read Pile</h3>
-            <ul>
-              <li>Siddhartha (Hermann Hesse)</li>
-              <li>Be Here Now (Ram Dass)</li>
-              <li>A Dance with Dragons (George R.R. Martin)</li>
-            </ul>
-          </div>
-        </section>
       </div>
-
       <div class="column">
 
         <div class="category">
           <h3>Places to Eat</h3>
           <ul>
-            <li>Cafe Crepe</li>
-            <li>Bishop's</li>
-            <li>Il Giardino</li>
+            <li>Restaurant 1</li>
+            <li>Restaurant 2</li>
+            <li>Restaurant 3</li>
           </ul>
 
         </div>
@@ -99,12 +101,13 @@
         <div class="category">
           <h3>Your Product Wishlist</h3>
           <ul>
-            <li>Hair Dryer - Walmart, $39.99 - On Sale Now</li>
-            <li>Surge Protector - $29.99, Best Buy</li>
-            <li>Giant Whiteboard - $149.99, Staples</li>
+            <li>Item - Price, Retailer - On Sale?</li>
+            <li>Item - Price, Retailer</li>
+            <li>Item - Price, Retailer</li>
           </ul>
         </div>
       </div>
+    </div>
   </main>
 </body>
 

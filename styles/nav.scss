@@ -1,11 +1,11 @@
 
 nav {
-  font-family: 'Arvo', cursive;
+  font-family: 'Patua One', cursive;
   width: 100%;
   height: 100px;
-  background-color: #360117;
+  background-color: #7e0000;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
-  color: rgb(255, 179, 0);
+  color: rgb(255, 102, 0);
   position: fixed;
   top: 0;
   left: 0;
@@ -31,8 +31,8 @@ nav {
 }
 
 #leftnav {
-  font-family: 'Modak', cursive;
-  font-size: 18pt;
+  font-family: Leckerli One, cursive;
+  font-size: 30pt;
 }
 
 #rightnav {
@@ -40,18 +40,31 @@ nav {
 }
 
 #navbutton {
+  margin: 10px;
+  width: 150px;
+  height: 50px;
   color:white;
-  background-color: #140e33;
+  background-color: #ff3c00;
   transition: all 0.5s;
   font-family: 'Source Sans Pro', sans-serif;
   border: none;
+  border-radius: 15px
 }
 
 #navbutton:hover {
 
-  background-color: transparent;
+  background-color: rgb(148, 0, 0);
   cursor: pointer;
 }
+
+
+.input {
+  width: 40vw;
+  background-color: #cecece;
+  color: rgb(54, 14, 14);
+  font-family: Prompt, sans-serif;
+}
+
 
 #navarrow {
   color: #41e78c;
