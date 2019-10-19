@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>List It!</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
+<head>
+  <title>List It!</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
 
   <!-- External Styles -->
 
@@ -31,60 +32,80 @@
 
   <!-- External Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Arvo|Modak&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <!-- Top nav bar (fixed) -->
-    <nav>
-        <span id="leftnav">List It!</span>
-        <span class="rightnav">
-          <form id = "searchvalue" action="/" method="POST">
-            <textarea class="input" rows="1" name="text" placeholder="What are you interested in?"></textarea><input id="navbutton" type="submit" width = 20px value="Find It!">
-          </form>
-        </span>
+</head>
 
-      </nav>
-      <main class="container">
-      <div class="containAll">
+<body>
+  <!-- Top nav bar (fixed) -->
+  <nav>
+    <span id="leftnav">List It!</span>
+    <span id="rightnav">
+      Logged in as you, the user
+    </span>
 
-                <header class="siteheader">
-              <h2>Generic header goes here!</h2>
-            </div>
-          </header>
+  </nav>
+  <main class="container">
 
-          <!-- Page-specific (main) content here -->
+    <header class="siteheader">
+      <h2>Add something that interests you!</h2>
 
-          <table>
-            <tr>
-              <td class="category">
-                  <h3>Things to Watch</h3>
-                </div>
+      <form id="searchvalue" action="/" method="POST">
+        <textarea class="input" rows="1" name="text" placeholder="What are you interested in?"></textarea><input
+          id="navbutton" type="submit" width=20px value="Find It!">
 
-            </td>
-            <td class="category">
-                    <h3>Your To-Read Pile</h3>
-                </div>
+      </form>
 
-            </td>
-          </tr>
+    </header>
 
-          <tr>
-            <td class="category">
-              <div>
-                <h3>Places to Eat</h3>
-              </div>
-            </section>
-          </td>
-          <td class="category">
-              <div>
-                  <h3>Things to Buy</h3>
-                  <p></p>
-              </div>
-            </section>
-          </td>
-        </tr>
-          </table>
+    <!-- Page-specific (main) content here -->
+
+    <div class="columns">
+
+      <div class="column">
+        <div class="category">
+          <h3>Things to Watch</h3>
+          <ul">
+            <li> Lord of the Rings: The Fellowship of the Ring</li>
+            <li> The Shining</li>
+            <li> Braveheart</li>
+            </ul>
+        </div>
+
+
+
+        <section class="category">
+          <div>
+            <h3>Your To-Read Pile</h3>
+            <ul>
+              <li>Siddhartha (Hermann Hesse)</li>
+              <li>Be Here Now (Ram Dass)</li>
+              <li>A Dance with Dragons (George R.R. Martin)</li>
+            </ul>
+          </div>
+        </section>
       </div>
-    </main>
-    </body>
-    </html>
+
+      <div class="column">
+
+        <div class="category">
+          <h3>Places to Eat</h3>
+          <ul>
+            <li>Cafe Crepe</li>
+            <li>Bishop's</li>
+            <li>Il Giardino</li>
+          </ul>
+
+        </div>
+
+        <div class="category">
+          <h3>Your Product Wishlist</h3>
+          <ul>
+            <li>Hair Dryer - Walmart, $39.99 - On Sale Now</li>
+            <li>Surge Protector - $29.99, Best Buy</li>
+            <li>Giant Whiteboard - $149.99, Staples</li>
+          </ul>
+        </div>
+      </div>
+  </main>
+</body>
+
 </html>

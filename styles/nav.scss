@@ -3,9 +3,9 @@ nav {
   font-family: 'Arvo', cursive;
   width: 100%;
   height: 100px;
-  background-color: #001d53;
+  background-color: #360117;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
-  color: #FFFFFF;
+  color: rgb(255, 179, 0);
   position: fixed;
   top: 0;
   left: 0;
@@ -13,32 +13,35 @@ nav {
   padding: 1em;
   z-index: 100;
   display: flex;
+  align-content: center;
   justify-content: space-between;
-  align-items: top;
+  vertical-align: top;
+}
+
+#rightnav {
+  display: flex;
+  align-content: center;
 }
 
 /* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
   nav{
-  background-color: #001d53;
+  background-color: #3b000c;
   }
 }
 
 #leftnav {
   font-family: 'Modak', cursive;
-  font-size: 40px;
+  font-size: 18pt;
 }
 
-.rightnav {
+#rightnav {
   display: flex;
-  width: 30vw;
-  flex-direction: column;
-  align-content: center;
 }
 
 #navbutton {
   color:white;
-  background-color: #001d53;
+  background-color: #140e33;
   transition: all 0.5s;
   font-family: 'Source Sans Pro', sans-serif;
   border: none;

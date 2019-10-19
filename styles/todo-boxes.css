@@ -3,4 +3,6 @@
   font-family: Arvo, sans-serif;
   width: 40vw;
   color: rgb(61, 61, 61);
+  border: 3px solid green;
+  border-radius: 30px;
 }

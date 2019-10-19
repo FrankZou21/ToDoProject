@@ -14,7 +14,6 @@
   box-sizing: inherit;
 }
 
-
 body {
   color: #ffc831;
   background-color:#283b70;
@@ -23,7 +22,7 @@ body {
 }
 
 div {
-  text-align: center;
+  margin: auto;
 }
 
 main {
@@ -35,9 +34,17 @@ main {
 
 .container {
   width: 90%;
-  align-content: center;
-  text-align: center;
   margin: auto;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
 }
 
 .holdCategories {
@@ -65,6 +72,8 @@ td {
   .containAll {
     background-color: rgb(61, 78, 77);
     display: flex;
+    margin: auto;
+    align-content: center;
     flex-direction: row;
     vertical-align: top;
   }
@@ -79,17 +88,21 @@ td {
 
   }
 
-  .leftColumn {
+  .columns {
+    display: flex;
+    flex-direction: row;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding: 50px 25px;
+
+  }
+
+  .column {
     margin-top: 120px;
     flex-direction: column;
     width: 40vw;
 
-  }
-
-  .rightColumn {
-    display: flex;
-    flex-direction: column;
-    width: 50vw;
   }
 }
 

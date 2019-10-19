@@ -1,13 +1,13 @@
 .siteheader {
   display: flex;
   flex-direction: column;
-  background-color: #30335d;
+  background-color: #0f0338;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
   color: rgb(182, 235, 217);
   position: relative;
   padding: 100px;
   height: 200px;
-  width: 100%;
+  width: 95vw;
   vertical-align: top;
   text-align: center;
 
@@ -15,7 +15,7 @@
 
 h2 {
   font-weight: normal;
-  color: rgb(255, 187, 0);
+  color: rgb(0, 255, 157);
   font-family: Arvo, sans-serif;
 }
 
