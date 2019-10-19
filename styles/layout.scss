@@ -1,9 +1,87 @@
 // See: https://sass-lang.com/
 
-body {
-  background-color: #EEE;
 
-  h1 {
-    color: #244751;
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+
+ html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+body {
+  color: #ffc831;
+  background-color:#283b70;
+  font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+div {
+  text-align: center;
+}
+
+main {
+  width: 95vw;
+  background-color: #5e6375;
+  position: relative;
+  margin: auto;
+}
+
+.container {
+  width: 90%;
+  align-content: center;
+  text-align: center;
+  margin: auto;
+}
+
+.holdCategories {
+  background-color: cornflowerblue;
+}
+
+span {
+  vertical-align: text-top;
+}
+
+
+
+
+/* Laptops / Desktops: minimum width of 1024px */
+@media only screen and (min-width: 1024px) {
+
+  .containAll {
+    background-color: rgb(24, 54, 54);
+    display: flex;
+    flex-direction: row;
+    vertical-align: top;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding: 50px 25px;
+
+  }
+
+  .leftColumn {
+    margin-top: 120px;
+    flex-direction: column;
+    width: 40vw;
+
+  }
+
+  .rightColumn {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
   }
 }
+
