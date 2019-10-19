@@ -31,6 +31,7 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
@@ -47,6 +48,10 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
+  res.render("index");
+});
+
+app.post("/", (req, res) => {
   res.render("index");
 });
 
