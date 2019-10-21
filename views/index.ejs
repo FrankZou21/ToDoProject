@@ -39,10 +39,34 @@
 
 <body>
   <!-- Top nav bar (fixed) -->
+
+
+
+
   <nav>
     <span id="leftnav">List It!</span>
     <span id="rightnav">
-      Logged in as you, the gentle user
+
+
+    <% if (locals.user === undefined) { %>
+
+      <div class="form-group mb-2 mx-auto">
+          <a class="nav-item nav-link" href="/login">
+        <button type="submit" class="btn btn-dark">Login</button> </a>
+        </div>
+      </form>
+
+
+      <% } else { %>
+
+          <form class="form-inline" action="/logout" method="POST">
+           <div class="form-group mb-2 mx-auto">
+              <label for="loggedin">Logged in as &nbsp;<strong> <%= user.email %> </strong>  </label>
+               <button type="submit" class="btn btn-secondary" style="margin: 1em">Logout</button>
+            </div>
+          </form>
+
+        <% } %>
     </span>
 
   </nav>

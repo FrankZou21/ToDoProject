@@ -22,8 +22,14 @@ module.exports = (db) => {
       });
   });
 
-  // router.get("/add", (req, res) => {
-  //   db.query(`SELECT `)
+
+
+  // router.get("/", (req, res) => {
+  //   res.render("index");
+  // });
+
+  // router.post("/", (req, res) => {
+  //   res.redirect("/");
   // })
 
   return router;
