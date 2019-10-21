@@ -1,11 +1,11 @@
 
 nav {
-  font-family: 'Arvo', cursive;
+  font-family: 'Patua One', cursive;
   width: 100%;
   height: 100px;
-  background-color: #001d53;
+  background-color: #7e0000;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
-  color: #FFFFFF;
+  color: rgb(255, 102, 0);
   position: fixed;
   top: 0;
   left: 0;
@@ -13,42 +13,58 @@ nav {
   padding: 1em;
   z-index: 100;
   display: flex;
+  align-content: center;
   justify-content: space-between;
-  align-items: top;
+  vertical-align: top;
+}
+
+#rightnav {
+  display: flex;
+  align-content: center;
 }
 
 /* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
   nav{
-  background-color: #001d53;
+  background-color: #3b000c;
   }
 }
 
 #leftnav {
-  font-family: 'Modak', cursive;
-  font-size: 40px;
+  font-family: Leckerli One, cursive;
+  font-size: 30pt;
 }
 
-.rightnav {
+#rightnav {
   display: flex;
-  width: 30vw;
-  flex-direction: column;
-  align-content: center;
 }
 
 #navbutton {
+  margin: 10px;
+  width: 150px;
+  height: 50px;
   color:white;
-  background-color: #001d53;
+  background-color: #ff3c00;
   transition: all 0.5s;
   font-family: 'Source Sans Pro', sans-serif;
   border: none;
+  border-radius: 15px
 }
 
 #navbutton:hover {
 
-  background-color: transparent;
+  background-color: rgb(148, 0, 0);
   cursor: pointer;
 }
+
+
+.input {
+  width: 40vw;
+  background-color: #cecece;
+  color: rgb(54, 14, 14);
+  font-family: Prompt, sans-serif;
+}
+
 
 #navarrow {
   color: #41e78c;
