@@ -22,7 +22,7 @@ INSERT INTO books (title, author, rating, page_count, user_id) VALUES ('Thinking
 INSERT INTO products (product_name, brand, price, user_id) VALUES ('iPod', 'Apple', 1000,1);
 
 -- RESTAURANTS
-INSERT INTO restaurants (name, phone_number, image_url, rating, type_of_food, user_id) VALUES ('Tojo', '6047685463', 'https://void.to/uploads/avatars/avatar_31329.jpg', 4, 'sushi',1);
+INSERT INTO restaurants (name, phone_number, image_url, rating, type_of_food, address, user_id) VALUES ('Tojo', '6047685463', 'https://void.to/uploads/avatars/avatar_31329.jpg', 4, 'Japanese','1133 W Broadway', 1);
 
 
 
