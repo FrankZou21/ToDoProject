@@ -30,7 +30,7 @@ const createRestaurantElement = function (restaurant) {
   const restaurantTemplate = (
     `<article class="restaurant-body">
          <header class="itemheader">
-          <span id="usericon"><img src="${tweet.user.avatars}"> ${tweet.user.name} </span><span class="username">${tweet.user.handle}</span>
+          <span class="iteminfo">
         </header>
         ${escape(restaurant.content.text)}
         <footer class="tweetfooter"><h8>${totalDate} days ago</h8><div class="icons"><i class="fab fa-font-awesome-flag"></i> <i class="fas fa-retweet"></i> <i class="fas fa-heart"></i></div></footer>
@@ -50,7 +50,7 @@ const createBookElement = function (book) {
   const bookTemplate = (
     `<article class="book-body">
          <header class="itemheader">
-          <span id="usericon"><img src="${tweet.user.avatars}"> ${book.user.name} </span><span class="username">${tweet.user.handle}</span>
+          <span id="usericon"><img src="${book.user.avatars}"> ${book.user.name} </span><span class="username">${book.user.handle}</span>
         </header>
         ${escape(book.content.text)}
         <footer class="tweetfooter"><h8>${totalDate} days ago</h8><div class="icons"><i class="fab fa-font-awesome-flag"></i> <i class="fas fa-retweet"></i> <i class="fas fa-heart"></i></div></footer>
