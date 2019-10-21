@@ -73,6 +73,7 @@ CREATE TABLE restaurants (
   -- object[2].businesses[0].categories[0].alias["japanese"]
   address VARCHAR(255) NOT NULL,
   -- object[2].businesses[0].location.address1["1133 Broadway"]
+  url VARCHAR(255) NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
