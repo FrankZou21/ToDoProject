@@ -37,8 +37,8 @@
     <nav>
         <span id="leftnav">List It!</span>
         <span class="rightnav">
-          <form id = "searchvalue" action="/" method="POST">
-            <textarea class="input" rows="1" name="text" placeholder="What are you interested in?"></textarea><input id="navbutton" type="submit" width = 20px value="Find It!">
+          <form id = "searchvalue" action="/api/search" method="GET">
+            <textarea class="input" rows="1" name="queryparams" placeholder="What are you interested in?"></textarea><input id="navbutton" type="submit" width = 20px value="Find It!">
           </form>
         </span>
 
