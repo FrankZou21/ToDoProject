@@ -53,8 +53,11 @@ CREATE TABLE books (
 CREATE TABLE products (
   id SERIAL PRIMARY KEY NOT NULL,
   product_name VARCHAR(50) NOT NULL,
-  brand VARCHAR(50) NOT NULL,
+  -- object[3].Items.itemName
   price INTEGER NOT NULL DEFAULT 0,
+  -- object[3].Items.itemPrice
+  picture VARCHAR(255) NOT NULL,
+    -- object[3].Items.itemUrl
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
