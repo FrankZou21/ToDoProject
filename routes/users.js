@@ -22,13 +22,18 @@ module.exports = (db) => {
       });
   });
 
-  // router.get("/", (req, res) => {
-  //   res.render("index");
-  // });
-
-  // router.post("/", (req, res) => {
-  //   res.redirect("/");
-  // })
+  router.get("/login", (req, res) => {
+    const username = req.params.username;
+    const password = req.params.password;
+    db.query(`SELECT id FROM users WHERE username = ${username} AND password = ${password}`)
+      .then(data => {
+        if (data) {
+          res.render("index", {id:data.rows});
+        } else {
+          res.render("index");
+        }
+      })
+  })
 
   return router;
 };

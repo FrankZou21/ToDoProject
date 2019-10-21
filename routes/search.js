@@ -2,9 +2,6 @@ const express = require('express');
 const router  = express.Router();
 const axios = require('axios');
 
-
-//    new Request(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchVal}&location=Vancouver`,{headers: new Headers({"X-Requested-With" : "XMLHttpRequest" , Authorization: `bearer 3FBAcWOG77mn6vnlH-h_MWWF0_R7IeUn7BjKa76xFFF3fmWjW6qMPpyQqcST8eYer0-hWocdBUxnWqPhw8zq7qHBhk5FJ9U1ZXnlxBPsp7KKXyGCmeKcajJiHHSrXXYx`})}),
-
 module.exports = (db) => {
   router.get("/", (req, res) => {
     // console.log(req.query.queryparams);
