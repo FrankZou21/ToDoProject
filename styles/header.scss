@@ -13,6 +13,16 @@
   margin: auto;
 }
 
+.input {
+  width: 40vw;
+  height: 50px;
+  background-color: #cecece;
+  color: rgb(54, 14, 14);
+  font-family: Prompt, sans-serif;
+  border-radius: 30px;
+}
+
+
 h2 {
   font-weight: normal;
   color: rgb(255, 157, 0);
@@ -31,6 +41,7 @@ h2 {
   position: relative;
   margin-top: 10px;
 }
+
 
 .searchbutton {
   border-radius: 15px;

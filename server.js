@@ -56,5 +56,5 @@ app.post("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`ListIt App listening on port ${PORT}`);
 });

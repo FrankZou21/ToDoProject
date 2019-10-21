@@ -29,8 +29,8 @@ main {
   width: 95vw;
   background-color: #252525;
   position: relative;
-  // margin: auto;
-  // align-content: center;
+  margin: auto;
+  align-content: center;
 }
 
 .container {
@@ -60,11 +60,11 @@ span {
 }
 
 .category {
-  background-color: #88b1c8;
+  background-color: #bbd6d8;
   font-family: Garamond, sans-serif;
   width: 40vw;
-  color: #08002a;
-  border: 3px solid rgb(87, 87, 87);
+  color: #2a0000;
+  border: 3px solid rgb(199, 199, 199);
   border-radius: 20px;
   padding: 30px;
   margin: 30px;
@@ -100,7 +100,7 @@ span {
 #mylist {
   font-family: Leckerli One, cursive;
   font-size: 50px;
-  color: skyblue;
+  color: rgb(255, 136, 0);
 }
 
 

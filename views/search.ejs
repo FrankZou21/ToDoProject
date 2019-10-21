@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="../styles/lists.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/scripts.js"></script>
 
   <!-- External Styles -->
 
@@ -44,70 +44,27 @@
     <span id="rightnav">
       Logged in as you, the gentle user
     </span>
-
   </nav>
+
   <main class="container">
 
     <header class="siteheader">
       <h2>Add what interests you!</h2>
-
-      <form id="searchvalue" action="/" method="GET">
-        <input type="text" class="input" rows="1" name="text" placeholder="I've been wanting to check out..."></textarea><input
+      <form id="searchvalue" action="/" method="POST">
+        <textarea class="input" rows="1" name="text" placeholder="I've been wanting to check out..."></textarea><input
           id="navbutton" type="submit" width=20px value="Find It!">
-
       </form>
-      <a href="/search.ejs"><h4>Link to Results Page</h4></a>
     </header>
 
-
     <div class="columnheader">
-        <h2 id="mylist">My List</h2>
-      </div>
-
+      <h2 id="mylist">Search Results</h2>
+    </div>
     <div class="columns">
-
-      <div class="column">
-
-        <div class="category">
-          <h3>Things to Watch</h3>
-
-          <input class="checkbox-label" type="checkbox"><span class="checkbox-custom">Film 1</span><br>
-            Film 2
-           Film 3
-
-        </div>
-
-        <div class="category">
-          <h3>Your To-Read Pile</h3>
-          <ul>
-              <li>Book 1 (Author)</li>
-              <li>Book 2 (Author)</li>
-              <li>Book 3 (Author)</li>
-          </ul>
-        </div>
-
+      <div class="section">
+        <h3>Search Results for ____ </h3>
       </div>
-      <div class="column">
 
-        <div class="category">
-          <h3>Places to Eat</h3>
-          <ul>
-            <li>Restaurant 1</li>
-            <li>Restaurant 2</li>
-            <li>Restaurant 3</li>
-          </ul>
-
-        </div>
-
-        <div class="category">
-          <h3>Your Product Wishlist</h3>
-          <ul>
-            <li>Item - Price, Retailer - On Sale?</li>
-            <li>Item - Price, Retailer</li>
-            <li>Item - Price, Retailer</li>
-          </ul>
-        </div>
-      </div>
+      <!-- Populate data here - "add to list" functionality, etc.  -->
     </div>
   </main>
 </body>
