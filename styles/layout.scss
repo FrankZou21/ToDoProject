@@ -14,49 +14,70 @@
   box-sizing: inherit;
 }
 
-
 body {
-  color: #ffc831;
-  background-color:#283b70;
+  color: #8b0061;
+  background-color:#dadada;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
 div {
-  text-align: center;
+  margin: auto;
 }
 
 main {
   width: 95vw;
-  background-color: #5e6375;
+  background-color: #252525;
   position: relative;
-  margin: auto;
+  // margin: auto;
+  // align-content: center;
 }
 
 .container {
-  width: 90%;
-  align-content: center;
-  text-align: center;
+  width: 90vw;
   margin: auto;
+  justify-content: center;
 }
 
-.holdCategories {
-  background-color: cornflowerblue;
+.categories {
+  background-color: lightgray;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+
 }
 
 span {
   vertical-align: text-top;
 }
 
-
-
+.category {
+  background-color: #88b1c8;
+  font-family: Garamond, sans-serif;
+  width: 40vw;
+  color: #08002a;
+  border: 3px solid rgb(87, 87, 87);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 30px;
+}
 
 /* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
 
   .containAll {
-    background-color: rgb(24, 54, 54);
+    background-color: rgb(61, 78, 77);
     display: flex;
+    margin: auto;
+    align-content: center;
     flex-direction: row;
     vertical-align: top;
   }
@@ -64,24 +85,38 @@ span {
   .container {
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding: 50px 25px;
+    padding-top: 80px;
 
   }
 
-  .leftColumn {
-    margin-top: 120px;
+  .columnheader {
+    display: flex;
+    font-family: Leckerli One, cursive;
+    color: skyblue;
+    font-size: 50px;
+    margin: auto;
+  }
+
+#mylist {
+  font-family: Leckerli One, cursive;
+  font-size: 50px;
+  color: skyblue;
+}
+
+
+  .columns {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+
+  }
+
+  .column {
+    margin-top: 10px;
     flex-direction: column;
     width: 40vw;
+    align-content: center;
 
-  }
-
-  .rightColumn {
-    display: flex;
-    flex-direction: column;
-    width: 50vw;
   }
 }
 
