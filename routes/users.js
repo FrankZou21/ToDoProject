@@ -21,5 +21,10 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  // router.get("/add", (req, res) => {
+  //   db.query(`SELECT `)
+  // })
+
   return router;
 };
