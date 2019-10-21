@@ -1,12 +1,12 @@
 -- USERS
 
-INSERT INTO users (id, username, first_name, profile_pic) VALUES (1, 'AnthonyB', 'Anthony','https://void.to/uploads/avatars/avatar_31329.jpg');
+INSERT INTO users (id, username, password, first_name, profile_pic) VALUES (1, 'AnthonyB', '12345', 'Anthony','https://void.to/uploads/avatars/avatar_31329.jpg');
 
-INSERT INTO users (id, username, first_name, profile_pic) VALUES (2, 'FrankZ', 'Frank','https://void.to/uploads/avatars/avatar_31329.jpg');
+INSERT INTO users (id, username, password, first_name, profile_pic) VALUES (2, 'FrankZ', '12345', 'Frank','https://void.to/uploads/avatars/avatar_31329.jpg');
 
-INSERT INTO users (id, username, first_name, profile_pic) VALUES (3, 'AnneF', 'Anne','https://void.to/uploads/avatars/avatar_31329.jpg');
+INSERT INTO users (id, username, password, first_name, profile_pic) VALUES (3, 'AnneF', '12345', 'Anne','https://void.to/uploads/avatars/avatar_31329.jpg');
 
-INSERT INTO users (id, username, first_name, profile_pic) VALUES (4, 'TravisB', 'Travis','https://void.to/uploads/avatars/avatar_31329.jpg');
+INSERT INTO users (id, username, password, first_name, profile_pic) VALUES (4, 'TravisB', '12345', 'Travis','https://void.to/uploads/avatars/avatar_31329.jpg');
 
 
 -- ACTORS
