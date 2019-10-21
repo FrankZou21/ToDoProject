@@ -38,72 +38,60 @@ module.exports = (db) => {
   Promise.all(urls.map(url =>
   axios.get(url.url1, url.header)
     )).then((out) => {
-      console.log(out[0].data);
-      console.log();
-      console.log(out[1].data);
-      console.log();
-      console.log(out[2].data);
-      console.log();
-      console.log(out[3].data);
-      // if (compareVal.toLowerCase() === out[0].Title.toLowerCase()) {
-      //   searchOutput = {
-      //     title: out[0].Title,
-      //     poster: out[0].Poster,
-      //     rating: out[0].imdbRating,
-      //     genre: out[0].Genre,
-      //     type: "movie"
-      //   };
-      // } else if (compareVal.toLowerCase() === out[1].items[0].volumeInfo.title.toLowerCase()) {
-      //     searchOutput = {
-      //       title: out[1].items[0].volumeInfo.title,
-      //       author: out[1].items[0].volumeInfo.authors[0],
-      //       rating: out[1].items[0].volumeInfo.averageRating,
-      //       page_count: out[1].items[0].volumeInfo.pageCount,
-      //       type: "book"
-      //     }
-      // } else if (compareVal.toLowerCase() === out[2].businesses[0].name.toLowerCase()) {
-      //   searchOutput = {
-      //     name: out[2].businesses[0].name,
-      //     phone_number: out[2].businesses[0].phone,
-      //     image_url: out[2].businesses[0].image_url,
-      //     rating: out[2].businesses[0].rating,
-      //     type_of_food: out[2].businesses[0].categories[0].title,
-      //     address: out[2].businesses[0].location.address1,
-      //     type: "restaurant"
-      //   }
-      // } else {
-      //   searchOutput = {
-      //     name: out[3].Items.itemName,
-      //     price: out[3].Items.itemPrice,
-      //     image: out[3].Items.itemUrl,
-      //     type: "product"
-      //   }
-      // }
-      // console.log(searchOutput);
+      const movie = out[0].data;
+      const book = out[1].data;
+      const restaurant = out[2].data;
+      const product = out[3].data;
+      if (movie.Title === undefined) {
+        movie.Title = "placeholder"
+      }
+      if (book.items[0].volumeInfo.title === undefined) {
+        book.items[0] = {
+          volumeInfo: {
+            title: "placeholder"
+          }
+        }
+      }
+      if (restaurant.businesses[0].name === undefined) {
+        restaurant.businesses[0].name = "placeholder"
+      }
+      if (compareVal.toLowerCase() === movie.Title.toLowerCase()) {
+        searchOutput = {
+          title: movie.Title,
+          poster: movie.Poster,
+          rating: movie.imdbRating,
+          genre: movie.Genre,
+          type: "movie"
+        };
+      } else if (compareVal.toLowerCase() === book.items[0].volumeInfo.title.toLowerCase()) {
+          searchOutput = {
+            title: book.items[0].volumeInfo.title,
+            author: book.items[0].volumeInfo.authors[0],
+            rating: book.items[0].volumeInfo.averageRating,
+            page_count: book.items[0].volumeInfo.pageCount,
+            type: "book"
+          }
+      } else if (compareVal.toLowerCase() === restaurant.businesses[0].name.toLowerCase()) {
+        searchOutput = {
+          name: restaurant.businesses[0].name,
+          phone_number: restaurant.businesses[0].phone,
+          image_url: restaurant.businesses[0].image_url,
+          rating: restaurant.businesses[0].rating,
+          type_of_food: restaurant.businesses[0].categories[0].title,
+          address: restaurant.businesses[0].location.address1,
+          type: "restaurant"
+        }
+      } else {
+        searchOutput = {
+          name: product.Items.itemName,
+          price: product.Items.itemPrice,
+          image: product.Items.itemUrl,
+          type: "product"
+        }
+      }
+      res.render("search", templateVars = searchOutput);
+      console.log(searchOutput);
  }).catch(err => console.error(err));
-
-
-
-
-//  `https://api.yelp.com/v3/businesses/search?term=${searchVal}&location=Vancouver`, {
-//   headers: {
-//     Authorization: `bearer 3FBAcWOG77mn6vnlH-h_MWWF0_R7IeUn7BjKa76xFFF3fmWjW6qMPpyQqcST8eYer0-hWocdBUxnWqPhw8zq7qHBhk5FJ9U1ZXnlxBPsp7KKXyGCmeKcajJiHHSrXXYx`
-//   }
-// },
-
-
-
-
-
-
-
-
-
-
-
-
-
-    res.render("index");
   });
   return router;
 };
