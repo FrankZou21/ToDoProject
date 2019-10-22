@@ -48,17 +48,12 @@ app.use("/api/search", searchRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("login");
 });
 
-app.get("/search", (req, res) => {
-  res.render("search");
-});
 
-// app.post("/", (req, res) => {
-//   res.render("index");
-// });
 
 app.listen(PORT, () => {
   console.log(`ListIt App listening on port ${PORT}`);

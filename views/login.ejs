@@ -47,27 +47,6 @@
     <span id="rightnav">
 
 
-    <% if (locals.user === undefined) { %>
-
-      <form action="/login" method="POST">
-      <label for="username" style="margin: 1em">Username: </label>
-      <input type="text" name="username" style="width: 200px; margin: 1em" placeholder="Username">
-      <label for="password" style="margin: 1em">Password: </label>
-      <input type="password" name="password" style="width: 200px; margin: 1em" placeholder="Password">
-          <button type="submit" class="btn btn-primary">Login</button>
-          </div>
-        </form>
-
-      <% } else { %>
-
-          <form class="form-inline" action="/logout" method="POST">
-           <div class="form-group mb-2 mx-auto">
-              <label for="loggedin">Logged in as &nbsp;<strong> <%= user.name %> </strong>  </label>
-               <button type="submit" class="btn btn-secondary" style="margin: 1em">Logout</button>
-            </div>
-          </form>
-
-        <% } %>
     </span>
 
   </nav>
@@ -80,8 +59,7 @@
         <form id = "searchvalue" action="/api/search" method="GET">
           <textarea class="input" rows="1" name="queryparams" placeholder="What are you interested in?"></textarea><input id="navbutton" type="submit" width = 20px value="Find It!">
       </form>
-      <a href="/search"><h4>Link to Results Page</h4></a><br>
-      <a href="/login"><h4>Link to login page</h4></a>
+      <a href="/search"><h4>Link to Results Page</h4></a>
     </header>
 
 
@@ -91,50 +69,16 @@
 
     <div class="columns">
 
-      <div class="column">
 
-        <div class="category">
-          <h3>Things to Watch</h3>
-          <article class="itembody"></article>
+      <form action="/login" method="POST">
+        <label for="username" style="margin: 1em">Username: </label>
+        <input type="text" name="username" style="width: 200px; margin: 1em" placeholder="Username">
+        <label for="password" style="margin: 1em">Password: </label>
+        <input type="password" name="password" style="width: 200px; margin: 1em" placeholder="Password">
+            <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+          </form>
 
-          <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" onchange="confirm(this)"/>   <label for="checkboxG1" class="css-label">Option 1</label>
-          <br>
-            Film 2
-           Film 3
-
-        </div>
-
-        <div class="category">
-          <h3>Your To-Read Pile</h3>
-          <ul>
-              <li>Book 1 (Author)</li>
-              <li>Book 2 (Author)</li>
-              <li>Book 3 (Author)</li>
-          </ul>
-        </div>
-
-      </div>
-      <div class="column">
-
-        <div class="category">
-          <h3>Places to Eat</h3>
-          <ul>
-            <li>Restaurant 1</li>
-            <li>Restaurant 2</li>
-            <li>Restaurant 3</li>
-          </ul>
-
-        </div>
-
-        <div class="category">
-          <h3>Your Product Wishlist</h3>
-          <ul>
-            <li>Item - Price, Retailer - On Sale?</li>
-            <li>Item - Price, Retailer</li>
-            <li>Item - Price, Retailer</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </main>
 </body>

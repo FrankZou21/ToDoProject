@@ -55,7 +55,7 @@ module.exports = (db) => {
 
 
       if (compareVal.toLowerCase() === movie.Title.toLowerCase()) {
-        searchOutput = {
+        searchOutput = { //Information for movies
           title: movie.Title,
           poster: movie.Poster,
           rating: movie.imdbRating,
@@ -73,7 +73,7 @@ module.exports = (db) => {
           console.log(err);
         })
       } else if (compareVal.toLowerCase() === book.items[0].volumeInfo.title.toLowerCase()) {
-          searchOutput = {
+          searchOutput = { // Info for books
             title: book.items[0].volumeInfo.title,
             author: book.items[0].volumeInfo.authors[0],
             rating: book.items[0].volumeInfo.averageRating,
@@ -86,7 +86,7 @@ module.exports = (db) => {
             console.log("IT WORKED");
           })
       } else if (compareVal.toLowerCase() === restaurant.businesses[0].name.toLowerCase()) {
-        searchOutput = {
+        searchOutput = { // Info for restaurants
           name: restaurant.businesses[0].name,
           phone_number: restaurant.businesses[0].phone,
           image_url: restaurant.businesses[0].image_url,
@@ -101,7 +101,7 @@ module.exports = (db) => {
         .then(() => {
           console.log("IT WORKED");
         })
-      } else {
+      } else { // Info for products
         searchOutput = {
           name: product.Items.itemName,
           price: product.Items.itemPrice,
@@ -116,7 +116,7 @@ module.exports = (db) => {
       }
       // res.render("search", templateVars = searchOutput);
       res.render("index");
-      // console.log(searchOutput);
+      console.log(searchOutput);
  }).catch(err => console.error(err));
   });
   return router;

@@ -22,7 +22,17 @@ module.exports = (db) => {
       });
   });
 
+app.get("/search", (req, res) => {
+  res.render("search");
+});
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.post("/", (req, res) => {
+  res.render("index");
+});
 
   // router.get("/", (req, res) => {
   //   res.render("index");
