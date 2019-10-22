@@ -52,7 +52,6 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-<<<<<<< HEAD
 app.get("/search", (req, res) => {
   res.render("search");
 });
@@ -61,8 +60,6 @@ app.get("/search", (req, res) => {
 //   res.render("index");
 // });
 
-=======
->>>>>>> ce0181ac4af206060a13b8ca6b6a0dc5f7bc9e5c
 app.listen(PORT, () => {
   console.log(`ListIt App listening on port ${PORT}`);
 });

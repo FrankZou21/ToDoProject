@@ -22,7 +22,6 @@ module.exports = (db) => {
       });
   });
 
-<<<<<<< HEAD
 
 
   // router.get("/", (req, res) => {
@@ -31,19 +30,6 @@ module.exports = (db) => {
 
   // router.post("/", (req, res) => {
   //   res.redirect("/");
-=======
-  // router.get("/login", (req, res) => {
-  //   const username = req.params.username;
-  //   const password = req.params.password;
-  //   db.query(`SELECT id FROM users WHERE username = ${username} AND password = ${password}`)
-  //     .then(data => {
-  //       if (data) {
-  //         res.render("index", {id:data.rows});
-  //       } else {
-  //         res.render("index");
-  //       }
-  //     })
->>>>>>> ce0181ac4af206060a13b8ca6b6a0dc5f7bc9e5c
   // })
 
   return router;

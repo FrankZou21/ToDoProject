@@ -34,7 +34,6 @@
 
   <!-- External Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Arvo|Modak&display=swap" rel="stylesheet">
-<<<<<<< HEAD
   <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Patua+One|Prompt&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Chicle|Leckerli+One&display=swap" rel="stylesheet">
 
@@ -78,10 +77,8 @@
     <header class="siteheader">
       <h2>Add what interests you!</h2>
 
-      <form id="searchvalue" action="/" method="GET">
-        <input type="text" class="input" rows="1" name="text" placeholder="I've been wanting to check out..."></textarea><input
-          id="navbutton" type="submit" width=20px value="Find It!">
-
+        <form id = "searchvalue" action="/api/search" method="GET">
+          <textarea class="input" rows="1" name="queryparams" placeholder="What are you interested in?"></textarea><input id="navbutton" type="submit" width = 20px value="Find It!">
       </form>
       <a href="/search"><h4>Link to Results Page</h4></a>
     </header>
@@ -115,60 +112,6 @@
           </ul>
         </div>
 
-=======
-  </head>
-  <body>
-    <!-- Top nav bar (fixed) -->
-    <nav>
-        <span id="leftnav">List It!</span>
-        <span class="rightnav">
-          <form id = "searchvalue" action="/api/search" method="GET">
-            <textarea class="input" rows="1" name="queryparams" placeholder="What are you interested in?"></textarea><input id="navbutton" type="submit" width = 20px value="Find It!">
-          </form>
-        </span>
-
-      </nav>
-      <main class="container">
-      <div class="containAll">
-
-                <header class="siteheader">
-              <h2>Generic header goes here!</h2>
-            </div>
-          </header>
-
-          <!-- Page-specific (main) content here -->
-
-          <table>
-            <tr>
-              <td class="category">
-                  <h3>Things to Watch</h3>
-                </div>
-
-            </td>
-            <td class="category">
-                    <h3>Your To-Read Pile</h3>
-                </div>
-
-            </td>
-          </tr>
-
-          <tr>
-            <td class="category">
-              <div>
-                <h3>Places to Eat</h3>
-              </div>
-            </section>
-          </td>
-          <td class="category">
-              <div>
-                  <h3>Things to Buy</h3>
-                  <p></p>
-              </div>
-            </section>
-          </td>
-        </tr>
-          </table>
->>>>>>> ce0181ac4af206060a13b8ca6b6a0dc5f7bc9e5c
       </div>
       <div class="column">
 
