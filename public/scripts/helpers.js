@@ -19,21 +19,54 @@ const escape = function (str) {
   return div.innerHTML;
 }
 
+
+// Hit "Enter" to submit form
+
+const enterSubmit = function(){
+var input = document.getElementById("navbutton");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("navbutton").click();
+  }
+});
+
+}
+
+// Checkbox confirmation, and space for notes
+
+function doalert(checkboxG1) {
+  if (checkboxG1.checked) {
+    alert ("hi");
+  } else {
+    alert ("bye");
+  }
+}
+
+// CARD TEMPLATES - BY CATEGORY
+
 // RESTAURANTS
 
-const createRestaurantElement = function (restaurant) {
+const createRestaurantElement = function(restaurant) {
   let timeStart = Date.now();
   let millis = Date.now() - restaurant.created_at;
   let dateStamp = (millis / (60 * 60 * 24 * 1000))
   let totalDate = Math.round(dateStamp);
 
   const restaurantTemplate = (
-    `<article class="restaurant-body">
+    `<article class="itembody">
          <header class="itemheader">
-          <span class="iteminfo">
+
+          <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" onchange="confirm(this)"/>
+          <label for="checkboxG1" class="css-label">
+           <span id="iteminfo"><img src="${restaurant.picture}"> ${restaurant.name}</span>
         </header>
         ${escape(restaurant.content.text)}
-        <footer class="tweetfooter"><h8>${totalDate} days ago</h8><div class="icons"><i class="fab fa-font-awesome-flag"></i> <i class="fas fa-retweet"></i> <i class="fas fa-heart"></i></div></footer>
+        <span class="iteminfo">Type of Food: ${restaurant.type_of_food}</span>
+        <span class="iteminfo">Phone Number: ${restaurant.phone_number}</span>
+        <span class="iteminfo">Rating: ${restaurant.rating}</span>
+
+        <footer class="itemfooter"><h8>Added to your list ${totalDate} days ago</h8></footer>
       </article>`
   )
   return restaurantTemplate;
@@ -41,19 +74,25 @@ const createRestaurantElement = function (restaurant) {
 
 // BOOKS
 
-const createBookElement = function (book) {
+const createBookElement = function(book) {
   let timeStart = Date.now();
   let millis = Date.now() - books.created_at;
   let dateStamp = (millis / (60 * 60 * 24 * 1000))
   let totalDate = Math.round(dateStamp);
 
   const bookTemplate = (
-    `<article class="book-body">
+    `<article class="itembody">
          <header class="itemheader">
-          <span id="usericon"><img src="${book.user.avatars}"> ${book.user.name} </span><span class="username">${book.user.handle}</span>
+         <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" onchange="confirm(this)"/>
+         <label for="checkboxG1" class="css-label">
+          <span id="iteminfo"><img src="${book.user.avatars}"> ${book.user.name} </span>
+          <span class="iteminfo">${book.title}</span>
         </header>
+        <span class="iteminfo">Author: ${book.author}</span>
+        <span class="iteminfo">Length: ${book.page_count} pages</span>
+        <span class="iteminfo">Rating: ${book.rating} (via Goodreads)</span>
         ${escape(book.content.text)}
-        <footer class="itemfooter"><h8>Added ${totalDate} days ago</h8><div class="icons"><i class="fab fa-font-awesome-flag"></i> <i class="fas fa-retweet"></i> <i class="fas fa-heart"></i></div></footer>
+        <footer class="itemfooter"><h8>Added to your list ${totalDate} days ago</h8></footer>
       </article>`
   )
   return bookTemplate;
@@ -69,12 +108,13 @@ const createProductElement = function (product) {
   let totalDate = Math.round(dateStamp);
 
   const productTemplate = (
-    `<article class="product-body">
+    `<article class="itembody">
          <header class="itemheader">
-          <span id="usericon"><img src="${product.user.avatars}"> ${product.user.name} </span><span class="username">${tweet.user.handle}</span>
+         <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" onchange="confirm(this)"/>  <label for="checkboxG1" class="css-label"> <span id="usericon"><img src="${product.picture}"> ${product.product_name} </span>
+          <span class="iteminfo">Price: ${product.price}</span> </label>
         </header>
-        ${escape(product.content.text)}
-        <footer class="tweetfooter"><h8>${totalDate} days ago</h8><div class="icons"><i class="fab fa-font-awesome-flag"></i> <i class="fas fa-retweet"></i> <i class="fas fa-heart"></i></div></footer>
+        ${escape(product.content.text)} -- LEFT OVER FROM TWEETER, can probably remove this...
+        <footer class="itemfooter"><h8> Added to your list ${totalDate} days ago</h8></footer>
       </article>`
   )
   return productTemplate;
@@ -89,12 +129,18 @@ const createMovieElement = function (movie) {
   let totalDate = Math.round(dateStamp);
 
   const movieTemplate = (
-    `<article class="movie-body">
+    `<article class="itembody">
          <header class="itemheader">
-          <span id="usericon"><img src="${movie.user.avatars}"> ${movie.user.name} </span><span class="username">${movie.user.handle}</span>
+         <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" onchange="confirm(this)"/>  <label for="checkboxG1" class="css-label">
+         <span class="iteminfo">${movie.title}</span></label>
+         <br>
+         <span class="iteminfo"> <img src="${movie.user.avatars}"> ${movie.rating} </span>
+         <span class="iteminfo">${movie.user.handle}</span>
+        </label>
+
         </header>
-        ${escape(book.content.text)}
-        <footer class="tweetfooter"><h8>${totalDate} days ago</h8><div class="icons"><i class="fab fa-font-awesome-flag"></i> <i class="fas fa-retweet"></i> <i class="fas fa-heart"></i></div></footer>
+        ${escape(movie.content.text)}
+        <footer class="itemfooter"><h8>Added to your list ${totalDate} days ago</h8></footer>
       </article>`
   )
   return movieTemplate;
