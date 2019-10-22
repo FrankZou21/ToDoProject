@@ -2,12 +2,8 @@ const express = require('express');
 const router  = express.Router();
 const axios = require('axios');
 
-
-//    new Request(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchVal}&location=Vancouver`,{headers: new Headers({"X-Requested-With" : "XMLHttpRequest" , Authorization: `bearer 3FBAcWOG77mn6vnlH-h_MWWF0_R7IeUn7BjKa76xFFF3fmWjW6qMPpyQqcST8eYer0-hWocdBUxnWqPhw8zq7qHBhk5FJ9U1ZXnlxBPsp7KKXyGCmeKcajJiHHSrXXYx`})}),
-
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    // console.log(req.query.queryparams);
   const compareVal = req.query.queryparams
   const searchVal = encodeURIComponent(req.query.queryparams);
    movieUrl = {
@@ -52,9 +48,12 @@ module.exports = (db) => {
           }
         }
       }
-      if (restaurant.businesses[0].name === undefined) {
-        restaurant.businesses[0].name = "placeholder"
+      if (restaurant.businesses[0] === undefined) {
+        restaurant.businesses[0] = {};
+        restaurant.businesses[0].name = "placeholder";
       }
+
+
       if (compareVal.toLowerCase() === movie.Title.toLowerCase()) {
         searchOutput = {
           title: movie.Title,
@@ -63,6 +62,16 @@ module.exports = (db) => {
           genre: movie.Genre,
           type: "movie"
         };
+
+        const insertVal = [searchOutput.title, searchOutput.poster, Number(searchOutput.rating), searchOutput.genre, 1];
+        db.query(`INSERT INTO films (title, poster_img, imdb_rating, genre, user_id)
+        VALUES ($1, $2, $3, $4, $5);`, insertVal)
+        .then(() => {
+          console.log("IT WORKED");
+        })
+        .catch((err) => {
+          console.log(err);
+        })
       } else if (compareVal.toLowerCase() === book.items[0].volumeInfo.title.toLowerCase()) {
           searchOutput = {
             title: book.items[0].volumeInfo.title,
@@ -71,6 +80,11 @@ module.exports = (db) => {
             page_count: book.items[0].volumeInfo.pageCount,
             type: "book"
           }
+          db.query(`INSERT INTO books (title, author, rating, page_count, user_id)
+          VALUES (${searchOutput.title}, ${searchOutput.author}, ${Number(searchOutput.rating)}, ${Number(searchOutput.page_count)}, 1);`)
+          .then(() => {
+            console.log("IT WORKED");
+          })
       } else if (compareVal.toLowerCase() === restaurant.businesses[0].name.toLowerCase()) {
         searchOutput = {
           name: restaurant.businesses[0].name,
@@ -81,6 +95,12 @@ module.exports = (db) => {
           address: restaurant.businesses[0].location.address1,
           type: "restaurant"
         }
+        db.query(`INSERT INTO restaurants (name, phone_number, image_url, rating, type_of_food, address, user_id)
+        VALUES (${searchOutput.name}, ${searchOutput.phone_number}, ${searchOutput.image_url}, ${Number(searchOutput.rating)},
+        ${searchOutput.type_of_food},${searchOutput.address}, 1);`)
+        .then(() => {
+          console.log("IT WORKED");
+        })
       } else {
         searchOutput = {
           name: product.Items.itemName,
@@ -88,9 +108,15 @@ module.exports = (db) => {
           image: product.Items.itemUrl,
           type: "product"
         }
+        db.query(`INSERT INTO products (product_name, price, picture, user_id)
+        VALUES (${searchOutput.name}, ${Number(searchOutput.price)}, ${searchOutput.image}, 1);`)
+          .then(() => {
+            console.log("IT WORKED");
+          })
       }
-      res.render("search", templateVars = searchOutput);
-      console.log(searchOutput);
+      // res.render("search", templateVars = searchOutput);
+      res.render("index");
+      // console.log(searchOutput);
  }).catch(err => console.error(err));
   });
   return router;

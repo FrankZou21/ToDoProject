@@ -56,7 +56,6 @@ const createRestaurantElement = function(restaurant) {
   const restaurantTemplate = (
     `<article class="itembody">
          <header class="itemheader">
-
           <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" onchange="confirm(this)"/>
           <label for="checkboxG1" class="css-label">
            <span id="iteminfo"><img src="${restaurant.picture}"> ${restaurant.name}</span>
