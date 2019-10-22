@@ -54,23 +54,18 @@
   <main class="container">
 
     <header class="siteheader">
-      <h2>Add what interests you!</h2>
 
-        <form id = "searchvalue" action="/api/search" method="GET">
-          <textarea class="input" rows="1" name="queryparams" placeholder="What are you interested in?"></textarea><input id="navbutton" type="submit" width = 20px value="Find It!">
-      </form>
-      <a href="/search"><h4>Link to Results Page</h4></a>
     </header>
 
 
     <div class="columnheader">
-        <h2 id="mylist">My List</h2>
+        <h2 id="mylist">Login</h2>
       </div>
 
     <div class="columns">
 
 
-      <form action="/login" method="POST">
+      <form action="/api/users/login" method="POST">
         <label for="username" style="margin: 1em">Username: </label>
         <input type="text" name="username" style="width: 200px; margin: 1em" placeholder="Username">
         <label for="password" style="margin: 1em">Password: </label>

@@ -24,7 +24,7 @@ CREATE TABLE users (
 -- FILMS -- FINDING VALUES (HARRY POTTER SEARCH EXAMPLE)
 CREATE TABLE films (
   id SERIAL PRIMARY KEY NOT NULL,
-  title VARCHAR(50) NOT NULL,
+  film_title VARCHAR(50) NOT NULL,
   -- object[0].Title
   poster_img VARCHAR(255) NOT NULL,
   -- object[0].Poster
@@ -39,11 +39,11 @@ CREATE TABLE films (
 -- BOOKS
 CREATE TABLE books (
   id SERIAL PRIMARY KEY NOT NULL,
-  title VARCHAR(50) NOT NULL,
+  book_title VARCHAR(50) NOT NULL,
   -- object[1].items[0].volumeInfo.title
   author VARCHAR(50) NOT NULL,
   -- object[1].items[0].volumeInfo.authors
-  rating DECIMAL NOT NULL DEFAULT 0,
+  book_rating DECIMAL NOT NULL DEFAULT 0,
   -- object[1].items[0].volumeInfo.averageRating
   page_count INTEGER NOT NULL,
   -- object[1].items[0].volumeInfo.pageCount
@@ -53,13 +53,13 @@ CREATE TABLE books (
 -- RESTAURANTS -- USEING "TOJO" as an example
 CREATE TABLE restaurants (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(50) NOT NULL,
+  restaurant_name VARCHAR(50) NOT NULL,
   -- object[2].businesses[0].name
   phone_number VARCHAR(255) NOT NULL,
   -- object[2].businesses[0].phone OR display_phone
   image_url VARCHAR(255) NOT NULL,
   -- object[2].businesses[0].image_url
-  rating DECIMAL NOT NULL DEFAULT 0,
+  restaurant_rating DECIMAL NOT NULL DEFAULT 0,
   -- object[2].businesses[0].rating
   type_of_food VARCHAR(255) NOT NULL,
   -- object[2].businesses[0].categories[0].alias["japanese"]

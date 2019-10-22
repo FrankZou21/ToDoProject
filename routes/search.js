@@ -64,7 +64,7 @@ module.exports = (db) => {
         };
 
         const insertVal = [searchOutput.title, searchOutput.poster, Number(searchOutput.rating), searchOutput.genre, 1];
-        db.query(`INSERT INTO films (title, poster_img, imdb_rating, genre, user_id)
+        db.query(`INSERT INTO films (film_title, poster_img, imdb_rating, genre, user_id)
         VALUES ($1, $2, $3, $4, $5);`, insertVal)
         .then(() => {
           console.log("IT WORKED");
@@ -80,7 +80,7 @@ module.exports = (db) => {
             page_count: book.items[0].volumeInfo.pageCount,
             type: "book"
           }
-          db.query(`INSERT INTO books (title, author, rating, page_count, user_id)
+          db.query(`INSERT INTO books (book_title, author, book_rating, page_count, user_id)
           VALUES (${searchOutput.title}, ${searchOutput.author}, ${Number(searchOutput.rating)}, ${Number(searchOutput.page_count)}, 1);`)
           .then(() => {
             console.log("IT WORKED");
@@ -95,7 +95,7 @@ module.exports = (db) => {
           address: restaurant.businesses[0].location.address1,
           type: "restaurant"
         }
-        db.query(`INSERT INTO restaurants (name, phone_number, image_url, rating, type_of_food, address, user_id)
+        db.query(`INSERT INTO restaurants (restaurant_name, phone_number, image_url, restaurant_rating, type_of_food, address, user_id)
         VALUES (${searchOutput.name}, ${searchOutput.phone_number}, ${searchOutput.image_url}, ${Number(searchOutput.rating)},
         ${searchOutput.type_of_food},${searchOutput.address}, 1);`)
         .then(() => {
@@ -114,9 +114,9 @@ module.exports = (db) => {
             console.log("IT WORKED");
           })
       }
-      // res.render("search", templateVars = searchOutput);
-      res.render("index");
-      console.log(searchOutput);
+      res.render("search", templateVars = searchOutput);
+      // res.render("index");
+      // console.log(searchOutput);
  }).catch(err => console.error(err));
   });
   return router;
