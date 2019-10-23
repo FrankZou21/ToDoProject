@@ -5,6 +5,7 @@ const axios = require('axios');
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const compareVal = req.query.queryparams
+    const user_id = req.session.user_id;
     if (compareVal) {
       const searchVal = encodeURIComponent(req.query.queryparams);
       movieUrl = {
@@ -63,12 +64,14 @@ module.exports = (db) => {
             genre: movie.Genre,
             type: "films"
           };
-
-          const insertVal = [searchOutput.title, searchOutput.poster, Number(searchOutput.rating), searchOutput.genre, 1];
+`INSERT INTO films (film_title, poster_img, imdb_rating, genre, user_id_films)
+VALUES ($1, $2, $3, $4, $5);`
+          const insertVal = [searchOutput.title, searchOutput.poster, Number(searchOutput.rating), searchOutput.genre, user_id[0]];
           db.query(`INSERT INTO films (film_title, poster_img, imdb_rating, genre, user_id_films)
         VALUES ($1, $2, $3, $4, $5);`, insertVal)
             .then(() => {
               console.log("IT WORKED");
+              res.render("search", searchOutput);
             })
             .catch((err) => {
               console.log(err);
@@ -81,14 +84,16 @@ module.exports = (db) => {
             page_count: book.items[0].volumeInfo.pageCount,
             type: "books"
           }
+          const insertVal = [searchOutput.title, searchOutput.author, Number(searchOutput.rating), Number(searchOutput.page_count), user_id[0]]
+          console.log(insertVal);
           db.query(`INSERT INTO books (book_title, author, book_rating, page_count, user_id_books)
-          VALUES (${searchOutput.title}, ${searchOutput.author}, ${Number(searchOutput.rating)}, ${Number(searchOutput.page_count)}, 1);`)
+          VALUES ($1, $2, $3, $4, $5);`, insertVal)
             .then(() => {
-              console.log("IT WORKED");
+              res.render("search", searchOutput);
             })
         } else if (compareVal.toLowerCase() === restaurant.businesses[0].name.toLowerCase()) {
           searchOutput = { // Info for restaurants
-            name: restaurant.businesses[0].name,
+            title: restaurant.businesses[0].name,
             phone_number: restaurant.businesses[0].phone,
             image_url: restaurant.businesses[0].image_url,
             rating: restaurant.businesses[0].rating,
@@ -96,27 +101,33 @@ module.exports = (db) => {
             address: restaurant.businesses[0].location.address1,
             type: "restaurants"
           }
+
+          console.log(searchOutput);
+          const insertVal = [searchOutput.title, searchOutput.phone_number, searchOutput.image_url, Number(searchOutput.rating), searchOutput.type_of_food, searchOutput.address, user_id[0]]
           db.query(`INSERT INTO restaurants (restaurant_name, phone_number, image_url, restaurant_rating, type_of_food, address, user_id_restaurants)
-        VALUES (${searchOutput.name}, ${searchOutput.phone_number}, ${searchOutput.image_url}, ${Number(searchOutput.rating)},
-        ${searchOutput.type_of_food},${searchOutput.address}, 1);`)
+VALUES ($1, $2, $3, $4, $5, $6, $7);`, insertVal)
             .then(() => {
               console.log("IT WORKED");
+              res.render("search", searchOutput);
             })
         } else { // Info for products
           searchOutput = {
-            name: product.Items.itemName,
+            title: product.Items.itemName,
             price: product.Items.itemPrice,
             image: product.Items.itemUrl,
             type: "products",
-            cookie: req.session.user_id[0]
           }
+//
+// `INSERT INTO products ()
+// VALUES ($1, $2, $3, $4, $5, $6, $7);`
+          const insertVal = [searchOutput.title, Number(searchOutput.price), searchOutput.image, user_id[0]]
           db.query(`INSERT INTO products (product_name, price, picture, user_id_products)
-        VALUES (${searchOutput.name}, ${Number(searchOutput.price)}, ${searchOutput.image}, 1);`)
+        VALUES ($1, $2, $3, $4);`, insertVal)
             .then(() => {
               console.log("IT WORKED");
+              res.render("search", searchOutput);
             })
         }
-        res.render("search", searchOutput);
         // res.render("index");
         // console.log(searchOutput);
       }).catch(err => console.error(err));
@@ -126,3 +137,4 @@ module.exports = (db) => {
   });
   return router;
 };
+
