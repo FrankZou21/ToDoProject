@@ -18,6 +18,15 @@ nav {
   vertical-align: top;
 }
 
+a {
+  color: #ff6600;
+  transition: all 0.5s;
+}
+
+a:hover {
+  color: rgb(255, 60, 0);
+}
+
 .loginlabel {
   color: #ff6600;
   font-size: 16pt;

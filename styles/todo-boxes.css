@@ -37,17 +37,17 @@ article #usericon {
   display: flex;
   align-items: center;
 }
-
+/*
 article .itemheader {
   display: flex;
   font-weight: normal;
   font-size: 20px;
   justify-content: space-between;
   color: #001f1d;
-}
+} */
 
 
-
+/*
 article .itemfooter{
   display: flex;
   color: #001f1d;
@@ -55,10 +55,11 @@ article .itemfooter{
   font-size: 15px;
   border-top: solid #354246 1px;
   padding: 8px;
+  align-content: right;
   justify-content: space-between;
   margin: auto;
 
-}
+} */
 
 article h8 {
   font-size: 14pt;
@@ -94,8 +95,3 @@ article .itemContainer {
 
 }
 
-
-.css-label {
-  font-size: 14pt;
-  color: navy;
-}

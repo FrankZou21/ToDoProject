@@ -7,7 +7,7 @@ const renderList = function (list) {
 };
 
 const loadList = function (data) {
-  $.ajax({ url: '/tweets', method: 'GET' })
+  $.ajax({ url: '/search', method: 'GET' })
     .then(function (res) {
       renderList(res);
     })

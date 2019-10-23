@@ -19,12 +19,32 @@ button.remove {
   background-color: rgb(204, 204, 204);
   border: 2px solid #414141;
   transition: all 0.5s;
+  margin: 5px;
 }
 
 button.remove:hover {
   color: red;
   border:2px solid #570000;
 }
+
+button.edit {
+  align-self: right;
+  font-family: Prompt, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  color: rgb(97, 97, 97);
+  background-color: rgb(204, 204, 204);
+  border: 2px solid #414141;
+  transition: all 0.5s;
+  margin: 5px;
+}
+
+button.edit:hover {
+  color: rgb(0, 82, 14);
+  border:2px solid #022a00;
+
+}
+
 
 article {
   // padding: 10px;
@@ -46,6 +66,15 @@ article {
 
 // }
 
+
+article .itemheader {
+  display: flex;
+  font-weight: normal;
+  font-size: 20px;
+  justify-content: space-between;
+  color: #3d0046;
+}
+
 article .itembody{
   background-color: #f8f8f8;
   color: #00051f;
@@ -55,8 +84,10 @@ article .itembody{
 }
 
 
-article h8 {
-  font-size: 14pt;
-  color: grey;
+.article-footer {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: right;
 }
-
