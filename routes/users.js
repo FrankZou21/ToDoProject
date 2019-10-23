@@ -132,7 +132,7 @@ router.post("/index", (req, res) => {
   }
   const queryInput = [req.session.user_id[0], name]
   console.log(queryInput);
-  db.query('UPDATE films SET user_id_films = $1 WHERE film_title = $2;', queryInput)
+  db.query(`UPDATE ${type} SET user_id_films = $1 WHERE ${selectorName} = $2;`, queryInput)
     .then(() => Promise.all([
         db.query(`SELECT * FROM films WHERE films.user_id_films = $1`, [req.session.user_id[0]]),
         db.query(`SELECT * FROM books WHERE books.user_id_books = $1`, [req.session.user_id[0]]),
