@@ -38,14 +38,18 @@ module.exports = (db) => {
     ]
   });
 
-  router.post("/delete", (req, res) => {
-
-  })
 
   router.get("/login", (req, res) => {
     res.render("login")
   })
 
+  router.get("/register", (req, res) => {
+    res.renger("register")
+  })
+
+  router.post("/delete", (req, res) => {
+
+  })
 
   router.post("/login", (req, res) => {
     const username = req.body.username;
@@ -63,6 +67,27 @@ module.exports = (db) => {
         }
       })
   })
+
+  router.register("/register", (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    const first_name = req.body.first_name;
+    const registerCred = [username, password, first_name]
+    if (username !== null && password !== null && first_name !== null)
+    db.query(`INSERT INTO users (username, password, first_name)
+    VALUES ($1, $2, $3)
+    RETURN *`, registerCred)
+      .then((data) => {
+        req.session.user_id = data.rows[0].id;
+        res.redirect("/api/users");
+      })
+    else {
+      res.redirect("/api/users/register")
+    }
+  })
+
+
+
 
   router.post("/logout", (req, res) => {
     req.session.user_id = null;
@@ -88,7 +113,6 @@ module.exports = (db) => {
     console.log(queryInput);
     db.query(`UPDATE ${type} SET user_id_films = $1 WHERE ${selectorName} = $2;`, queryInput)
       .then(() => {
-        console.log("HI")
         res.redirect("/api/users/")
       })
   })
