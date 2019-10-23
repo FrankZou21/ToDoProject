@@ -60,11 +60,11 @@ module.exports = (db) => {
           poster: movie.Poster,
           rating: movie.imdbRating,
           genre: movie.Genre,
-          type: "movie"
+          type: "films"
         };
 
         const insertVal = [searchOutput.title, searchOutput.poster, Number(searchOutput.rating), searchOutput.genre, 1];
-        db.query(`INSERT INTO films (film_title, poster_img, imdb_rating, genre, user_id)
+        db.query(`INSERT INTO films (film_title, poster_img, imdb_rating, genre, user_id_films)
         VALUES ($1, $2, $3, $4, $5);`, insertVal)
         .then(() => {
           console.log("IT WORKED");
@@ -78,9 +78,9 @@ module.exports = (db) => {
             author: book.items[0].volumeInfo.authors[0],
             rating: book.items[0].volumeInfo.averageRating,
             page_count: book.items[0].volumeInfo.pageCount,
-            type: "book"
+            type: "books"
           }
-          db.query(`INSERT INTO books (book_title, author, book_rating, page_count, user_id)
+          db.query(`INSERT INTO books (book_title, author, book_rating, page_count, user_id_books)
           VALUES (${searchOutput.title}, ${searchOutput.author}, ${Number(searchOutput.rating)}, ${Number(searchOutput.page_count)}, 1);`)
           .then(() => {
             console.log("IT WORKED");
@@ -93,9 +93,9 @@ module.exports = (db) => {
           rating: restaurant.businesses[0].rating,
           type_of_food: restaurant.businesses[0].categories[0].title,
           address: restaurant.businesses[0].location.address1,
-          type: "restaurant"
+          type: "restaurants"
         }
-        db.query(`INSERT INTO restaurants (restaurant_name, phone_number, image_url, restaurant_rating, type_of_food, address, user_id)
+        db.query(`INSERT INTO restaurants (restaurant_name, phone_number, image_url, restaurant_rating, type_of_food, address, user_id_restaurants)
         VALUES (${searchOutput.name}, ${searchOutput.phone_number}, ${searchOutput.image_url}, ${Number(searchOutput.rating)},
         ${searchOutput.type_of_food},${searchOutput.address}, 1);`)
         .then(() => {
@@ -106,15 +106,16 @@ module.exports = (db) => {
           name: product.Items.itemName,
           price: product.Items.itemPrice,
           image: product.Items.itemUrl,
-          type: "product"
+          type: "products",
+          cookie: req.session.user_id[0]
         }
-        db.query(`INSERT INTO products (product_name, price, picture, user_id)
+        db.query(`INSERT INTO products (product_name, price, picture, user_id_products)
         VALUES (${searchOutput.name}, ${Number(searchOutput.price)}, ${searchOutput.image}, 1);`)
           .then(() => {
             console.log("IT WORKED");
           })
       }
-      res.render("search", templateVars = searchOutput);
+      res.render("search", searchOutput);
       // res.render("index");
       // console.log(searchOutput);
  }).catch(err => console.error(err));

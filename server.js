@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+var cookieSession = require('cookie-session')
 
 
 // PG database client/connection setup
@@ -31,6 +32,11 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+
+app.use(cookieSession({
+  name: 'user_id',
+  keys: ['key1', 'key2']
+}))
 
 
 // Separated Routes for each Resource
