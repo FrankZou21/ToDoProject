@@ -70,7 +70,7 @@
       </div>
       <div class="column" align="right">
         <form action="/api/users/index" method="POST">
-          <input type="hidden" id="title" name="searchInput" value= <%= title %> >
+          <input type="hidden" id="title" name="searchInput" value= "<%= title %>" >
           <input type="hidden" id="type" name="searchType" value= <%= type %> >
           <button type="submit" class="btn btn-primary"><h3>Add to My List!</h3></button>
         </form>
