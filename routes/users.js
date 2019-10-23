@@ -57,7 +57,19 @@ router.post("/login", (req, res) => {
   })
 })
 
+// ANTHONY REMOVE FUNCTIONALITY
 
+// router.post("/login", (req, res) => {
+//         //when on login page, if user clicks a check box, be able to remove item from list
+
+
+//          db.query(`DELETE FROM films WHERE film_title = "" AND id = ),
+//          db.query(`DELETE FROM books WHERE book_title = "" AND id = ),
+//          db.query(`DELETE FROM restaurants restaurant_title = "" AND id = ),
+//          db.query(`DELETE FROM products WHERE product_name = "" AND id = ),
+//
+
+// })
 
 //For Jensen commented out code for outerjoin
 

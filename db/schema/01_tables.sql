@@ -37,13 +37,8 @@ CREATE TABLE films (
   film_title VARCHAR(50) NOT NULL,
   -- object[0].Title
   poster_img VARCHAR(255) NOT NULL,
-<<<<<<< HEAD
   -- object[0].PosterW
   imdb_rating INTEGER NOT NULL DEFAULT 0,
-=======
-  -- object[0].Poster
-  imdb_rating DECIMAL NOT NULL DEFAULT 0,
->>>>>>> 6f04200f45f46d65149f6f741d20e1c7b186a69b
   -- object[0].imdbRating
   genre VARCHAR(50) NOT NULL,
   -- object[0].Genre
