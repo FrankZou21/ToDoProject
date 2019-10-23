@@ -6,7 +6,7 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -26,9 +26,9 @@
   <link rel="stylesheet" href="../vendor/normalize-4.1.1.css" type="text/css" />
 
 
-  <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="../styles/nav.css" type="text/css" />
-  <link rel="stylesheet" href="../styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
 
   <!-- External Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Arvo|Modak&display=swap" rel="stylesheet">
@@ -40,11 +40,8 @@
 <body>
   <!-- Top nav bar (fixed) -->
   <nav>
-    <span id="leftnav">List It!</span>
-    <span id="rightnav">
-      Logged in as you, the gentle user
-    </span>
-  </nav>
+      <% include ../views/partials/_navbar %>
+    </nav>
 
   <main class="container">
 
@@ -67,17 +64,17 @@
     <div class="columns">
       <div class="section">
         <h3>Search Results for *** thing searched *** </h3>
-        <%= films[film].title %>
+
       </div>
       <div class="column" align="right">
         <form action="/api/users/index" method="POST">
-          <input type="hidden" id="title" name="searchInput" value= <%= title %> >
+          <input type="hidden" id="title" name="searchInput" value="<%= title %>" >
           <input type="hidden" id="type" name="searchType" value= <%= type %> >
           <button type="submit" class="btn btn-primary"><h3>Add to My List!</h3></button>
         </form>
       </div>
       <!-- Populate data here - "add to list" functionality, etc.  -->
-      <p> <%= title %> </p>
+
     </div>
   </main>
 </body>
