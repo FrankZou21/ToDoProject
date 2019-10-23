@@ -32,33 +32,6 @@
   <!-- Top nav bar (fixed) -->
 
   <nav>
-    <!-- <span id="leftnav">List It!</span>
-    <span id="rightnav">
-
-
-    <% if (locals.user === undefined) { %>
-
-      <form action="/login" method="POST">
-      <label for="username" style="margin: 1em">Username: </label>
-      <input type="text" name="username" style="width: 200px; margin: 1em" placeholder="Username">
-      <label for="password" style="margin: 1em">Password: </label>
-      <input type="password" name="password" style="width: 200px; margin: 1em" placeholder="Password">
-          <button type="submit" class="btn btn-primary">Login</button>
-          </div>
-        </form>
-
-      <% } else { %>
-
-          <form class="form-inline" action="/logout" method="POST">
-           <div class="form-group mb-2 mx-auto">
-              <label for="loggedin">Logged in as &nbsp;<strong> <%= user.name %> </strong>  </label>
-               <button type="submit" class="btn btn-secondary" style="margin: 1em">Logout</button>
-            </div>
-          </form>
-
-        <% } %>
-    </span> -->
-
     <% include ../views/partials/_navbar %>
   </nav>
 
@@ -88,52 +61,32 @@
             <a href="/login"><p>Link to login page</p></a> -->
           <h3>Things to Watch</h3>
 
-          <article class="itembody">
-
-              <table class="table">
-                  <tbody>
                     <% for(let film in films) { %>
-                      <tr>
-                        <td><%= films[film].poster %></td>
-
-                        <td>
-                        <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" onchange="confirm(this)"/>   <label for="checkboxG1" class="css-label">  <%= films[film].title %></td></label>
-                        <td><%= films[film].genre %></td>
-                        <td><%= films[film].rating %></td>
-                        <td><%= films[film].poster %></td>
-                        <td><a href="/index"><form method="POST" action="/films/<%= film %>/delete"><button type="submit" class="remove">Remove from My List</button></form></a></td>
-
-                      </tr>
-                    <% } %>
-                  </tbody>
-
-                </table>
+                      <article class="itembody">
+                        <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" onchange="confirm(this)"/>   <label for="checkboxG1" class="css-label"><%= films[film].title %></label><br>
+                        <span>Genre: <%= films[film].genre %></span><br>
+                        <span>Rating: <%= films[film].rating %></span><br>
+                        <span><%= films[film].poster %></span><br>
+                        <span><a href="/index"><form method="POST" action="/films/<%= film %>/delete"><button type="submit" class="remove">Remove from My List</button></form></a></span>
           </article>
-
+          <% } %>
 
         </div>
 
         <div class="category">
           <h3>Your To-Read Pile</h3>
-          <article class="itembody">
-
-              <table class="table">
-                  <tbody>
                     <% for(let book in books) { %>
-                      <tr>
-                        <td> <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" onchange="confirm(this)"/>   <label for="checkboxG1" class="css-label">  <%= books[book].book_title %></td></label>
-                        <td><%= books[book].author %></td>
-                        <td><%= books[book].genre %></td>
-                        <td><%= books[book].book_rating %></td>
-                        <td><%= books[book].page_count %></td>
-                        <td><a href="/index"><form method="POST" action="/books/<%= book %>/delete"><button type="submit" class="remove">Remove from My List</button></form></a></td>
+                      <article class="itembody">
+                        <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox"/>
+                        <label for="checkboxG1" class="css-label">  <%= books[book].book_title %></label><br>
+                        <span><%= books[book].author %></span>
+                        <span><%= books[book].genre %></span>
+                        <span><%= books[book].book_rating %></span>
+                        <span><%= books[book].page_count %></span>
+                        <span><a href="/index"><form method="POST" action="/books/<%= book %>/delete"><button type="submit" class="remove">Remove from My List</button></form></a> </span>
 
-                      </tr>
+                      </article>
                     <% } %>
-                  </tbody>
-
-                </table>
-          </article>
         </div>
 
       </div>
@@ -143,15 +96,14 @@
           <h3>Places to Eat</h3>
           <article class="itembody">
 
-              <table class="table">
-                  <tbody>
                     <% for(let restaurant in restaurants) { %>
-                      <tr>
-                        <td><%= restaurants[restaurant].restaurant_name %></td>
-                        <td><%= restaurants[restaurant].address %></td>
-                        <td><%= restaurants[restaurant].type_of_food %></td>
-                        <td><%= restaurants[restaurant].restaurant_rating %></td>
-                        <td><a href="/index"><form method="POST" action="/restaurants/<%= restaurant %>/delete"><button type="submit" class="remove">Remove from My List</button></form></a></td>
+                      <article class="itembody">
+                          <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox"/>
+                          <label for="checkboxG1" class="css-label"> <%= restaurants[restaurant].restaurant_name %></label> <br>
+                        <span><%= restaurants[restaurant].address %></span><br>
+                        <span><%= restaurants[restaurant].type_of_food %></span><br>
+                        <span><%= restaurants[restaurant].restaurant_rating %></span><br>
+                        <span><a href="/index"><form method="POST" action="/restaurants/<%= restaurant %>/delete"><button type="submit" class="remove">Remove from My List</button></form></a></span>
 
                       </tr>
                     <% } %>
@@ -164,23 +116,18 @@
         <div class="category">
           <h3>Your Product Wishlist</h3>
           <article class="itembody">
-
-              <table class="table">
-                  <tbody>
                     <% for(let product in products) { %>
-                      <tr>
+                      <article class="itembody">
+                          <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox"/>
+                          <label for="checkboxG1" class="css-label"><td><%= products[product].product_name %></td>
                         <td><%= products[product].product_image %></td>
                         <td><%= products[product].product_name %></td>
                         <td>$<%= products[product].price %></td>
                         <td><%= products[product].type %></td>
                         <td><a href="/index"><form method="POST" action="/products/<%= product %>/delete"><button type="submit" class="remove">Remove from My List</button></form></a></td>
-
-                      </tr>
+                      </article>
                     <% } %>
-                  </tbody>
 
-                </table>
-          </article>
         </div>
       </div>
     </div>
