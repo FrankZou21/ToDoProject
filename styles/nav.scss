@@ -18,9 +18,19 @@ nav {
   vertical-align: top;
 }
 
-label {
-  color: #9000b4;
+a {
+  color: #ff6600;
+  transition: all 0.5s;
+}
+
+a:hover {
+  color: rgb(255, 60, 0);
+}
+
+.loginlabel {
+  color: #ff6600;
   font-size: 16pt;
+  margin: 1em;
 }
 
 #rightnav {
@@ -31,7 +41,7 @@ label {
 /* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
   nav{
-  background-color: #3b000c;
+  background-color: #161925;
   }
 }
 
@@ -42,6 +52,8 @@ label {
 
 #rightnav {
   display: flex;
+  font-family: Prompt, sans-serif;
+  font-size: 14pt;
 }
 
 #navbutton {
@@ -61,16 +73,6 @@ label {
   background-color: rgb(231, 0, 0);
   cursor: pointer;
 }
-
-
-// .input {
-//   width: 40vw;
-//   height: 50px;
-//   background-color: #cecece;
-//   color: rgb(54, 14, 14);
-//   font-family: Prompt, sans-serif;
-//   border-radius: 30px;
-// }
 
 
 #navarrow {

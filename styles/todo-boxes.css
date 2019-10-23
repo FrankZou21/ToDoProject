@@ -6,7 +6,7 @@ article {
   background-color: #fbfbfb;
   font-weight: normal;
   border-radius: 15px;
-  border: solid #313131 2px;
+  border: solid #095710 2px;
   margin-bottom: 15px;
   text-align: center;
 }
@@ -24,7 +24,7 @@ display:none;
 
 article:hover .username {
   display: initial;
-  color: grey;
+  color: rgb(0, 0, 0);
 }
 
 img {
@@ -37,23 +37,17 @@ article #usericon {
   display: flex;
   align-items: center;
 }
-
+/*
 article .itemheader {
   display: flex;
   font-weight: normal;
   font-size: 20px;
   justify-content: space-between;
   color: #001f1d;
-}
-
-article .itembody{
-  background-color: #f8f8f8;
-  color: #001f1d;
-  font-size: 25px;
-  align-items: center;
-}
+} */
 
 
+/*
 article .itemfooter{
   display: flex;
   color: #001f1d;
@@ -61,14 +55,15 @@ article .itemfooter{
   font-size: 15px;
   border-top: solid #354246 1px;
   padding: 8px;
+  align-content: right;
   justify-content: space-between;
   margin: auto;
 
-}
+} */
 
 article h8 {
   font-size: 14pt;
-  color: grey;
+  color: rgb(75, 75, 75);
 }
 
 article .icons {
@@ -100,8 +95,3 @@ article .itemContainer {
 
 }
 
-
-.css-label {
-  font-size: 14pt;
-  color: navy;
-}

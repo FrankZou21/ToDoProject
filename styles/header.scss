@@ -1,8 +1,8 @@
 .siteheader {
   display: flex;
   flex-direction: column;
-  background-color: #3d0222;
-  background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+  background-color: #394a4e;
+  background-image: url("http://design.jboss.org/strimzi/social/images/strimzi_twitter_header.png");
   color: rgb(255, 143, 15);
   position: relative;
   padding: 20px;
@@ -13,31 +13,37 @@
   margin: auto;
 }
 
+// IMAGE HEADER URLS FOR EXPERIMENTING:
+// https://i.imgur.com/SawEuJI.jpg
+
+
 .input {
   width: 40vw;
   height: 50px;
   background-color: #cecece;
   color: rgb(54, 14, 14);
   font-family: Prompt, sans-serif;
-  border-radius: 30px;
+  border-radius: 20px;
+  padding-left: 20px;
 }
 
 
-h2 {
+.headingtext {
   font-weight: normal;
   color: rgb(255, 157, 0);
   font-family: Maven Pro, sans-serif;
 }
 
-h3 {
-  font-weight: normal;
-  color: rgb(86, 253, 94);
-  font-family: Maven Pro, sans-serif;
-}
+// h2 {
+//   font-weight: normal;
+//   color: rgb(1, 51, 4);
+//   font-family: Maven Pro, sans-serif;
+// }
 
 #mylist {
   font-family: Leckerli One, cursive;
   font-size: 60px;
+  font-weight: normal;
   font-color: rgb(74, 235, 0);
 }
 

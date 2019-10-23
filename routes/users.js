@@ -88,7 +88,6 @@ module.exports = (db) => {
 
 
 
-
   router.post("/logout", (req, res) => {
     req.session.user_id = null;
     res.redirect("login");
@@ -116,5 +115,47 @@ module.exports = (db) => {
         res.redirect("/api/users/")
       })
   })
+
+
+
+
+router.post("/index", (req, res) => {
+  // console.log(req.body.searchInput);
+  // console.log(req.body.searchType);
+  const name = req.body.searchInput;
+  const type = req.body.searchType;
+  let selectorName;
+  if (type === "films" ) {
+    selectorName = "film_title"
+  } else if (type === "books") {
+    selectorName = "book_title"
+  } else if (type === "restaurants") {
+    selectorName = "restaurant_name"
+  } else {
+    selectorName = "product_name"
+  }
+  const queryInput = [req.session.user_id[0], name]
+  console.log(queryInput);
+  db.query(`UPDATE ${type} SET user_id_films = $1 WHERE ${selectorName} = $2;`, queryInput)
+    .then(() => Promise.all([
+        db.query(`SELECT * FROM films WHERE films.user_id_films = $1`, [req.session.user_id[0]]),
+        db.query(`SELECT * FROM books WHERE books.user_id_books = $1`, [req.session.user_id[0]]),
+        db.query(`SELECT * FROM restaurants WHERE restaurants.user_id_restaurants = $1`, [req.session.user_id[0]]),
+        db.query(`SELECT * FROM products WHERE products.user_id_products = $1`, [req.session.user_id[0]])
+      ])
+    )
+    .then(([films, books, restaurants, products]) => {
+      const templateVars = {
+        films: films.rows,
+        books: books.rows,
+        restaurants: restaurants.rows,
+        products: products.rows,
+        cookie: req.session.user_id[0]
+      }
+      console.log(templateVars);
+      res.render("index", templateVars);
+    })
+
+})
   return router;
 };

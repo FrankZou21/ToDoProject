@@ -56,7 +56,7 @@ app.use("/api/search", searchRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.redirect("/api/users/login");
+  res.redirect("api/users/login");
 });
 
 
