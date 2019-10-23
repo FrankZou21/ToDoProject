@@ -18,7 +18,7 @@ CREATE TABLE users (
   username VARCHAR(25) NOT NULL,
   password VARCHAR(25) NOT NULL,
   first_name VARCHAR(50) NOT NULL,
-  profile_pic VARCHAR(255) NOT NULL
+  profile_pic VARCHAR(255) NOT NULL DEFAULT 'https://void.to/uploads/avatars/avatar_31329.jpg'
 );
 
 -- FILMS -- FINDING VALUES (HARRY POTTER SEARCH EXAMPLE)
