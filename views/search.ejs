@@ -68,8 +68,15 @@
       <div class="section">
         <h3>Search Results for ____ </h3>
       </div>
-      <div class="column" align="right">  <form action="/api/users/login" method="POST"><button type="submit" class="btn btn-primary"><h3>Add to My List!</h3></button></form></div>
+      <div class="column" align="right">
+        <form action="/api/users/index" method="POST">
+          <input type="hidden" id="title" name="searchInput" value= <%= title %> >
+          <input type="hidden" id="type" name="searchType" value= <%= type %> >
+          <button type="submit" class="btn btn-primary"><h3>Add to My List!</h3></button>
+        </form>
+      </div>
       <!-- Populate data here - "add to list" functionality, etc.  -->
+      <p> <%= title %> </p>
     </div>
   </main>
 </body>

@@ -33,7 +33,7 @@ CREATE TABLE films (
   genre VARCHAR(50) NOT NULL,
   -- object[0].Genre
   actor_id INTEGER REFERENCES actors(id) ON DELETE CASCADE,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+  user_id_films INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
 -- BOOKS
@@ -47,7 +47,7 @@ CREATE TABLE books (
   -- object[1].items[0].volumeInfo.averageRating
   page_count INTEGER NOT NULL,
   -- object[1].items[0].volumeInfo.pageCount
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+  user_id_books INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
 -- RESTAURANTS -- USEING "TOJO" as an example
@@ -66,7 +66,7 @@ CREATE TABLE restaurants (
   address VARCHAR(255) NOT NULL,
   -- object[2].businesses[0].location.address1["1133 Broadway"]
   url VARCHAR(255) NOT NULL,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+  user_id_restaurants INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
 -- PRODUCTS (WAITING TO GET API)
@@ -78,7 +78,7 @@ CREATE TABLE products (
   -- object[3].Items.itemPrice
   picture VARCHAR(255) NOT NULL,
     -- object[3].Items.itemUrl
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+  user_id_products INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
 
