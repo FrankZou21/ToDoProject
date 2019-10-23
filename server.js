@@ -55,3 +55,7 @@ app.get("/", (req, res) => {
 // app.post("/", (req, res) => {
 //   res.render("index");
 // });
+
+app.listen(PORT, () => {
+  console.log(`exmaple app listening on ports ${PORT}`)
+});

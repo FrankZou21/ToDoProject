@@ -12,6 +12,16 @@ id SERIAL PRIMARY KEY NOT NULL,
 names VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE connnection (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user BOOLEAN NOT NULL,
+  books_id BOOLEAN NOT NULL,
+  restaurants_id BOOLEAN NOT NULL,
+  films_id BOOLEAN NOT NULL,
+  products BOOLEAN NOT NULL,
+);
+
+
 -- USERS
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -27,7 +37,7 @@ CREATE TABLE films (
   title VARCHAR(50) NOT NULL,
   -- object[0].Title
   poster_img VARCHAR(255) NOT NULL,
-  -- object[0].Poster
+  -- object[0].PosterW
   imdb_rating INTEGER NOT NULL DEFAULT 0,
   -- object[0].imdbRating
   genre VARCHAR(50) NOT NULL,
