@@ -11,12 +11,12 @@ article {
   text-align: center;
 }
 
-article:hover {
+/* article:hover {
   -moz-box-shadow: 5px 5px 0px #313131;
   -webkit-box-shadow: 5px 5px 0px #313131;
   box-shadow: 5px 5px 0px #313131;
   font-weight: bold;
-}
+} */
 
 article .username {
 display:none;

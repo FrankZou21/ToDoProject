@@ -59,11 +59,11 @@
         <div class="category">
             <!-- <a href="/search"><p>Link to Results Page</p></a>
             <a href="/login"><p>Link to login page</p></a> -->
-          <h3>Things to Watch</h3>
+          <h2>Things to Watch</h2>
 
                     <% for(let film in films) { %>
                       <article class="itembody">
-                        <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" onchange="confirm(this)"/>   <label for="checkboxG1" class="css-label"><%= films[film].film_title %></label><br>
+                        <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox"/>   <label for="checkboxG1" class="css-label"><%= films[film].film_title %></label><br>
                         <span>Genre: <%= films[film].genre %></span><br>
                         <span>Rating: <img src="/pics/star.gif"> <%= films[film].imdb_rating %>/10 (via <a href="http://www.imdb.com">IMDB</a>)</span><br>
                         <span><%= films[film].film_poster %></span><br>
@@ -74,7 +74,7 @@
         </div>
 
         <div class="category">
-          <h3>Your To-Read Pile</h3>
+          <h2>Your To-Read Pile</h2>
                     <% for(let book in books) { %>
                       <article class="itembody">
                         <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox"/>
@@ -92,7 +92,7 @@
       <div class="column">
 
         <div class="category">
-          <h3>Places to Eat</h3>
+          <h2>Places to Eat</h2>
 
                     <% for(let restaurant in restaurants) { %>
                       <article class="itembody">
@@ -111,7 +111,7 @@
         </div>
 
         <div class="category">
-          <h3>Your Product Wishlist</h3>
+          <h2>Your Product Wishlist</h2>
                     <% for(let product in products) { %>
                       <article class="itembody">
                           <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox"/>
