@@ -7,6 +7,11 @@
  * Do not modify these two selectors, please
  */
 
+ .css-label {
+  font-size: 14pt;
+  color: navy;
+}
+
  html {
   box-sizing: border-box;
 }
@@ -15,8 +20,8 @@
 }
 
 body {
-  color: #8b0061;
-  background-color:#dadada;
+  color: #ffffff;
+  background-color:#090a1b;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -27,20 +32,17 @@ div {
 
 main {
   width: 95vw;
-  background-color: #3f3f3f;
+  background-color: #1d2835;
   position: relative;
   margin: auto;
-  align-content: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 .container {
   width: 90vw;
   margin: auto;
   justify-content: center;
-}
-
-.categories {
-  background-color: lightgray;
 }
 
 .columns {
@@ -55,30 +57,39 @@ main {
 
 }
 
+button {
+  border-radius: 15px;
+}
+
+input {
+  border-radius: 20px;
+}
+
 span {
   vertical-align: text-top;
 }
 
 .category {
-  background-color: #bbd6d8;
+  background-color: #bcfff6;
   font-family: Garamond, sans-serif;
-  color: #2a0000;
+  color: #00032a;
   border: 3px solid rgb(199, 199, 199);
   border-radius: 20px;
   padding: 30px;
-  margin: 30px;
+  margin: auto;
 }
 
 /* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
 
   .containAll {
-    background-color: rgb(93, 93, 93);
+    background-color: rgb(255, 255, 255);
     display: flex;
     margin: auto;
     align-content: center;
     flex-direction: row;
     vertical-align: top;
+    justify-content: space-between;
   }
 
   .container {
@@ -91,7 +102,7 @@ span {
   .columnheader {
     display: flex;
     font-family: Leckerli One, cursive;
-    color: skyblue;
+    color: rgb(66, 83, 90);
     font-size: 50px;
     margin: auto;
   }
@@ -108,6 +119,7 @@ span {
     flex-direction: row;
     padding-top: 10px;
 
+    justify-content: space-between;
   }
 
   .column {
