@@ -68,7 +68,7 @@ module.exports = (db) => {
       })
   })
 
-  router.register("/register", (req, res) => {
+  router.post("/register", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     const first_name = req.body.first_name;
@@ -104,7 +104,7 @@ module.exports = (db) => {
       selectorName = "film_title"
     } else if (type === "books") {
       selectorName = "book_title"
-    } else if (type === restaurants) {
+    } else if (type === "restaurants") {
       selectorName = "restaurant_name"
     } else {
       selectorName = "product_name"
