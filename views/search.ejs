@@ -46,8 +46,8 @@
   <main class="container">
 
     <header class="siteheader">
-      <div class="columns">
-      <div class="column">
+      <!-- <div class="columns">
+      <div class="column"> -->
       <h2>Add what interests you!</h2>
       <form id="searchvalue" action="/" method="POST">
         <textarea class="input" rows="1" name="text" placeholder="I've been wanting to check out..."></textarea><input
@@ -62,16 +62,25 @@
       <h2 id="mylist">Search Results</h2>
     </div>
     <div class="columns">
-      <div class="section">
-        <h3>Search Results for *** thing searched *** </h3>
+      <div class="category">
+        <h2>Search Results</h2>
+
+        <article class="itembody">
+                       <div class="itemheader">
+                <div class="lefthead">
+                    <form action="/api/users/index" method="POST">
+                      <input type="hidden" id="title" name="searchInput" value="<%= title %>" >
+                      <input type="hidden" id="type" name="searchType" value= <%= type %> >
+                      <button type="submit" class="btn btn-primary"><h3>Add to My List!</h3></button>
+                    </form>
+
+          </div>
+        </article>
 
       </div>
-      <div class="column" align="right">
-        <form action="/api/users/index" method="POST">
-          <input type="hidden" id="title" name="searchInput" value="<%= title %>" >
-          <input type="hidden" id="type" name="searchType" value= <%= type %> >
-          <button type="submit" class="btn btn-primary"><h3>Add to My List!</h3></button>
-        </form>
+
+      </div>
+
       </div>
       <!-- Populate data here - "add to list" functionality, etc.  -->
 
