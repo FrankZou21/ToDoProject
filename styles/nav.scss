@@ -2,7 +2,7 @@
 nav {
   font-family: 'Patua One', cursive;
   width: 100%;
-  height: 100px;
+  height: 90px;
   background-color: #7e0000;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
   color: rgb(255, 102, 0);
@@ -16,6 +16,11 @@ nav {
   align-content: center;
   justify-content: space-between;
   vertical-align: top;
+}
+
+label {
+  color: #9000b4;
+  font-size: 16pt;
 }
 
 #rightnav {
@@ -53,17 +58,19 @@ nav {
 
 #navbutton:hover {
 
-  background-color: rgb(148, 0, 0);
+  background-color: rgb(231, 0, 0);
   cursor: pointer;
 }
 
 
-.input {
-  width: 40vw;
-  background-color: #cecece;
-  color: rgb(54, 14, 14);
-  font-family: Prompt, sans-serif;
-}
+// .input {
+//   width: 40vw;
+//   height: 50px;
+//   background-color: #cecece;
+//   color: rgb(54, 14, 14);
+//   font-family: Prompt, sans-serif;
+//   border-radius: 30px;
+// }
 
 
 #navarrow {
