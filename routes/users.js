@@ -93,6 +93,7 @@ module.exports = (db) => {
     res.redirect("login");
   })
 
+  //posting from search to main page, updating database with userid
   router.post("/index", (req, res) => {
     // console.log(req.body.searchInput);
     // console.log(req.body.searchType);
@@ -120,6 +121,58 @@ module.exports = (db) => {
       })
   })
 
+  router.post("/edit", (req, res) => {
+    const name = req.body.editInput;
+    const oldType = req.body.oldType;
+    const newType = req.body.newType;
+    const userId = req.session.user_id;
+    let oldSelectorName;
+    let oldSelectorId;
+    let newSelectorName;
+    let newSelectorId;
+
+    if (oldType === "films" ) {
+      oldSelectorName = "film_title";
+      oldSelectorId = "user_id_films";
+    } else if (oldType === "books") {
+      oldSelectorName = "book_title";
+      oldSelectorId = "user_id_books";
+    } else if (oldType === "restaurants") {
+      oldSelectorName = "restaurant_name";
+      oldSelectorId = "user_id_restaurants";
+    } else {
+      oldSelectorName = "product_name";
+      oldSelectorId = "user_id_products";
+    }
+
+    if (newType === "films" ) {
+      newSelectorName = "film_title";
+      newSelectorId = "user_id_films";
+    } else if (oldType === "books") {
+      newSelectorName = "book_title";
+      newSelectorId = "user_id_books";
+    } else if (oldType === "restaurants") {
+      newSelectorName = "restaurant_name";
+      newSelectorId = "user_id_restaurants";
+    } else {
+      newSelectorName = "product_name";
+      newSelectorId = "user_id_products";
+    }
+
+
+    const oldQueryInput = [null, name, userId];
+    const newQueryInput = [userId, name, null];
+    //UPDATE films SET user_id_films = null WHERE  film_title = eragon AND user_id_films = 3;
+    //UPDATE films SET user_id_films = 3 WHERE  film_title = eragon AND user_id_films = 3;
+    // db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE ${selectorName} = $2`, queryInput)
+    Promise.all([
+      db.query(`UPDATE ${oldType} SET ${oldSelectorId} = $1 WHERE ${oldSelectorName}=$2 AND ${oldSelectorId}=$3`, oldQueryInput),
+      db.query(`UPDATE ${newType} SET ${newSelectorId} = $1 WHERE ${newSelectorName}=$2 AND ${newSelectorId}=$3`, newQueryInput),
+    ])
+      .then(() => {
+        res.redirect("/api/users")
+      })
+  })
 
   return router;
 };
