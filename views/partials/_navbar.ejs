@@ -1,0 +1,32 @@
+<nav>
+    <span id="leftnav">  <a href="/"> List It!</a></span>
+    <span id="rightnav">
+
+
+        <% if (cookie === null) { %>
+
+          <div class="form-group mb-2 mx-auto">
+              <a class="nav-item nav-link" href="/login">
+            <button type="submit" id="loginout">Login</button> </a>
+            </div>
+          </form>
+                <label for="or"> &nbsp; or &nbsp;</label>
+                <a class="nav-item nav-link" href="/register">
+              <button type="submit" class="loginout"">Register</button>   </a>
+              </div>
+            </form>
+
+          <% } else { %>
+
+              <form class="form-inline" action="/api/users/logout" method="POST">
+               <div class="form-group mb-2 mx-auto">
+                  <label for="loggedin">Logged in as <strong> <%= name %> </strong> &nbsp;&nbsp; </label>
+                   <button type="submit" class="loginout">Logout</button>
+                </div>
+              </form>
+
+            <% } %>
+
+    </span>
+
+  </nav>

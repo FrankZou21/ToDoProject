@@ -1,0 +1,237 @@
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+.css-label {
+  font-size: 14pt;
+  color: navy;
+}
+
+.login-label {
+  font-size: 14pt;
+  font-family: Prompt, sans-serif;
+  color: skyblue;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  color: #ffffff;
+  background-color: #090a1b;
+  font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+main {
+  width: 95vw;
+  background-color: #1d2835;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.container {
+  width: 90vw;
+  /* margin: auto; */
+  justify-content: center;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 10px;
+}
+
+button {
+  border-radius: 15px;
+}
+
+.login-main {
+  display: flex;
+  align-content: center;
+  height: 100%;
+}
+
+#login-button {
+  font-family: Prompt, sans-serif;
+  width: 200px;
+  font-size: 24px;
+  background-color: none;
+  color: white;
+  border: 2px solid  #0051ff;
+  border-radius: 15px;
+  margin-top: 20px;
+  transition: all 0.5s;
+}
+
+#login-button:hover {
+  color: #ffb300;
+  border: 2px solid  #ffb300;
+}
+
+.input {
+  border-radius: 20px;
+}
+
+.login {
+  border-radius: 20px;
+  width: 300px;
+}
+
+span {
+  vertical-align: text-top;
+}
+
+.searchresult {
+  background-color: #d8e2e1;
+  font-family: Garamond, sans-serif;
+  color: #00032a;
+  border: 2px solid #2b3557;
+  border-radius: 20px;
+  padding: 30px;
+  margin: auto;
+}
+
+.login-main {
+  display: flex;
+  padding: 30px;
+  align-content: center;
+  justify-content: center;
+  margin: auto;
+}
+
+
+/* Laptops / Desktops: MIN width of 1024px */
+
+@media only screen and (min-width: 1024px) {
+  .containAll {
+    background-color: white;
+    display: flex;
+    margin: auto;
+    align-content: center;
+    flex-direction: row;
+    vertical-align: top;
+    justify-content: space-between;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+  }
+  .columnheader {
+    display: flex;
+    font-family: Leckerli One, cursive;
+    color: #42535a;
+    font-size: 50px;
+    margin: auto;
+  }
+
+  .columns {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  .loginheader {
+    display: flex;
+    font-family: Leckerli One, cursive;
+    color: #42535a;
+    font-size: 50px;
+    margin: auto;
+  }
+  #mylist {
+    font-family: Leckerli One, cursive;
+    font-size: 50px;
+    color: #ff8800;
+  }
+  .columns {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    justify-content: space-between;
+  }
+  .column {
+    margin-top: 10px;
+    flex-direction: column;
+    width: 40vw;
+    align-content: center;
+  }
+
+  .category {
+    width: 38vw;
+  }
+}
+
+
+
+
+/* Laptops / Desktops: MAXIMUM width of 1024px */
+@media only screen and (max-width: 1024px) {
+  .containAll {
+    background-color: white;
+    display: flex;
+    margin: auto;
+    align-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+  }
+  .columnheader {
+    display: flex;
+    font-family: Leckerli One, cursive;
+    color: #42535a;
+    font-size: 50px;
+    margin: auto;
+  }
+
+  .loginheader {
+    display: flex;
+    font-family: Leckerli One, cursive;
+    color: #42535a;
+    font-size: 50px;
+    margin: auto;
+    /* margin-top: 40px; */
+  }
+  #mylist {
+    font-family: Leckerli One, cursive;
+    font-size: 50px;
+    color: #ff8800;
+  }
+  .columns {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 10px;
+    justify-content: space-between;
+  }
+  .column {
+    margin-top: 10px;
+    flex-direction: column;
+    align-content: center;
+    width: 80vw;
+  }
+  .category {
+    width: 70vw;
+  }
+}

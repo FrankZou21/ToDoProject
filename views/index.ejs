@@ -1,17 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
+  <title>List It!</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
 
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+   <!-- App JS -->
+   <script type="text/javascript" src="/scripts/helpers.js"></script>
+
+
+   <!-- Styling  -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/lists.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/todo-boxes.css" type="text/css" />
+
+  <!-- External Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Modak&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Patua+One|Prompt&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Chicle|Leckerli+One&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- Top nav bar (fixed) -->
+
+  <nav>
+    <% include ../views/partials/_navbar %>
+  </nav>
+
+  <main class="container">
+
+    <header class="siteheader">
+      <h2 class="headingtext">Add what interests you!</h2>
+
+      <form id="searchvalue" action="/api/search" method="GET">
+        <textarea class="input" rows="1" name="queryparams" placeholder="What are you interested in?"></textarea><input
+          id="navbutton" type="submit" value="Find It!">
+      </form>
+
+    </header>
+
+
+    <div class="columnheader">
+      <h2 id="mylist">My List</h2>
+
+    </div>
+
+    <div class="columns">
+
+      <div class="column">
+
+        <div class="category">
+          <h2>Things to Watch</h2>
+
+
+          <% for(let film in films) { %>
+          <article class="itembody">
+            <div class="itemheader">
+              <div class="lefthead">
+                <span><%= films[film].film_title %></span>
+              </div>
+              <div class="righthead"><span>
+                <div class="dropdown">
+                    <button onclick="myFunction(event)" class="dropbtn">Edit Category</button>
+                    <div id="myDropdown" class="dropdown-content">
+                  <form method="POST"  action="/api/users/edit">
+                          <input type="hidden" id="title" name="editInput" value="<%= films[film].film_title %>">
+                          <input type="hidden" id="title" name="oldType" value="films">
+                          <input type="radio" name="category" value="films"> Film<br>
+                          <input type="radio" name="category" value="books"> Book <br>
+                          <input type="radio" name="category" value="restaurants"> Restaurant<br>
+                          <input type="radio" name="category" value="products"> Product <br>
+                          <input type="submit">
+                        </form>
+                        </div>
+                      </div>
+              </div>
+            </div>
+            <div class="itembody">
+              <span>Genre: <%= films[film].genre %></span><br>
+              <span>Rating: <img src="/pics/star.gif"> <%= films[film].imdb_rating %>/10 (via <a
+                  href="http://www.imdb.com">IMDB</a>)</span><br>
+              <span><img class="poster" src=<%= films[film].film_poster %>> </span><br>
+            </div>
+            <div class="itemfooter">
+              <span>
+                <form method="POST" action="/api/users/remove">
+                  <input type="hidden" id="title" name="removeInput" value="<%= films[film].film_title %>">
+                  <input type="hidden" id="title" name="removeType" value="films">
+                  <button type="submit" class="remove">Remove from My List
+                  </button>
+                </form>
+              </span>
+            </div>
+          </article>
+          <% } %>
+
+        </div>
+
+        <div class="category">
+          <h2>Your To-Read Pile</h2>
+          <% for(let book in books) { %>
+          <article class="itembody">
+            <div class="itemheader">
+              <div class="lefthead">
+                <span> <%= books[book].book_title %></span>
+              </div>
+              <div class="righthead"><span>
+                <div class="dropdown">
+                    <button onclick="myFunction(event)" class="dropbtn">Edit Category</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <form method="POST" action="/api/users/edit">
+                            <input type="hidden" id="title" name="editInput" value="<%= books[book].book_title %>">
+                            <input type="hidden" id="title" name="oldType" value="books">
+                            <input type="radio" name="category" value="films" > Film<br>
+                            <input type="radio" name="category" value="books" checked> Book <br>
+                            <input type="radio" name="category" value="restaurants"> Restaurant<br>
+                            <input type="radio" name="category" value="products"> Product <br>
+                            <input type="submit">
+                          </form>
+                    </div>
+              </div>
+            </div><br>
+          </div>
+            <div class="itembody">
+              <span>Author: <%= books[book].author %></span><br>
+              <span>Rating: <img src="/pics/star.gif"> <%= books[book].book_rating %> stars (via <a
+                  href="http://www.goodreads.com">Goodreads</a>)</span><br>
+              <span>Length: <%= books[book].page_count %> pages</span><br>
+            </div>
+            <div class="itemfooter">
+              <form method="POST" action="/api/users/remove">
+                <input type="hidden" id="title" name="removeInput" value="<%= books[book].book_title %>">
+                <input type="hidden" id="title" name="removeType" value="books">
+                <button type="submit" class="remove">Remove from My List</button>
+                </form>
+            </span>
+          </div>
+
+          </article>
+          <% } %>
+        </div>
+
+      </div>
+      <div class="column">
+
+        <div class="category">
+          <h2>Places to Eat</h2>
+
+          <% for(let restaurant in restaurants) { %>
+          <article class="itembody">
+            <div class="itemheader">
+              <div class="lefthead">
+
+                <span> <%= restaurants[restaurant].restaurant_name %></span>
+              </div>
+              <div class="righthead"><span>
+                  <div class="dropdown">
+                      <button onclick="myFunction(event)" class="dropbtn">Edit Category</button>
+                      <div id="myDropdown" class="dropdown-content">
+                          <form method="POST" action="/api/users/edit">
+                              <input type="hidden" id="title" name="editInput" value="<%= restaurants[restaurant].restaurant_name %>">
+                              <input type="hidden" id="title" name="oldType" value="restaurants">
+                              <input type="radio" name="category" value="films" > Film<br>
+                              <input type="radio" name="category" value="books"> Book <br>
+                              <input type="radio" name="category" value="restaurants" checked> Restaurant<br>
+                              <input type="radio" name="category" value="products"> Product <br>
+                              <input type="submit">
+                            </form>
+                      </div>
+                </div>
+              </div>
+            </div>
+            <div class="itembody">
+              <span>Address: <%= restaurants[restaurant].address %></span><br>
+              <span>Type of food: <%= restaurants[restaurant].type_of_food %></span><br>
+              <span>Rating: <img src="/pics/star.gif"> <%= restaurants[restaurant].restaurant_rating %> stars (via <a
+                  href="http://wwww.yelp.com">Yelp</a>)</span><br>
+            </div>
+            <div class="itemfooter">
+                <form method="POST" action="/api/users/remove">
+                  <input type="hidden" id="title" name="removeInput" value="<%= restaurants[restaurant].restaurant_name %>">
+                  <input type="hidden" id="title" name="removeType" value="restaurants">
+                  <button type="submit" class="remove">Remove from My List</button>
+                  </form>
+              </span>
+            </div>
+          </article>
+          <% } %>
+        </div>
+
+        <div class="category">
+          <h2>Your Product Wishlist</h2>
+          <% for(let product in products) { %>
+
+          <article class="itembody">
+            <div class="itemheader">
+              <div class="lefthead">
+                <span><%= products[product].product_name %></span>
+              </div>
+              <div class="righthead"><span>
+                  <div class="dropdown">
+                      <button onclick="myFunction(event)" class="dropbtn">Edit Category</button>
+                      <div id="myDropdown" class="dropdown-content">
+                          <form method="POST"  action="/api/users/edit">
+                              <input type="hidden" id="title" name="editInput" value="<%= products[product].product_name %>">
+                              <input type="hidden" id="title" name="oldType" value="products">
+                              <input type="radio" name="category" value="films" > Film<br>
+                              <input type="radio" name="category" value="books" > Book <br>
+                              <input type="radio" name="category" value="restaurants"> Restaurant<br>
+                              <input type="radio" name="category" value="products" checked> Product <br>
+                              <input type="submit">
+                            </form>
+                      </div>
+                </div>
+              </div>
+            </div>
+            <div class="itembody">
+              <span><%= products[product].product_image %> </span><br>
+              <span>Price: JP¥<%= products[product].price %></span><br>
+              <span><%= products[product].type %></span><br>
+            </div>
+            <div class="itemfooter">
+              <span>
+                  <form method="POST" action="/api/users/remove">
+                    <input type="hidden" id="title" name="removeInput" value="<%= products[product].product_name %>">
+                    <input type="hidden" id="title" name="removeType" value="products">
+                    <button type="submit" class="remove">Remove from My List</button>
+                    </form>
+                </span>
+            </div>
+          </article>
+
+          <% } %>
+
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 </html>

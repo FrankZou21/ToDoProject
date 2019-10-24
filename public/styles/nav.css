@@ -1,0 +1,103 @@
+nav {
+  font-family: 'Patua One', cursive;
+  width: 100%;
+  height: 90px;
+  background-color: #08091a;
+  background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+  color: #ff8800;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: auto;
+  padding: 1em;
+  z-index: 100;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  vertical-align: top;
+}
+
+a {
+  color: #ff6600;
+  transition: all 0.5s;
+}
+
+a:hover {
+  color: #c9fdfd;
+}
+
+.loginlabel {
+  color: #ff6600;
+  font-size: 16pt;
+  margin: 1em;
+}
+
+#rightnav {
+  display: flex;
+  align-content: center;
+  font-family: Prompt;
+  color: #ff6600;
+  font-size: 14pt;
+
+}
+
+#leftnav {
+  font-family: Leckerli One, cursive;
+  font-size: 30pt;
+}
+
+#rightnav {
+  display: flex;
+  font-family: Prompt, sans-serif;
+  font-size: 14pt;
+}
+
+.loginout {
+  font-family: Prompt, sans-serif;
+  color: #ff6600;
+  background: none;
+  border: 2px solid #ff6600;
+  padding: 5px;
+  border-color: #ff6600;
+  border-radius: 25px;
+  transition: all 0.5s;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.loginout:hover {
+  color: skyblue;
+  border-color: white;
+  cursor: pointer;
+}
+
+#navbutton {
+  margin: 10px;
+  width: 150px;
+  height: 50px;
+  color: #ffb74a;
+  background: none;
+  border: 2px solid #ffb74a;
+  transition: all 0.5s;
+  font-family: 'Source Sans Pro', sans-serif;
+  border-radius: 15px;
+}
+
+#navbutton:hover {
+  color: #ff3c00;
+  background-color: none;
+  border: 2px solid #e70000;
+  cursor: pointer;
+}
+
+
+
+/* Laptops / Desktops: minimum width of 1024px */
+@media only screen and (min-width: 1024px) {
+  nav {
+    background-color: #08091a;
+    width: 100vw;
+  }
+}
+
+
