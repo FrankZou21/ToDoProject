@@ -69,18 +69,20 @@
                 <span><%= films[film].film_title %></span>
               </div>
               <div class="righthead"><span>
-                  <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Edit Category</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <form method="POST"  action="/edit">
-                            <input type="radio" name="category" value="film" checked> Film<br>
-                            <input type="radio" name="category" value="book"> Book <br>
-                            <input type="radio" name="category" value="restaurant"> Restaurant<br>
-                            <input type="radio" name="category" value="product"> Product <br>
-                            <input type="submit">
-                          </form>
-                    </div>
-                  </div>
+                <div class="dropdown">
+                  <button onclick="myFunction()" class="dropbtn">Edit Category</button>
+                  <form method="POST"  action="/api/users/edit">
+                      <div id="myDropdown" class="dropdown-content">
+                          <input type="hidden" id="title" name="editInput" value="<%= films[film].film_title %>">
+                          <input type="hidden" id="title" name="oldType" value="films">
+                          <input type="radio" name="category" value="films"> Film<br>
+                          <input type="radio" name="category" value="books"> Book <br>
+                          <input type="radio" name="category" value="restaurants"> Restaurant<br>
+                          <input type="radio" name="category" value="products"> Product <br>
+                          <input type="submit">
+                        </form>
+                        </div>
+                      </div>
               </div>
             </div>
             <div class="itembody">
@@ -90,10 +92,14 @@
               <span><%= films[film].film_poster %></span><br>
             </div>
             <div class="itemfooter">
-              <span><a href="/index">
-                  <form method="POST" action="/films/<%= film %>/delete"><button type="submit" class="remove">Remove
-                      from My List</button></form>
-                </a></span>
+              <span>
+                <form method="POST" action="/api/users/remove">
+                  <input type="hidden" id="title" name="removeInput" value="<%= films[film].film_title %>">
+                  <input type="hidden" id="title" name="removeType" value="films">
+                  <button type="submit" class="remove">Remove from My List
+                  </button>
+                </form>
+              </span>
             </div>
           </article>
           <% } %>
@@ -129,10 +135,13 @@
               <span>Length: <%= books[book].page_count %> pages</span><br>
             </div>
             <div class="itemfooter">
-              <span><a href="/index">
-                  <form method="POST" action="/books/<%= book %>/delete"><button type="submit" class="remove">Remove
-                      from My List</button></form>
-                </a> </span>
+              <span>
+                  <form method="POST" action="/api/users/remove"><button type="submit" class="remove">Remove
+                      from My List</button>
+                      <input type="hidden" id="title" name="removeInput" value="<%= books[book].book_title %>">
+                      <input type="hidden" id="title" name="removeType" value="books">
+                    </form>
+                 </span>
             </div>
 
           </article>
@@ -176,10 +185,13 @@
             <div class="itemfooter">
 
 
-              <a href="/index">
-                <form method="POST" action="/restaurants/<%= restaurant %>/delete"><button type="submit"
-                    class="remove">Remove from My List</button></form>
-              </a></span>
+
+                <form method="POST" action="/api/users/remove">
+                  <input type="hidden" id="title" name="removeInput" value="<%= restaurants[restaurant].restaurant_name %>">
+                  <input type="hidden" id="title" name="removeType" value="restaurants">
+                  <button type="submit" class="remove">Remove from My List</button>
+                  </form>
+              </span>
             </div>
           </article>
           <% } %>
@@ -215,11 +227,13 @@
               <span><%= products[product].type %></span><br>
             </div>
             <div class="itemfooter">
-              <span><a href="/index">
-                  <form method="POST" action="/products/<%= product %>/delete"><button type="submit"
-                      class="remove">Remove
-                      from My List</button></form>
-                </a></span>
+              <span>
+                  <form method="POST" action="/api/users/remove">
+                    <input type="hidden" id="title" name="removeInput" value="<%= products[product].product_name %>">
+                    <input type="hidden" id="title" name="removeType" value="products">
+                    <button type="submit" class="remove">Remove from My List</button>
+                    </form>
+                </span>
             </div>
           </article>
 
