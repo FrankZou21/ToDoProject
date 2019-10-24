@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>List It!</title>
+
+
+  <!-- External Styles -->
+
+  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>List It!</title>
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+
+
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+
+  <link rel="stylesheet" href="/styles/lists.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/todo-boxes.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+
+
+  <!-- External Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Modak&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Patua+One|Prompt&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Chicle|Leckerli+One&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- Top nav bar (fixed) -->
+
+  <nav>
+    <% include ../views/partials/_navbar %>
+  </nav>
+
+  <main class="container">
+
+    <header class="siteheader">
+        <center><h2 id="mylist">Register</h2></center>
+    </header>
+
+    <div class="login-main">
+      <form action="/api/users/register" method="POST" align="center">
+        <label class="login-label" for="first_name">First Name: </label>
+        <input class="login" type="text" name="last_name" placeholder="Last Name">
+        <label class="login-label" for="password">Password: </label>
+        <input class="login" type="password" name="password" placeholder="Password">
+        <label class="login-label" for="username">Username: </label>
+        <input class="login" type="text" name="username" placeholder="Username">
+        <label class="login-label" for="password">Password: </label>
+        <input class="login" type="password" name="password" placeholder="Password">
+        <center><button id="login-button" type="submit">Register</button></center>
+      </form>
+    </div>
+    </div>
+  </main>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+</html>

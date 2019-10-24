@@ -124,21 +124,21 @@ module.exports = (db) => {
           searchVal = product.Items[0].Item.itemName;
         }
 
-        const insertValMovie = [searchVal, searchOutputMovie.poster, searchOutputMovie.rating, searchOutputMovie.genre];
-        const insertValBook = [searchVal, searchOutputBook.author, searchOutputBook.rating, searchOutputBook.page_count];
-        const insertValRestaurant = [searchVal, searchOutputRestaurant.phone_number, searchOutputRestaurant.image_url, searchOutputRestaurant.rating, searchOutputRestaurant.type_of_food, searchOutputRestaurant.address];
-        const insertValProduct = [searchVal, searchOutputProduct.price, searchOutputProduct.image];
+        const insertValMovie = [searchVal, searchOutputMovie.poster, searchOutputMovie.rating, searchOutputMovie.genre,null];
+        const insertValBook = [searchVal, searchOutputBook.author, searchOutputBook.rating, searchOutputBook.page_count, null];
+        const insertValRestaurant = [searchVal, searchOutputRestaurant.phone_number, searchOutputRestaurant.image_url, searchOutputRestaurant.rating, searchOutputRestaurant.type_of_food, searchOutputRestaurant.address, null];
+        const insertValProduct = [searchVal, searchOutputProduct.price, searchOutputProduct.image, null];
 
 
         Promise.all([
-          db.query(`INSERT INTO films (film_title, poster_img, imdb_rating, genre)
-          VALUES ($1, $2, $3, $4);`, insertValMovie),
-          db.query(`INSERT INTO books (book_title, author, book_rating, page_count)
-          VALUES ($1, $2, $3, $4);`, insertValBook),
-          db.query(`INSERT INTO restaurants (restaurant_name, phone_number, image_url, restaurant_rating, type_of_food, address)
-          VALUES ($1, $2, $3, $4, $5, $6);`, insertValRestaurant),
-          db.query(`INSERT INTO products (product_name, price, picture)
-          VALUES ($1, $2, $3);`, insertValProduct),
+          db.query(`INSERT INTO films (film_title, poster_img, imdb_rating, genre, user_id_films)
+          VALUES ($1, $2, $3, $4, $5);`, insertValMovie),
+          db.query(`INSERT INTO books (book_title, author, book_rating, page_count, user_id_books)
+          VALUES ($1, $2, $3, $4, $5);`, insertValBook),
+          db.query(`INSERT INTO restaurants (restaurant_name, phone_number, image_url, restaurant_rating, type_of_food, address, user_id_restaurants)
+          VALUES ($1, $2, $3, $4, $5, $6, $7);`, insertValRestaurant),
+          db.query(`INSERT INTO products (product_name, price, picture, user_id_products)
+          VALUES ($1, $2, $3, $4);`, insertValProduct),
           db.query(`SELECT first_name FROM users WHERE id = $1`, req.session.user_id)
         ])
           .then(([films, books, restaurants, products, firstName]) => {
