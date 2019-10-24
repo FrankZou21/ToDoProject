@@ -32,7 +32,6 @@ module.exports = (db) => {
         header: {}
       }
       const urls = [movieUrl, bookUrl, restaurantUrl, productUrl];
-      // let searchOutput = {};
       Promise.all(urls.map(url =>
         axios.get(url.url1, url.header)
       )).then((out) => {
@@ -107,11 +106,6 @@ module.exports = (db) => {
           type: "products",
           cookie: req.session.user_id[0]
         }
-
-        // const insertValMovie = [searchOutputMovie.title, searchOutputMovie.poster, searchOutputMovie.rating, searchOutputMovie.genre];
-        // const insertValBook = [searchOutputBook.title, searchOutputBook.author, searchOutputBook.rating, searchOutputBook.page_count];
-        // const insertValRestaurant = [searchOutputRestaurant.title, searchOutputRestaurant.phone_number, searchOutputRestaurant.image_url, searchOutputRestaurant.rating, searchOutputRestaurant.type_of_food, searchOutputRestaurant.address];
-        // const insertValProduct = [searchOutputProduct.title, searchOutputProduct.price, searchOutputProduct.image];
 
         if (compareVal.toLowerCase() === movie.Title.toLowerCase()) {
           searchVal = movie.Title;
