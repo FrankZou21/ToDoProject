@@ -52,7 +52,7 @@ module.exports = (db) => {
   })
 
   router.get("/register", (req, res) => {
-    res.renger("register")
+    res.render("register")
   })
 
   router.post("/delete", (req, res) => {

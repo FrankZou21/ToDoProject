@@ -9,12 +9,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+   <!-- App JS -->
+   <script type="text/javascript" src="/scripts/helpers.js"></script>
 
+
+   <!-- Styling  -->
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
-
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-
-
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
@@ -67,10 +68,19 @@
               <div class="lefthead">
                 <span><%= films[film].film_title %></span>
               </div>
-              <div class="righthead"><span><a href="/edit">
-                    <form method="POST" action="/films/<%= film %>/edit"></form><button type="submit"
-                      class="edit">Edit</button></form>
-                  </a>
+              <div class="righthead"><span>
+                  <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Edit Category</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <form method="POST"  action="/edit">
+                            <input type="radio" name="category" value="film" checked> Film<br>
+                            <input type="radio" name="category" value="book"> Book <br>
+                            <input type="radio" name="category" value="restaurant"> Restaurant<br>
+                            <input type="radio" name="category" value="product"> Product <br>
+                            <input type="submit">
+                          </form>
+                    </div>
+                  </div>
               </div>
             </div>
             <div class="itembody">
@@ -98,10 +108,18 @@
               <div class="lefthead">
                 <span> <%= books[book].book_title %></span>
               </div>
-              <div class="righthead"><span><a href="/edit">
-                    <form method="POST" action="/books/<%= book %>/edit"></form><button type="submit"
-                      class="edit">Edit</button></form>
-                  </a>
+              <div class="righthead"><span>
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Edit Category</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <form method="POST" action="/edit">
+                            <input type="radio" name="category" value="film" > Film<br>
+                            <input type="radio" name="category" value="book" checked> Book <br>
+                            <input type="radio" name="category" value="restaurant"> Restaurant<br>
+                            <input type="radio" name="category" value="product"> Product <br>
+                            <input type="submit">
+                          </form>
+                    </div>
               </div>
             </div>
             <div class="itembody">
@@ -134,10 +152,19 @@
 
                 <span> <%= restaurants[restaurant].restaurant_name %></span>
               </div>
-              <div class="righthead"><span><a href="/edit">
-                    <form method="POST" action="/restaurants/<%= restaurant %>/edit"></form><button type="submit"
-                      class="edit">Edit</button></form>
-                  </a>
+              <div class="righthead"><span>
+                  <div class="dropdown">
+                      <button onclick="myFunction()" class="dropbtn">Edit Category</button>
+                      <div id="myDropdown" class="dropdown-content">
+                          <form method="POST" action="/edit">
+                              <input type="radio" name="category" value="film" > Film<br>
+                              <input type="radio" name="category" value="book"> Book <br>
+                              <input type="radio" name="category" value="restaurant" checked> Restaurant<br>
+                              <input type="radio" name="category" value="product"> Product <br>
+                              <input type="submit">
+                            </form>
+                      </div>
+                </div>
               </div>
             </div>
             <div class="itembody">
@@ -168,9 +195,18 @@
                 <span><%= products[product].product_name %></span>
               </div>
               <div class="righthead"><span>
-                    <form method="POST" action="/products/<%= product %>/edit"></form><button type="submit"
-                      class="edit">Edit</button></form>
-
+                  <div class="dropdown">
+                      <button onclick="myFunction()" class="dropbtn">Edit Category</button>
+                      <div id="myDropdown" class="dropdown-content">
+                          <form method="POST" action="/edit">
+                              <input type="radio" name="category" value="film" > Film<br>
+                              <input type="radio" name="category" value="book" > Book <br>
+                              <input type="radio" name="category" value="restaurant"> Restaurant<br>
+                              <input type="radio" name="category" value="product" checked> Product <br>
+                              <input type="submit">
+                            </form>
+                      </div>
+                </div>
               </div>
             </div>
             <div class="itembody">
