@@ -43,6 +43,10 @@ module.exports = (db) => {
     res.render("login")
   })
 
+  router.post("/edit", (req, res) => {
+    res.render("edit")
+  })
+
   router.get("/register", (req, res) => {
     res.renger("register")
   })
