@@ -110,7 +110,9 @@ module.exports = (db) => {
     }
     const queryInput = [req.session.user_id[0], name]
     console.log(queryInput);
-    db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE ${selectorName} = $2`, queryInput)
+    //UPDATE films SET user_id_films = 3 WHERE (SELECT id FROM films WHERE user_id_films=3 AND film_title=eragon)
+    // db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE ${selectorName} = $2`, queryInput)
+    db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE id=(SELECT id FROM ${type} WHERE ${selectorId} is null AND ${selectorName}=$2 LIMIT 1)`, queryInput)
       .then(() => {
         res.redirect("/api/users/")
       })
@@ -139,7 +141,10 @@ module.exports = (db) => {
     }
     const queryUpdate = [null, name, userId];
     //UPDATE films SET user_id_films = null WHERE film_title = eragon AND user_id_films = 3
-    db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE ${selectorName}=$2 AND ${selectorId}=$3`, queryUpdate)
+    //UPDATE films SET user_id_films = null WHERE id = (SELECT id FROM films WHERE film_title = eragon AND user_id_films = 3 LIMIT 1)
+    //film_title = eragon AND user_id_films = 3
+    // db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE ${selectorName}=$2 AND ${selectorId}=$3`, queryUpdate)
+    db.query(`UPDATE ${type} SET ${selectorId}=$1 WHERE id = (SELECT id FROM ${type} WHERE ${selectorName}=$2 AND ${selectorId}=$3 LIMIT 1)`, queryUpdate)
       .then(() => {
         res.redirect("/api/users");
       })
