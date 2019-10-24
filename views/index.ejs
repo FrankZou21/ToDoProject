@@ -121,10 +121,10 @@
                         <form method="POST" action="/api/users/edit">
                             <input type="hidden" id="title" name="editInput" value="<%= books[book].book_title %>">
                             <input type="hidden" id="title" name="oldType" value="books">
-                            <input type="radio" name="category" value="film" > Film<br>
-                            <input type="radio" name="category" value="book" checked> Book <br>
-                            <input type="radio" name="category" value="restaurant"> Restaurant<br>
-                            <input type="radio" name="category" value="product"> Product <br>
+                            <input type="radio" name="category" value="films" > Film<br>
+                            <input type="radio" name="category" value="books" checked> Book <br>
+                            <input type="radio" name="category" value="restaurants"> Restaurant<br>
+                            <input type="radio" name="category" value="products"> Product <br>
                             <input type="submit">
                           </form>
                     </div>
@@ -170,10 +170,10 @@
                           <form method="POST" action="/api/users/edit">
                               <input type="hidden" id="title" name="editInput" value="<%= restaurants[restaurant].restaurant_name %>">
                               <input type="hidden" id="title" name="oldType" value="restaurants">
-                              <input type="radio" name="category" value="film" > Film<br>
-                              <input type="radio" name="category" value="book"> Book <br>
-                              <input type="radio" name="category" value="restaurant" checked> Restaurant<br>
-                              <input type="radio" name="category" value="product"> Product <br>
+                              <input type="radio" name="category" value="films" > Film<br>
+                              <input type="radio" name="category" value="books"> Book <br>
+                              <input type="radio" name="category" value="restaurants" checked> Restaurant<br>
+                              <input type="radio" name="category" value="products"> Product <br>
                               <input type="submit">
                             </form>
                       </div>
@@ -214,10 +214,10 @@
                           <form method="POST"  action="/api/users/edit">
                               <input type="hidden" id="title" name="editInput" value="<%= products[product].product_name %>">
                               <input type="hidden" id="title" name="oldType" value="products">
-                              <input type="radio" name="category" value="film" > Film<br>
-                              <input type="radio" name="category" value="book" > Book <br>
-                              <input type="radio" name="category" value="restaurant"> Restaurant<br>
-                              <input type="radio" name="category" value="product" checked> Product <br>
+                              <input type="radio" name="category" value="films" > Film<br>
+                              <input type="radio" name="category" value="books" > Book <br>
+                              <input type="radio" name="category" value="restaurants"> Restaurant<br>
+                              <input type="radio" name="category" value="products" checked> Product <br>
                               <input type="submit">
                             </form>
                       </div>
@@ -226,7 +226,7 @@
             </div>
             <div class="itembody">
               <span><%= products[product].product_image %> </span><br>
-              <span>Price: $<%= products[product].price %></span><br>
+              <span>Price: JP¥<%= products[product].price %></span><br>
               <span><%= products[product].type %></span><br>
             </div>
             <div class="itemfooter">
