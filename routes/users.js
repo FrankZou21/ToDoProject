@@ -29,7 +29,7 @@ module.exports = (db) => {
           products: products.rows,
           id: userId[0],
           name: firstName.rows[0].first_name,
-          cookie: userId[0]
+          cookie: req.session.user_id[0]
         }
         console.log(templateVars);
         res.render("index", templateVars);
@@ -44,20 +44,13 @@ module.exports = (db) => {
     res.render("login")
   })
 
-  router.post("/logout", (req, res) => {
-    res.render("login")
-  })
-
-  router.post("/edit", (req, res) => {
-    res.render("edit")
-  })
-
   router.get("/register", (req, res) => {
     res.render("register")
   })
 
-  router.post("/delete", (req, res) => {
-
+  router.post("/logout", (req, res) => {
+    req.session.user_id = null;
+    res.redirect("/api/users/login")
   })
 
   router.post("/login", (req, res) => {
@@ -95,12 +88,6 @@ module.exports = (db) => {
     }
   })
 
-
-  router.post("/logout", (req, res) => {
-    req.session.user_id = null;
-    res.redirect("login");
-  })
-
   //posting from search to main page, updating database with userid
   router.post("/index", (req, res) => {
     // console.log(req.body.searchInput);
@@ -108,6 +95,7 @@ module.exports = (db) => {
     const name = req.body.searchInput;
     const type = req.body.searchType;
     let selectorId;
+    let selectorName;
   if (type === "films" ) {
     selectorName = "film_title";
     selectorId = "user_id_films";
@@ -129,6 +117,38 @@ module.exports = (db) => {
       })
   })
 
+
+  //removing item from its category
+  router.post("/remove", (req, res) => {
+    const name = req.body.removeInput;
+    const userId = req.session.user_id;
+    const type = req.body.removeType;
+    let selectorId;
+    let selectorName;
+    if (type === "films" ) {
+      selectorName = "film_title";
+      selectorId = "user_id_films";
+    } else if (type === "books") {
+      selectorName = "book_title";
+      selectorId = "user_id_books";
+    } else if (type === "restaurants") {
+      selectorName = "restaurant_name";
+      selectorId = "user_id_restaurants";
+    } else {
+      selectorName = "product_name";
+      selectorId = "user_id_products";
+    }
+    const queryUpdate = [null, name, userId];
+    //UPDATE films SET user_id_films = null WHERE film_title = eragon AND user_id_films = 3
+    db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE ${selectorName}=$2 AND ${selectorId}=$3`, queryUpdate)
+      .then(() => {
+        res.redirect("/api/users");
+      })
+  })
+
+
+
+  //Editing the category of item (books, films, restaurants, products)
   router.post("/edit", (req, res) => {
     const name = req.body.editInput;
     const oldType = req.body.oldType;

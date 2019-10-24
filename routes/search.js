@@ -76,7 +76,8 @@ module.exports = (db) => {
           poster: movie.Poster,
           rating: movie.imdbRating,
           genre: movie.Genre,
-          type: "films"
+          type: "films",
+          cookie: req.session.user_id[0]
         };
 
         const searchOutputBook = { // Info for books
@@ -84,7 +85,8 @@ module.exports = (db) => {
           author: book.items[0].volumeInfo.authors[0],
           rating: book.items[0].volumeInfo.averageRating,
           page_count: book.items[0].volumeInfo.pageCount,
-          type: "books"
+          type: "books",
+          cookie: req.session.user_id[0]
         }
 
         const searchOutputRestaurant = { // Info for restaurants
@@ -94,14 +96,16 @@ module.exports = (db) => {
           rating: restaurant.businesses[0].rating,
           type_of_food: restaurant.businesses[0].categories[0].title,
           address: restaurant.businesses[0].location.address1,
-          type: "restaurants"
+          type: "restaurants",
+          cookie: req.session.user_id[0]
         }
 
         const searchOutputProduct = { // Info for restaurants
-            title: product.Items.itemName,
-            price: product.Items.itemPrice,
-            image: product.Items.itemUrl,
-            type: "products"
+            title: product.Items[0].Item.itemName,
+            price: product.Items[0].Item.itemPrice,
+            image: product.Items[0].Item.itemUrl,
+            type: "products",
+            cookie: req.session.user_id[0]
         }
 
         // const insertValMovie = [searchOutputMovie.title, searchOutputMovie.poster, searchOutputMovie.rating, searchOutputMovie.genre];
@@ -116,7 +120,8 @@ module.exports = (db) => {
         }  else if (compareVal.toLowerCase() === restaurant.businesses[0].name.toLowerCase()) {
           searchVal = restaurant.businesses[0].name;
         } else {
-          searchVal = product.Items.itemName;
+          console.log(product.Items[0].Item.itemName);
+          searchVal = product.Items[0].Item.itemName;
         }
 
         const insertValMovie = [searchVal, searchOutputMovie.poster, searchOutputMovie.rating, searchOutputMovie.genre];
@@ -133,94 +138,102 @@ module.exports = (db) => {
           db.query(`INSERT INTO restaurants (restaurant_name, phone_number, image_url, restaurant_rating, type_of_food, address)
           VALUES ($1, $2, $3, $4, $5, $6);`, insertValRestaurant),
           db.query(`INSERT INTO products (product_name, price, picture)
-          VALUES ($1, $2, $3);`, insertValProduct)
+          VALUES ($1, $2, $3);`, insertValProduct),
+          db.query(`SELECT first_name FROM users WHERE id = $1`, req.session.user_id)
         ])
-          .then(() => {
+          .then(([films, books, restaurants, products, firstName]) => {
+            searchOutputMovie.name = firstName.rows[0].first_name;
             if (compareVal.toLowerCase() === movie.Title.toLowerCase()) {
+              searchOutputMovie.name = firstName.rows[0].first_name;
               res.render("search", searchOutputMovie);
             } else if (compareVal.toLowerCase() === book.items[0].volumeInfo.title.toLowerCase()) {
+              searchOutputBook.name = firstName.rows[0].first_name;
               res.render("search", searchOutputBook);
             }  else if (compareVal.toLowerCase() === restaurant.businesses[0].name.toLowerCase()) {
+              searchOutputRestaurant.name = firstName.rows[0].first_name;
               res.render("search", searchOutputRestaurant);
             } else {
+              searchOutputProduct.name = firstName.rows[0].first_name;
               res.render("search", searchOutputProduct);
             }
           })
-//         if (compareVal.toLowerCase() === movie.Title.toLowerCase()) {
-//           searchOutput = { //Information for movies
-//             title: movie.Title,
-//             poster: movie.Poster,
-//             rating: movie.imdbRating,
-//             genre: movie.Genre,
-//             type: "films"
-//           };
-//           const insertVal = [searchOutput.title, searchOutput.poster, Number(searchOutput.rating), searchOutput.genre, user_id[0]];
-//           db.query(`INSERT INTO films (film_title, poster_img, imdb_rating, genre, user_id_films)
-//         VALUES ($1, $2, $3, $4, $5);`, insertVal)
-//             .then(() => {
-//               console.log("IT WORKED");
-//               res.render("search", searchOutput);
-//             })
-//             .catch((err) => {
-//               console.log(err);
-//             })
-//         } else if (compareVal.toLowerCase() === book.items[0].volumeInfo.title.toLowerCase()) {
-//           searchOutput = { // Info for books
-//             title: book.items[0].volumeInfo.title,
-//             author: book.items[0].volumeInfo.authors[0],
-//             rating: book.items[0].volumeInfo.averageRating,
-//             page_count: book.items[0].volumeInfo.pageCount,
-//             type: "books"
-//           }
-//           const insertVal = [searchOutput.title, searchOutput.author, Number(searchOutput.rating), Number(searchOutput.page_count), user_id[0]]
-//           console.log(insertVal);
-//           db.query(`INSERT INTO books (book_title, author, book_rating, page_count, user_id_books)
-//           VALUES ($1, $2, $3, $4, $5);`, insertVal)
-//             .then(() => {
-//               res.render("search", searchOutput);
-//             })
-//         } else if (compareVal.toLowerCase() === restaurant.businesses[0].name.toLowerCase()) {
-//           searchOutput = { // Info for restaurants
-//             title: restaurant.businesses[0].name,
-//             phone_number: restaurant.businesses[0].phone,
-//             image_url: restaurant.businesses[0].image_url,
-//             rating: restaurant.businesses[0].rating,
-//             type_of_food: restaurant.businesses[0].categories[0].title,
-//             address: restaurant.businesses[0].location.address1,
-//             type: "restaurants"
-//           }
+        })
+        .catch(err => console.error(err));
+      } else {
+        res.redirect("/api/users/login")
+      }
+    });
+    return router;
+  };
 
-//           console.log(searchOutput);
-//           const insertVal = [searchOutput.title, searchOutput.phone_number, searchOutput.image_url, Number(searchOutput.rating), searchOutput.type_of_food, searchOutput.address, user_id[0]]
-//           db.query(`INSERT INTO restaurants (restaurant_name, phone_number, image_url, restaurant_rating, type_of_food, address, user_id_restaurants)
-// VALUES ($1, $2, $3, $4, $5, $6, $7);`, insertVal)
-//             .then(() => {
-//               console.log("IT WORKED");
-//               res.render("search", searchOutput);
-//             })
-//         } else { // Info for products
-//           searchOutput = {
-//             title: product.Items.itemName,
-//             price: product.Items.itemPrice,
-//             image: product.Items.itemUrl,
-//             type: "products",
-//           }
 
-//           const insertVal = [searchOutput.title, Number(searchOutput.price), searchOutput.image, user_id[0]]
-//           db.query(`INSERT INTO products (product_name, price, picture, user_id_products)
-//         VALUES ($1, $2, $3, $4);`, insertVal)
-//             .then(() => {
-//               console.log("IT WORKED");
-//               res.render("search", searchOutput);
-//             })
-//         }
-        // res.render("index");
-        // console.log(searchOutput);
-      }).catch(err => console.error(err));
-    } else {
-      res.redirect("/api/users/login")
-    }
-  });
-  return router;
-};
+  //         if (compareVal.toLowerCase() === movie.Title.toLowerCase()) {
+  //           searchOutput = { //Information for movies
+  //             title: movie.Title,
+  //             poster: movie.Poster,
+  //             rating: movie.imdbRating,
+  //             genre: movie.Genre,
+  //             type: "films"
+  //           };
+  //           const insertVal = [searchOutput.title, searchOutput.poster, Number(searchOutput.rating), searchOutput.genre, user_id[0]];
+  //           db.query(`INSERT INTO films (film_title, poster_img, imdb_rating, genre, user_id_films)
+  //         VALUES ($1, $2, $3, $4, $5);`, insertVal)
+  //             .then(() => {
+  //               console.log("IT WORKED");
+  //               res.render("search", searchOutput);
+  //             })
+  //             .catch((err) => {
+  //               console.log(err);
+  //             })
+  //         } else if (compareVal.toLowerCase() === book.items[0].volumeInfo.title.toLowerCase()) {
+  //           searchOutput = { // Info for books
+  //             title: book.items[0].volumeInfo.title,
+  //             author: book.items[0].volumeInfo.authors[0],
+  //             rating: book.items[0].volumeInfo.averageRating,
+  //             page_count: book.items[0].volumeInfo.pageCount,
+  //             type: "books"
+  //           }
+  //           const insertVal = [searchOutput.title, searchOutput.author, Number(searchOutput.rating), Number(searchOutput.page_count), user_id[0]]
+  //           console.log(insertVal);
+  //           db.query(`INSERT INTO books (book_title, author, book_rating, page_count, user_id_books)
+  //           VALUES ($1, $2, $3, $4, $5);`, insertVal)
+  //             .then(() => {
+  //               res.render("search", searchOutput);
+  //             })
+  //         } else if (compareVal.toLowerCase() === restaurant.businesses[0].name.toLowerCase()) {
+  //           searchOutput = { // Info for restaurants
+  //             title: restaurant.businesses[0].name,
+  //             phone_number: restaurant.businesses[0].phone,
+  //             image_url: restaurant.businesses[0].image_url,
+  //             rating: restaurant.businesses[0].rating,
+  //             type_of_food: restaurant.businesses[0].categories[0].title,
+  //             address: restaurant.businesses[0].location.address1,
+  //             type: "restaurants"
+  //           }
 
+  //           console.log(searchOutput);
+  //           const insertVal = [searchOutput.title, searchOutput.phone_number, searchOutput.image_url, Number(searchOutput.rating), searchOutput.type_of_food, searchOutput.address, user_id[0]]
+  //           db.query(`INSERT INTO restaurants (restaurant_name, phone_number, image_url, restaurant_rating, type_of_food, address, user_id_restaurants)
+  // VALUES ($1, $2, $3, $4, $5, $6, $7);`, insertVal)
+  //             .then(() => {
+  //               console.log("IT WORKED");
+  //               res.render("search", searchOutput);
+  //             })
+  //         } else { // Info for products
+  //           searchOutput = {
+  //             title: product.Items.itemName,
+  //             price: product.Items.itemPrice,
+  //             image: product.Items.itemUrl,
+  //             type: "products",
+  //           }
+
+  //           const insertVal = [searchOutput.title, Number(searchOutput.price), searchOutput.image, user_id[0]]
+  //           db.query(`INSERT INTO products (product_name, price, picture, user_id_products)
+  //         VALUES ($1, $2, $3, $4);`, insertVal)
+  //             .then(() => {
+  //               console.log("IT WORKED");
+  //               res.render("search", searchOutput);
+  //             })
+  //         }
+          // res.render("index");
+          // console.log(searchOutput);

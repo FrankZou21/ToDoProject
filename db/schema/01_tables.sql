@@ -24,7 +24,7 @@ CREATE TABLE users (
 -- FILMS -- FINDING VALUES (HARRY POTTER SEARCH EXAMPLE)
 CREATE TABLE films (
   id SERIAL PRIMARY KEY NOT NULL,
-  film_title VARCHAR(50),
+  film_title VARCHAR(255),
   -- object[0].Title
   poster_img VARCHAR(255),
   -- object[0].Poster
@@ -39,7 +39,7 @@ CREATE TABLE films (
 -- BOOKS
 CREATE TABLE books (
   id SERIAL PRIMARY KEY NOT NULL,
-  book_title VARCHAR(50),
+  book_title VARCHAR(255),
   -- object[1].items[0].volumeInfo.title
   author VARCHAR(50),
   -- object[1].items[0].volumeInfo.authors
@@ -53,7 +53,7 @@ CREATE TABLE books (
 -- RESTAURANTS -- USEING "TOJO" as an example
 CREATE TABLE restaurants (
   id SERIAL PRIMARY KEY NOT NULL,
-  restaurant_name VARCHAR(50),
+  restaurant_name VARCHAR(255),
   -- object[2].businesses[0].name
   phone_number VARCHAR(255),
   -- object[2].businesses[0].phone OR display_phone
@@ -72,7 +72,7 @@ CREATE TABLE restaurants (
 -- PRODUCTS (WAITING TO GET API)
 CREATE TABLE products (
   id SERIAL PRIMARY KEY NOT NULL,
-  product_name VARCHAR(50),
+  product_name VARCHAR(255),
   -- object[3].Items.itemName
   price INTEGER DEFAULT 0,
   -- object[3].Items.itemPrice

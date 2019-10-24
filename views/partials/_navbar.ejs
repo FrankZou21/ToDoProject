@@ -3,7 +3,7 @@
     <span id="rightnav">
 
 
-        <% if (locals.user === undefined) { %>
+        <% if (cookie === null) { %>
 
           <div class="form-group mb-2 mx-auto">
               <a class="nav-item nav-link" href="/login">
@@ -18,9 +18,9 @@
 
           <% } else { %>
 
-              <form class="form-inline" action="/logout" method="POST">
+              <form class="form-inline" action="/api/users/logout" method="POST">
                <div class="form-group mb-2 mx-auto">
-                  <label for="loggedin">Logged in as &nbsp;<strong> <%= user.email %> </strong>  </label>
+                  <label for="loggedin">Logged in as &nbsp;<strong> <%= name %> </strong>  </label>
                    <button type="submit" id="loginout">Logout</button>
                 </div>
               </form>
