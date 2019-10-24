@@ -12,29 +12,29 @@ module.exports = (db) => {
 
   router.get("/", (req, res) => {
     const userId = req.session.user_id;
+    console.log(userId);
     if (userId) {
-  console.log(userId);
-    Promise.all([
-      db.query('SELECT * FROM films WHERE films.user_id_films=$1', userId),
-      db.query('SELECT * FROM books WHERE books.user_id_books=$1', userId),
-      db.query('SELECT * FROM restaurants WHERE restaurants.user_id_restaurants=$1', userId),
-      db.query('SELECT * FROM products WHERE products.user_id_products=$1', userId),
-      db.query('SELECT first_name FROM users WHERE users.id = $1', userId)
-    ])
-      .then(([films, books, restaurants, products, firstName]) => {
-        const templateVars = {
-          films: films.rows,
-          books: books.rows,
-          restaurants: restaurants.rows,
-          products: products.rows,
-          id: userId[0],
-          name: firstName.rows[0].first_name,
-          cookie: req.session.user_id[0]
-        }
-        console.log(templateVars);
-        res.render("index", templateVars);
-      })
-    } else [
+      Promise.all([
+        db.query('SELECT * FROM films WHERE films.user_id_films=$1', userId),
+        db.query('SELECT * FROM books WHERE books.user_id_books=$1', userId),
+        db.query('SELECT * FROM restaurants WHERE restaurants.user_id_restaurants=$1', userId),
+        db.query('SELECT * FROM products WHERE products.user_id_products=$1', userId),
+        db.query('SELECT first_name FROM users WHERE users.id = $1', userId)
+      ])
+        .then(([films, books, restaurants, products, firstName]) => {
+          const templateVars = {
+            films: films.rows,
+            books: books.rows,
+            restaurants: restaurants.rows,
+            products: products.rows,
+            id: userId[0],
+            name: firstName.rows[0].first_name,
+            cookie: req.session.user_id[0]
+          }
+          // console.log(templateVars);
+          res.render("index", templateVars);
+        })
+    } else[
       res.redirect("/api/users/login")
     ]
   });
@@ -75,40 +75,39 @@ module.exports = (db) => {
     const password = req.body.password;
     const first_name = req.body.first_name;
     const registerCred = [username, password, first_name]
-    if (username !== null && password !== null && first_name !== null)
-    db.query(`INSERT INTO users (username, password, first_name)
-  Values($1, $2, $3)
-  RETURN *`, registerCred)
-      .then((data) => {
-        req.session.user_id = data.rows[0].id;
-        res.redirect("/api/users");
-      })
-    else {
+    if (username !== null && password !== null && first_name !== null) {
+      db.query(`INSERT INTO users (username, password, first_name, id)
+  Values($1, $2, $3, (SELECT (MAX(id)+1) from "users"))
+  RETURNING *`, registerCred)
+        .then((data) => {
+          console.log(`the output is ${data.rows[0].id}`);
+          req.session.user_id = [data.rows[0].id];
+          res.redirect("/api/users");
+        })
+    } else {
       res.redirect("/api/users/register")
     }
   })
 
   //posting from search to main page, updating database with userid
   router.post("/index", (req, res) => {
-    // console.log(req.body.searchInput);
-    // console.log(req.body.searchType);
     const name = req.body.searchInput;
     const type = req.body.searchType;
     let selectorId;
     let selectorName;
-  if (type === "films" ) {
-    selectorName = "film_title";
-    selectorId = "user_id_films";
-  } else if (type === "books") {
-    selectorName = "book_title";
-    selectorId = "user_id_books";
-  } else if (type === "restaurants") {
-    selectorName = "restaurant_name";
-    selectorId = "user_id_restaurants";
-  } else {
-    selectorName = "product_name";
-    selectorId = "user_id_products";
-  }
+    if (type === "films") {
+      selectorName = "film_title";
+      selectorId = "user_id_films";
+    } else if (type === "books") {
+      selectorName = "book_title";
+      selectorId = "user_id_books";
+    } else if (type === "restaurants") {
+      selectorName = "restaurant_name";
+      selectorId = "user_id_restaurants";
+    } else {
+      selectorName = "product_name";
+      selectorId = "user_id_products";
+    }
     const queryInput = [req.session.user_id[0], name]
     console.log(queryInput);
     db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE ${selectorName} = $2`, queryInput)
@@ -125,7 +124,7 @@ module.exports = (db) => {
     const type = req.body.removeType;
     let selectorId;
     let selectorName;
-    if (type === "films" ) {
+    if (type === "films") {
       selectorName = "film_title";
       selectorId = "user_id_films";
     } else if (type === "books") {
@@ -160,7 +159,7 @@ module.exports = (db) => {
     let newSelectorName;
     let newSelectorId;
 
-    if (oldType === "films" ) {
+    if (oldType === "films") {
       oldSelectorName = "film_title";
       oldSelectorId = "user_id_films";
     } else if (oldType === "books") {
@@ -175,7 +174,7 @@ module.exports = (db) => {
     }
 
 
-    if (newType === "films" ) {
+    if (newType === "films") {
       newSelectorName = "film_title";
       newSelectorId = "user_id_films";
     } else if (newType === "books") {

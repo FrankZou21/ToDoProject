@@ -40,28 +40,27 @@
 </head>
 
 <body>
-  <!-- Top nav bar (fixed) -->
-
-  <nav>
-    <% include ../views/partials/_navbar %>
-  </nav>
 
   <main class="container">
 
     <header class="siteheader">
-        <center><h2 id="mylist">Register</h2></center>
+      <center>
+        <h2 id="mylist">Register</h2>
+      </center>
     </header>
 
     <div class="login-main">
       <form action="/api/users/register" method="POST" align="center">
+
         <label class="login-label" for="first_name">First Name: </label>
-        <input class="login" type="text" name="last_name" placeholder="Last Name">
-        <label class="login-label" for="password">Password: </label>
-        <input class="login" type="password" name="password" placeholder="Password">
+        <input class="login" type="text" name="first_name" placeholder="First Name">
+
         <label class="login-label" for="username">Username: </label>
         <input class="login" type="text" name="username" placeholder="Username">
+
         <label class="login-label" for="password">Password: </label>
         <input class="login" type="password" name="password" placeholder="Password">
+
         <center><button id="login-button" type="submit">Register</button></center>
       </form>
     </div>

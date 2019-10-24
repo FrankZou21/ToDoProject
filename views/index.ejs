@@ -118,7 +118,9 @@
                 <div class="dropdown">
                     <button onclick="myFunction()" class="dropbtn">Edit Category</button>
                     <div id="myDropdown" class="dropdown-content">
-                        <form method="POST" action="/edit">
+                        <form method="POST" action="/api/users/edit">
+                            <input type="hidden" id="title" name="editInput" value="<%= books[book].book_title %>">
+                            <input type="hidden" id="title" name="oldType" value="books">
                             <input type="radio" name="category" value="film" > Film<br>
                             <input type="radio" name="category" value="book" checked> Book <br>
                             <input type="radio" name="category" value="restaurant"> Restaurant<br>
@@ -165,7 +167,9 @@
                   <div class="dropdown">
                       <button onclick="myFunction()" class="dropbtn">Edit Category</button>
                       <div id="myDropdown" class="dropdown-content">
-                          <form method="POST" action="/edit">
+                          <form method="POST" action="/api/users/edit">
+                              <input type="hidden" id="title" name="editInput" value="<%= restaurants[restaurant].restaurant_name %>">
+                              <input type="hidden" id="title" name="oldType" value="restaurants">
                               <input type="radio" name="category" value="film" > Film<br>
                               <input type="radio" name="category" value="book"> Book <br>
                               <input type="radio" name="category" value="restaurant" checked> Restaurant<br>
@@ -210,7 +214,9 @@
                   <div class="dropdown">
                       <button onclick="myFunction()" class="dropbtn">Edit Category</button>
                       <div id="myDropdown" class="dropdown-content">
-                          <form method="POST" action="/edit">
+                          <form method="POST" action="/api/users/edit">
+                              <input type="hidden" id="title" name="editInput" value="<%= products[product].product_name %>">
+                              <input type="hidden" id="title" name="oldType" value="products">
                               <input type="radio" name="category" value="film" > Film<br>
                               <input type="radio" name="category" value="book" > Book <br>
                               <input type="radio" name="category" value="restaurant"> Restaurant<br>
