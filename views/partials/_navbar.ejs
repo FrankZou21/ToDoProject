@@ -2,16 +2,17 @@
     <span id="leftnav">  <a href="/"> List It!</a></span>
     <span id="rightnav">
 
+
         <% if (locals.user === undefined) { %>
 
           <div class="form-group mb-2 mx-auto">
-              <a href="/login">
+              <a class="nav-item nav-link" href="/login">
             <button type="submit" id="loginout">Login</button> </a>
             </div>
           </form>
                 <label for="or"> &nbsp; or &nbsp;</label>
                 <a class="nav-item nav-link" href="/register">
-              <button type="submit" id="loginout">Register</button>   </a>
+              <button type="submit" id="loginout"">Register</button>   </a>
               </div>
             </form>
 
@@ -19,7 +20,7 @@
 
               <form class="form-inline" action="/logout" method="POST">
                <div class="form-group mb-2 mx-auto">
-                  <label for="loggedin">Logged in as &nbsp;<strong> <%= user.first_name %> </strong>  </label>
+                  <label for="loggedin">Logged in as &nbsp;<strong> <%= user.email %> </strong>  </label>
                    <button type="submit" id="loginout">Logout</button>
                 </div>
               </form>
