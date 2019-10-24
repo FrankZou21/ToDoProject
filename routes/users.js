@@ -121,7 +121,7 @@ module.exports = (db) => {
   //removing item from its category
   router.post("/remove", (req, res) => {
     const name = req.body.removeInput;
-    const userId = req.session.user_id;
+    const userId = req.session.user_id[0];
     const type = req.body.removeType;
     let selectorId;
     let selectorName;
