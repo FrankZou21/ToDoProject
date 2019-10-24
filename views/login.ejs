@@ -45,18 +45,29 @@
   <main class="container">
 
     <header class="siteheader">
-        <center><h2 id="mylist">Login</h2></center>
+      <center>
+        <h2 id="mylist">Login</h2>
+      </center>
+
     </header>
 
     <div class="login-main">
-      <form action="/api/users/login" method="POST" align="center">
-        <label class="login-label" for="username">Username: </label>
-        <input class="login" type="text" name="username" placeholder="Username">
-        <label class="login-label" for="password">Password: </label>
-        <input class="login" type="password" name="password" placeholder="Password">
-        <center><button id="login-button" type="submit">Login</button></center>
-      </form>
-    </div>
+      <div class="itemheader">
+        <form action="/api/users/login" method="POST" align="center">
+          <label class="login-label" for="username">Username: </label>
+          <input class="login" type="text" name="username" placeholder="Username">
+          <label class="login-label" for="password">Password: </label>
+          <input class="login" type="password" name="password" placeholder="Password">
+          <center><button id="login-button" type="submit">Login</button></center>
+        </form>
+        <br>
+      </div>
+      <div class="item-footer">
+          <h4> Don't have an account? </h4>
+            <center><a href="/api/users/register"> <button id="login-button" type="submit">Register!</button></a></center>
+
+        </form>
+      </div>
     </div>
   </main>
 </body>
