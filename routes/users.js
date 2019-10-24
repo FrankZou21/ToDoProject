@@ -12,7 +12,7 @@ module.exports = (db) => {
 
   router.get("/", (req, res) => {
     const userId = req.session.user_id;
-    console.log(userId);
+    // console.log(userId);
     if (userId) {
       Promise.all([
         db.query('SELECT * FROM films WHERE films.user_id_films=$1', userId),
@@ -80,7 +80,7 @@ module.exports = (db) => {
   Values($1, $2, $3, (SELECT (MAX(id)+1) from "users"))
   RETURNING *`, registerCred)
         .then((data) => {
-          console.log(`the output is ${data.rows[0].id}`);
+          // console.log(`the output is ${data.rows[0].id}`);
           req.session.user_id = [data.rows[0].id];
           res.redirect("/api/users");
         })
@@ -109,7 +109,7 @@ module.exports = (db) => {
       selectorId = "user_id_products";
     }
     const queryInput = [req.session.user_id[0], name]
-    console.log(queryInput);
+    // console.log(queryInput);
     //UPDATE films SET user_id_films = 3 WHERE (SELECT id FROM films WHERE user_id_films=3 AND film_title=eragon)
     // db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE ${selectorName} = $2`, queryInput)
     db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE id=(SELECT id FROM ${type} WHERE ${selectorId} is null AND ${selectorName}=$2 LIMIT 1)`, queryInput)
@@ -154,7 +154,7 @@ module.exports = (db) => {
 
   //Editing the category of item (books, films, restaurants, products)
   router.post("/edit", (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const name = req.body.editInput;
     const oldType = req.body.oldType;
     const newType = String(req.body.category);
@@ -193,10 +193,10 @@ module.exports = (db) => {
       newSelectorId = "user_id_products";
     }
 
-    console.log(oldSelectorName);
-    console.log(oldSelectorId);
-    console.log(newSelectorName);
-    console.log(newSelectorId);
+    // console.log(oldSelectorName);
+    // console.log(oldSelectorId);
+    // console.log(newSelectorName);
+    // console.log(newSelectorId);
 
     const oldQueryInput = [null, name, userId[0]];
     const newQueryInput = [userId[0], name];

@@ -12,7 +12,7 @@
           </form>
                 <label for="or"> &nbsp; or &nbsp;</label>
                 <a class="nav-item nav-link" href="/register">
-              <button type="submit" id="loginout"">Register</button>   </a>
+              <button type="submit" class="loginout"">Register</button>   </a>
               </div>
             </form>
 
@@ -20,8 +20,8 @@
 
               <form class="form-inline" action="/api/users/logout" method="POST">
                <div class="form-group mb-2 mx-auto">
-                  <label for="loggedin">Logged in as &nbsp;<strong> <%= name %> </strong>  </label>
-                   <button type="submit" id="loginout">Logout</button>
+                  <label for="loggedin">Logged in as <strong> <%= name %> </strong> &nbsp;&nbsp; </label>
+                   <button type="submit" class="loginout">Logout</button>
                 </div>
               </form>
 

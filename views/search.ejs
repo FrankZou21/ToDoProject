@@ -68,19 +68,68 @@
       <div class="searchresult">
         <h2>Search Results</h2>
 
+
+
+          <article class="category">
+              <div class="itemheader">
+
+                  <span><%= title %></span>
+
+
+                  <form action="/api/users/index" method="POST">
+                    <input type="hidden" id="title" name="searchInput" value="<%= title %>">
+                    <input type="hidden" id="type" name="searchType" value=<%= type %>>
+
+                    <button id="add" type="submit" class="btn btn-primary">
+                      <h4>Add to My List!</h4>
+                    </button>
+                  </form>
+
+                </div>
+
+              <div class="itembody">
+                <span>Genre: <%= genre %></span><br>
+                <span>Rating: <img src="/pics/star.gif"> <%= rating %>/10 (via <a
+                    href="http://www.imdb.com">IMDB</a>)</span><br>
+                <span><img class="poster" src=<%= poster %>></span><br>
+              </div>
+
+            </article>
+
+
+
+
+<!--
         <article class="category">
+          <div class="itemheader">
 
-          <div class="rightheader" align="right">
-            <form action="/api/users/index" method="POST">
-              <input type="hidden" id="title" name="searchInput" value="<%= title %>">
-              <input type="hidden" id="type" name="searchType" value=<%= type %>>
+              <span><%= title %></span>
 
-              <button id="add" type="submit" class="btn btn-primary">
-                <h3>Add to My List!</h3>
-              </button>
-            </form>
+
+              <form action="/api/users/index" method="POST">
+                <input type="hidden" id="title" name="searchInput" value="<%= title %>">
+                <input type="hidden" id="type" name="searchType" value=<%= type %>>
+
+                <button id="add" type="submit" class="btn btn-primary">
+                  <h4>Add to My List!</h4>
+                </button>
+              </form>
+
+            </div>
+
+          <div class="itembody">
+            <span>Genre: <%= genre %></span><br>
+            <span>Rating: <img src="/pics/star.gif"> <%= rating %>/10 (via <a
+                href="http://www.imdb.com">IMDB</a>)</span><br>
+            <span><img class="poster" src=<%= poster %>></span><br>
           </div>
+
         </article>
+ -->
+
+
+
+
 
       </div>
 

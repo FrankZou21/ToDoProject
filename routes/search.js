@@ -120,7 +120,6 @@ module.exports = (db) => {
         } else if (compareVal.toLowerCase() === restaurant.businesses[0].name.toLowerCase()) {
           searchVal = restaurant.businesses[0].name;
         } else {
-          console.log(product.Items[0].Item.itemName);
           searchVal = product.Items[0].Item.itemName;
         }
 

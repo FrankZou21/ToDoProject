@@ -40,7 +40,7 @@ main {
 
 .container {
   width: 90vw;
-  margin: auto;
+  /* margin: auto; */
   justify-content: center;
 }
 
@@ -117,9 +117,8 @@ span {
 }
 
 
+/* Laptops / Desktops: MIN width of 1024px */
 
-
-/* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
   .containAll {
     background-color: white;
@@ -156,7 +155,6 @@ span {
     color: #42535a;
     font-size: 50px;
     margin: auto;
-    /* margin-top: 40px; */
   }
   #mylist {
     font-family: Leckerli One, cursive;
