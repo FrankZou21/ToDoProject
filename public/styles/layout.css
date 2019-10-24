@@ -29,14 +29,9 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-div {
-  margin: auto;
-}
-
 main {
   width: 95vw;
   background-color: #1d2835;
-  position: relative;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -53,12 +48,14 @@ main {
   display: flex;
   flex-direction: row;
   height: 100%;
+  border-radius: 10px;
 }
 
 .column {
   display: flex;
   flex-direction: column;
   margin: auto;
+  border-radius: 10px;
 }
 
 button {
@@ -75,10 +72,17 @@ button {
   font-family: Prompt, sans-serif;
   width: 200px;
   font-size: 24px;
-  background-color: #0051ff;
+  background-color: none;
   color: white;
+  border: 2px solid  #0051ff;
   border-radius: 15px;
   margin-top: 20px;
+  transition: all 0.5s;
+}
+
+#login-button:hover {
+  color: #ffb300;
+  border: 2px solid  #ffb300;
 }
 
 .input {
@@ -94,15 +98,26 @@ span {
   vertical-align: text-top;
 }
 
-.category {
-  background-color: #bcfff6;
+.searchresult {
+  background-color: #d8e2e1;
   font-family: Garamond, sans-serif;
   color: #00032a;
-  border: 3px solid #c7c7c7;
+  border: 2px solid #2b3557;
   border-radius: 20px;
   padding: 30px;
   margin: auto;
 }
+
+.login-main {
+  display: flex;
+  padding: 30px;
+  align-content: center;
+  justify-content: center;
+  margin: auto;
+}
+
+
+
 
 /* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
@@ -127,13 +142,21 @@ span {
     font-size: 50px;
     margin: auto;
   }
+
+  .columns {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 10px;
+  }
+
   .loginheader {
     display: flex;
     font-family: Leckerli One, cursive;
     color: #42535a;
     font-size: 50px;
     margin: auto;
-    margin-top: 40px;
+    /* margin-top: 40px; */
   }
   #mylist {
     font-family: Leckerli One, cursive;
@@ -151,5 +174,66 @@ span {
     flex-direction: column;
     width: 40vw;
     align-content: center;
+  }
+
+  .category {
+    width: 38vw;
+  }
+}
+
+
+
+
+/* Laptops / Desktops: MAXIMUM width of 1024px */
+@media only screen and (max-width: 1024px) {
+  .containAll {
+    background-color: white;
+    display: flex;
+    margin: auto;
+    align-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+  }
+  .columnheader {
+    display: flex;
+    font-family: Leckerli One, cursive;
+    color: #42535a;
+    font-size: 50px;
+    margin: auto;
+  }
+
+  .loginheader {
+    display: flex;
+    font-family: Leckerli One, cursive;
+    color: #42535a;
+    font-size: 50px;
+    margin: auto;
+    /* margin-top: 40px; */
+  }
+  #mylist {
+    font-family: Leckerli One, cursive;
+    font-size: 50px;
+    color: #ff8800;
+  }
+  .columns {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 10px;
+    justify-content: space-between;
+  }
+  .column {
+    margin-top: 10px;
+    flex-direction: column;
+    align-content: center;
+    width: 80vw;
+  }
+  .category {
+    width: 70vw;
   }
 }

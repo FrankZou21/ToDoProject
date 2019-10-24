@@ -19,8 +19,6 @@
   background-color: #cecece;
   color: #360e0e;
   font-family: Prompt, sans-serif;
-  border-radius: 20px;
-  padding-left: 20px;
 }
 
 .headingtext {
@@ -33,7 +31,6 @@
   font-family: Leckerli One, cursive;
   font-size: 60px;
   font-weight: normal;
-  font-color: #4aeb00;
 }
 
 .profilepic {

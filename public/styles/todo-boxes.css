@@ -1,13 +1,111 @@
+/* CSS FOR 'MY LIST' BOXES */
+
+div.category {
+  border-radius: 30px;
+}
+
+
 .category {
   background: #a7b5bd;
   color: #000c2c;
   font-family: Prompt, sans-serif;
   font-size: 12pt;
-  width: 38vw;
   margin: auto;
   margin-bottom: 30px;
   padding: 20px;
 }
+
+article {
+  width: 100%;
+  background-color: white;
+  font-weight: normal;
+  border-radius: 15px;
+  border: solid #313131 2px;
+  margin-bottom: 15px;
+  padding: 20px;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+article .itemheader {
+  display: flex;
+  font-weight: normal;
+  font-size: 20px;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  width: 95%;
+}
+
+article .lefthead {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  font-weight: bolder;
+}
+
+article .righthead {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+article .itembody {
+  background-color: #ffffff;
+  color: #00051f;
+  font-size: 16px;
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 25px;
+  align-items: left;
+
+}
+
+.article .itemfooter {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: right;
+}
+
+
+/* // CSS FOR SEARCH RESULTS */
+
+.searchres {
+  width: 50vw;
+  font-family: Prompt, sans-serif;
+  background-color: #ffffff;
+  color: #00051f;
+  margin: auto;
+  font-size: 16px;
+  padding-left: 10px;
+  padding-right: 10px
+}
+
+
+button#add {
+  width: 300px;
+  text-align: center;
+  padding-top: 12px;
+  margin: auto;
+  font-family: Prompt, sans-serif;
+  background-color: rgb(255, 255, 255);
+  color: #00520e;
+  border: 2px solid #022a00;
+  border-radius: 25px;
+  transition: all 0.5s;
+  margin: 5px;
+}
+
+button#add:hover {
+  color: #ff3300;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #ff0800;
+}
+
+
+/* BUTTONS - EDIT, REMOVE */
+
 
 button.remove {
   align-self: right;
@@ -39,42 +137,58 @@ button.edit {
 }
 
 button.edit:hover {
-  color: #00520e;
-  border: 2px solid #022a00;
+  color: #00524e;
+  border: 2px solid #002a28;
 }
 
-article {
-  width: 100%;
-  background-color: #ffffff;
-  font-weight: normal;
+
+/* DROPDOWN MENU  */
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown button {
   border-radius: 15px;
-  border: solid #313131 2px;
-  margin-bottom: 15px;
-  padding: 20px;
-  text-align: left;
-  transition: all 0.2s;
 }
 
-article .itemheader {
-  display: flex;
-  font-weight: normal;
-  font-size: 20px;
-  justify-content: space-between;
-  color: #3d0046;
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
-article .itembody {
-  background-color: #f8f8f8;
-  color: #00051f;
-  font-size: 25px;
-  align-items: left;
-  padding: 15px;
-}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
 
-.article-footer {
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: right;
-}
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}

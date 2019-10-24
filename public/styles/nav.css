@@ -2,7 +2,7 @@ nav {
   font-family: 'Patua One', cursive;
   width: 100%;
   height: 90px;
-  background-color: #7e0000;
+  background-color: #08091a;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
   color: #ff6600;
   position: fixed;
@@ -23,7 +23,7 @@ a {
 }
 
 a:hover {
-  color: #ff3c00;
+  color: #c9fdfd;
 }
 
 .loginlabel {
@@ -35,13 +35,10 @@ a:hover {
 #rightnav {
   display: flex;
   align-content: center;
-}
+  font-family: Prompt;
+  color: #ff6600;
+  font-size: 14pt;
 
-/* Laptops / Desktops: minimum width of 1024px */
-@media only screen and (min-width: 1024px) {
-  nav {
-    background-color: #161925;
-  }
 }
 
 #leftnav {
@@ -55,47 +52,50 @@ a:hover {
   font-size: 14pt;
 }
 
+#loginout {
+  font-family: Prompt, sans-serif;
+  color: #ff6600;
+  background: none;
+  border: 2px solid #ff6600;
+  padding: 5px;
+  border-color: #ff6600;
+  border-radius: 25px;
+  transition: all 0.5s;
+}
+
+#loginout:hover {
+  color: skyblue;
+  border-color: white;
+  cursor: pointer;
+}
+
 #navbutton {
   margin: 10px;
   width: 150px;
   height: 50px;
-  color: white;
-  background-color: #ff3c00;
+  color: #ffb74a;
+  background: none;
+  border: 2px solid #ffb74a;
   transition: all 0.5s;
   font-family: 'Source Sans Pro', sans-serif;
-  border: none;
   border-radius: 15px;
 }
 
 #navbutton:hover {
-  background-color: #e70000;
+  color: #ff3c00;
+  background-color: none;
+  border: 2px solid #e70000;
   cursor: pointer;
 }
 
-#navarrow {
-  color: #41e78c;
-  border: none;
-  padding-bottom: 5px;
-  transition: all 0.5s;
-  animation: bounce 0.8s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-}
 
-@keyframes bounce {
-  from {
-    transform: translateY(10px);
-  }
-  to {
-    transform: translateY(0px);
+
+/* Laptops / Desktops: minimum width of 1024px */
+@media only screen and (min-width: 1024px) {
+  nav {
+    background-color: #08091a;
+    width: 100vw;
   }
 }
 
-@-webkit-keyframes bounce {
-  from {
-    transform: translateY(5px);
-  }
-  to {
-    transform: translateY(-10px);
-  }
-}
+
