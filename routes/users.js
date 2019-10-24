@@ -44,6 +44,14 @@ module.exports = (db) => {
     res.render("login")
   })
 
+  router.post("/logout", (req, res) => {
+    res.render("login")
+  })
+
+  router.post("/edit", (req, res) => {
+    res.render("edit")
+  })
+
   router.get("/register", (req, res) => {
     res.render("register")
   })

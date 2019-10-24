@@ -42,7 +42,7 @@
 
       <form id="searchvalue" action="/api/search" method="GET">
         <textarea class="input" rows="1" name="queryparams" placeholder="What are you interested in?"></textarea><input
-          id="navbutton" type="submit" width=20px value="Find It!">
+          id="navbutton" type="submit" value="Find It!">
       </form>
 
     </header>
@@ -60,19 +60,19 @@
         <div class="category">
           <h2>Things to Watch</h2>
 
+
           <% for(let film in films) { %>
           <article class="itembody">
-                         <div class="itemheader">
-                  <div class="lefthead">
-                    <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
-                    <label for="checkboxG1" class="css-label"> <%= films[film].film_title %></label>
-                  </div>
-                  <div class="righthead"><span><a href="/edit">
-                        <form method="POST" action="/films/<%= film %>/edit"></form><button type="submit"
-                          class="edit">Edit</button></form>
-                      </a>
-                  </div>
-                </div>
+            <div class="itemheader">
+              <div class="lefthead">
+                <span><%= films[film].film_title %></span>
+              </div>
+              <div class="righthead"><span><a href="/edit">
+                    <form method="POST" action="/films/<%= film %>/edit"></form><button type="submit"
+                      class="edit">Edit</button></form>
+                  </a>
+              </div>
+            </div>
             <div class="itembody">
               <span>Genre: <%= films[film].genre %></span><br>
               <span>Rating: <img src="/pics/star.gif"> <%= films[film].imdb_rating %>/10 (via <a
@@ -94,17 +94,16 @@
           <h2>Your To-Read Pile</h2>
           <% for(let book in books) { %>
           <article class="itembody">
-              <div class="itemheader">
-                  <div class="lefthead">
-                    <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
-                    <label for="checkboxG1" class="css-label"> <%= books[book].book_title %></label>
-                  </div>
-                  <div class="righthead"><span><a href="/edit">
-                        <form method="POST" action="/books/<%= book %>/edit"></form><button type="submit"
-                          class="edit">Edit</button></form>
-                      </a>
-                  </div>
-                </div>
+            <div class="itemheader">
+              <div class="lefthead">
+                <span> <%= books[book].book_title %></span>
+              </div>
+              <div class="righthead"><span><a href="/edit">
+                    <form method="POST" action="/books/<%= book %>/edit"></form><button type="submit"
+                      class="edit">Edit</button></form>
+                  </a>
+              </div>
+            </div>
             <div class="itembody">
               <span>Author: <%= books[book].author %></span><br>
               <span>Rating: <img src="/pics/star.gif"> <%= books[book].book_rating %> stars (via <a
@@ -132,8 +131,8 @@
           <article class="itembody">
             <div class="itemheader">
               <div class="lefthead">
-                <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
-                <label for="checkboxG1" class="css-label"> <%= restaurants[restaurant].restaurant_name %></label>
+
+                <span> <%= restaurants[restaurant].restaurant_name %></span>
               </div>
               <div class="righthead"><span><a href="/edit">
                     <form method="POST" action="/restaurants/<%= restaurant %>/edit"></form><button type="submit"
@@ -162,21 +161,32 @@
         <div class="category">
           <h2>Your Product Wishlist</h2>
           <% for(let product in products) { %>
+
           <article class="itembody">
             <div class="itemheader">
-              <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" />
-              <label for="checkboxG1" class="css-label"><span><%= products[product].product_name %></label></span>
+              <div class="lefthead">
+                <span><%= products[product].product_name %></span>
+              </div>
+              <div class="righthead"><span>
+                    <form method="POST" action="/products/<%= product %>/edit"></form><button type="submit"
+                      class="edit">Edit</button></form>
+
+              </div>
             </div>
             <div class="itembody">
-              <span><%= products[product].product_image %> </span> <br>
+              <span><%= products[product].product_image %> </span><br>
               <span>Price: $<%= products[product].price %></span><br>
               <span><%= products[product].type %></span><br>
             </div>
-            <span><a href="/index">
-                <form method="POST" action="/products/<%= product %>/delete"><button type="submit" class="remove">Remove
-                    from My List</button></form>
-              </a></td>
+            <div class="itemfooter">
+              <span><a href="/index">
+                  <form method="POST" action="/products/<%= product %>/delete"><button type="submit"
+                      class="remove">Remove
+                      from My List</button></form>
+                </a></span>
+            </div>
           </article>
+
           <% } %>
 
         </div>
