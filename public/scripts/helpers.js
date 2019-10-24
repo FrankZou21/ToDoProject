@@ -45,20 +45,24 @@ input.addEventListener("keyup", function(event) {
 
 // Dropdown menu function
 
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+function myFunction(event) {
+  const dropdown = event.target.nextSibling.nextSibling;
+  dropdown.classList.toggle("show");
 }
 
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
+// // Close the dropdown menu if the user clicks outside of it
+// window.onclick = function(event) {
+//   console.log("Clicked!");
+//   console.log(event.target)
+//   if (!event.target.matches('.dropbtn')) {
+//     var dropdowns = document.getElementById("dropdown-content");
+//     console.log(dropdowns);
+//     var i;
+//     for (i = 0; i < dropdowns.length; i++) {
+//       var openDropdown = dropdowns[i];
+//       if (openDropdown.classList.contains('show')) {
+//         openDropdown.classList.remove('show');
+//       }
+//     }
+//   }
+// }

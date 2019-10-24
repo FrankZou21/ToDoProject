@@ -103,6 +103,11 @@ button#add:hover {
   border: 2px solid #ff0800;
 }
 
+.poster {
+  width: 50%;
+  height: 50%;
+}
+
 
 /* BUTTONS - EDIT, REMOVE */
 
@@ -142,16 +147,17 @@ button.edit:hover {
 }
 
 
-/* DROPDOWN MENU  */
+/* DROPDOWN MENU - EDIT CATEGORY  */
 
 /* Dropdown Button */
 .dropbtn {
-  background-color: #3498DB;
+  background-color: rgb(101, 144, 172);
   color: white;
-  padding: 16px;
+  padding: 10px;
   font-size: 16px;
   border: none;
   cursor: pointer;
+  transition: all 0.5s;
 }
 
 /* Dropdown button on hover & focus */

@@ -40,7 +40,7 @@ main {
 
 .container {
   width: 90vw;
-  margin: auto;
+  /* margin: auto; */
   justify-content: center;
 }
 

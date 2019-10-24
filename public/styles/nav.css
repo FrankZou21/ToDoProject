@@ -4,7 +4,7 @@ nav {
   height: 90px;
   background-color: #08091a;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
-  color: #ff6600;
+  color: #ff8800;
   position: fixed;
   top: 0;
   left: 0;
@@ -52,7 +52,7 @@ a:hover {
   font-size: 14pt;
 }
 
-#loginout {
+.loginout {
   font-family: Prompt, sans-serif;
   color: #ff6600;
   background: none;
@@ -61,9 +61,11 @@ a:hover {
   border-color: #ff6600;
   border-radius: 25px;
   transition: all 0.5s;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
-#loginout:hover {
+.loginout:hover {
   color: skyblue;
   border-color: white;
   cursor: pointer;
