@@ -203,9 +203,13 @@ module.exports = (db) => {
     //UPDATE films SET user_id_films = null WHERE  film_title = eragon AND user_id_films = 3;
     //UPDATE books SET user_id_books = 3 WHERE  book_title = eragon AND user_id_books = null;
     // db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE ${selectorName} = $2`, queryInput)
+    //UPDATE films SET user_id_films = 3 WHERE (SELECT id FROM films WHERE user_id_films=3 AND film_title=eragon)
+    //UPDATE ${oldType} SET ${oldSelectorId} = $1 WHERE id=(SELECT id FROM ${oldType} WHERE ${oldSelectorName}=$2 AND ${oldSelectorId}=$3)
     Promise.all([
-      db.query(`UPDATE ${oldType} SET ${oldSelectorId} = $1 WHERE ${oldSelectorName}=$2 AND ${oldSelectorId}=$3`, oldQueryInput),
-      db.query(`UPDATE ${newType} SET ${newSelectorId} = $1 WHERE ${newSelectorName}=$2 AND ${newSelectorId} is null`, newQueryInput),
+      // db.query(`UPDATE ${oldType} SET ${oldSelectorId} = $1 WHERE ${oldSelectorName}=$2 AND ${oldSelectorId}=$3`, oldQueryInput),
+      // db.query(`UPDATE ${newType} SET ${newSelectorId} = $1 WHERE ${newSelectorName}=$2 AND ${newSelectorId} is null`, newQ
+        db.query(`UPDATE ${oldType} SET ${oldSelectorId}=$1 WHERE id=(SELECT id FROM ${oldType} WHERE ${oldSelectorName}=$2 AND ${oldSelectorId}=$3 LIMIT 1)`, oldQueryInput),
+        db.query(`UPDATE ${newType} SET ${newSelectorId}=$1 WHERE id=(SELECT id FROM ${newType} WHERE ${newSelectorName}=$2 AND ${newSelectorId} is null LIMIT 1)`, newQueryInput)
     ])
       .then(() => {
         res.redirect("/api/users")
