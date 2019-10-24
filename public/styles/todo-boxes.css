@@ -1,0 +1,51 @@
+.category {
+  background: #a7b5bd;
+  color: #000c2c;
+  font-family: Prompt, sans-serif;
+  font-size: 12pt;
+  width: 38vw;
+  margin: auto;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+button.remove {
+  align-self: right;
+  font-family: Prompt, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  color: #616161;
+  background-color: #cccccc;
+  border: 2px solid #414141;
+  transition: all 0.5s;
+}
+
+button.remove:hover {
+  color: red;
+  border: 2px solid #570000;
+}
+
+article {
+  width: 100%;
+  background-color: #ffffff;
+  font-weight: normal;
+  border-radius: 15px;
+  border: solid #313131 2px;
+  margin-bottom: 15px;
+  padding: 20px;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+article .itembody {
+  background-color: #f8f8f8;
+  color: #00051f;
+  font-size: 25px;
+  align-items: left;
+  padding: 15px;
+}
+
+article h8 {
+  font-size: 14pt;
+  color: grey;
+}
