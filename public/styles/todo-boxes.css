@@ -36,6 +36,16 @@ article .itemheader {
   width: 95%;
 }
 
+article .resulthead {
+  display: flex;
+  font-weight: normal;
+  font-size: 20px;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  width: 95%;
+}
+}
+
 article .lefthead {
   display: flex;
   flex-direction: row;

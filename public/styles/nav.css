@@ -74,7 +74,7 @@ a:hover {
 #navbutton {
   margin: 10px;
   width: 150px;
-  height: 50px;
+  height: 40px;
   color: #ffb74a;
   background: none;
   border: 2px solid #ffb74a;
@@ -84,9 +84,9 @@ a:hover {
 }
 
 #navbutton:hover {
-  color: #ff3c00;
+  color: #07e6fa;
   background-color: none;
-  border: 2px solid #e70000;
+  border: 2px solid #74ddf0;
   cursor: pointer;
 }
 

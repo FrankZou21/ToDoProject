@@ -40,11 +40,11 @@
 </head>
 
 <body>
-  <!-- Top nav bar (fixed) -->
+
 
   <main class="container">
 
-    <header class="siteheader">
+    <header class="login-header">
       <center>
         <h2 id="mylist">Login</h2>
       </center>
@@ -52,8 +52,8 @@
     </header>
 
     <div class="login-main">
-      <div class="itemheader">
-        <form action="/api/users/login" method="POST" align="center">
+
+        <form action="/api/users/login" method="POST">
           <label class="login-label" for="username">Username: </label>
           <input class="login" type="text" name="username" placeholder="Username">
           <label class="login-label" for="password">Password: </label>
@@ -61,15 +61,13 @@
           <center><button id="login-button" type="submit">Login</button></center>
         </form>
         <br>
+        <center>
+    <a href="/api/users/register"> <button class="register">Don't have an account? Register here!</button></a></h5></center>
       </div>
-      <div class="item-footer">
-          <h4> Don't have an account? </h4>
-            <center><a href="/api/users/register"> <button id="login-button" type="submit">Register!</button></a></center>
 
-        </form>
-      </div>
     </div>
   </main>
+
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 

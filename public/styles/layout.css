@@ -26,7 +26,7 @@ body {
   color: #ffffff;
   background-color: #090a1b;
   font-size: 24px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Prompt', sans-serif;
 }
 
 main {
@@ -62,10 +62,48 @@ button {
   border-radius: 15px;
 }
 
+span {
+  vertical-align: text-top;
+}
+
+.searchresult {
+  background-color: #d8e2e1;
+  font-family: Garamond, sans-serif;
+  color: #00032a;
+  border: 2px solid #2b3557;
+  border-radius: 20px;
+  padding: 30px;
+  margin: auto;
+}
+
+.image {
+  width: 150px;
+  height: auto;
+}
+
+/* // CSS FOR LOGIN/REGISTRATION PAGES  */
+
+.login-header {
+
+}
+
+
+
 .login-main {
   display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  padding: 30px;
   align-content: center;
-  height: 100%;
+  justify-content: center;
+}
+
+.register {
+  font-family: Prompt, sans-serif;
+  font-size: 16pt;
+  border-radius: 15px;
+
 }
 
 #login-button {
@@ -91,30 +129,14 @@ button {
 
 .login {
   border-radius: 20px;
-  width: 300px;
-}
-
-span {
-  vertical-align: text-top;
-}
-
-.searchresult {
-  background-color: #d8e2e1;
-  font-family: Garamond, sans-serif;
-  color: #00032a;
-  border: 2px solid #2b3557;
-  border-radius: 20px;
-  padding: 30px;
-  margin: auto;
-}
-
-.login-main {
-  display: flex;
-  padding: 30px;
+  width: 400px;
   align-content: center;
-  justify-content: center;
-  margin: auto;
+  margin: 10px;
 }
+
+
+
+
 
 
 /* Laptops / Desktops: MIN width of 1024px */
@@ -143,10 +165,10 @@ span {
   }
 
   .columns {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    border-radius: 10px;
+      display: flex;
+      flex-direction: row;
+      padding-top: 10px;
+      justify-content: space-between;
   }
 
   .loginheader {
@@ -161,12 +183,7 @@ span {
     font-size: 50px;
     color: #ff8800;
   }
-  .columns {
-    display: flex;
-    flex-direction: row;
-    padding-top: 10px;
-    justify-content: space-between;
-  }
+
   .column {
     margin-top: 10px;
     flex-direction: column;

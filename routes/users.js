@@ -31,7 +31,7 @@ module.exports = (db) => {
             name: firstName.rows[0].first_name,
             cookie: req.session.user_id[0]
           }
-          // console.log(templateVars);
+          console.log(templateVars);
           res.render("index", templateVars);
         })
     } else[
