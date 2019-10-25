@@ -35,7 +35,9 @@ main {
   margin: auto;
   display: flex;
   justify-content: space-between;
-  height: 100%;
+  flex-direction: column;
+  /* height: 100%; */
+
 }
 
 .container {
@@ -82,6 +84,11 @@ span {
   margin: auto;
 }
 
+.login-container {
+display: flex;
+flex-direction: column;
+}
+
 .image {
   width: 140px;
   height: auto;
@@ -106,19 +113,26 @@ flex-direction: column;
 /* // CSS FOR LOGIN/REGISTRATION PAGES  */
 
 .login-header {
-
+  padding-bottom: 150px;
+  padding-top: 50px;
 }
 
+.login-content {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top; 150px;
+}
 
 
 .login-main {
   display: flex;
   flex-direction: column;
   margin: auto;
-  text-align: center;
   padding: 30px;
   align-content: center;
   justify-content: center;
+  padding-bottom: 400px;
 }
 
 .register {
@@ -156,7 +170,11 @@ flex-direction: column;
   margin: 10px;
 }
 
-
+.loginform {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
 
 
 

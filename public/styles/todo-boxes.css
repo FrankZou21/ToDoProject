@@ -135,15 +135,18 @@ article .itemsRight {
 
 
 button#add {
-  margin-top: 20px;
-  padding: 10px;
+  align-self: right;
+  padding: 5px;
   font-family: Prompt, sans-serif;
+  font-size: 15pt;
+  font-weight: normal;
   background-color: rgb(255, 255, 255);
   color: #00520e;
   border: 2px solid #022a00;
   border-radius: 25px;
   transition: all 0.5s;
-  margin: 3px;
+  margin: 8px;
+  width: 300px;
 }
 
 button#add:hover {

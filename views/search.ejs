@@ -92,7 +92,7 @@
 
             <% } else if (type === "books") { %>
 
-              <article class="category">
+              <article class="searchResult">
                   <div class="itemheader">
 
                       <span><%= title %></span>
@@ -102,25 +102,26 @@
                         <input type="hidden" id="title" name="searchInput" value="<%= title %>">
                         <input type="hidden" id="type" name="searchType" value=<%= type %>>
 
-                        <button id="add" type="submit" class="btn btn-primary">
-                          <h3>Add to My List!</h3>
-                        </button>
+                        <button id="add" type="submit">
+                          Add to My List!
+                         </button>
                       </form>
 
                     </div>
 
                   <div class="itembody">
+                      <div>
                     <span>Author: <%= author %></span><br>
                     <span>Rating: <img src="/pics/star.gif"> <%= rating %> /10 (via <a
                         href="http://www.goodreads.com">Goodreads</a>)</span><br>
                       <span>Length: <%= page_count %> pages</span>
                   </div>
-
+                </div>
                 </article>
 
             <% } else if (type === "restaurants") { %>
 
-              <article class="category">
+              <article class="searchResult">
                   <div class="itemheader">
 
                       <span><h3><%= title %></h3></span>
@@ -130,27 +131,31 @@
                         <input type="hidden" id="title" name="searchInput" value="<%= title %>">
                         <input type="hidden" id="type" name="searchType" value=<%= type %>>
 
-                        <button id="add" type="submit" class="btn btn-primary">
-                          <h4>Add to My List!</h4>
-                        </button>
+                        <button id="add" type="submit">
+                          Add to My List!
+                         </button>
                       </form>
 
                     </div>
 
                   <div class="itembody">
+                      <div>
                       <span>Address: <%= address %></span><br>
                       <span>Phone number: <%= phone_number %></span><br>
                     <span>Type: <%= type_of_food %></span><br>
                     <span>Rating: <img src="/pics/star.gif"> <%= rating %>/10 (via <a
                         href="http://www.yelp.com">Yelp</a>)</span><br>
+                      </div>
+                      <div class="itemsRight">
                     <span><img class="image" src=<%= image_url %>></span><br>
                   </div>
+                </div>
 
                 </article>
 
               <% } else if (type === "products") { %>
 
-                  <article class="category">
+                  <article class="searchResult">
                       <div class="itemheader">
 
                           <span><h3><%= title %></h3></span>
@@ -160,14 +165,14 @@
                             <input type="hidden" id="title" name="searchInput" value="<%= title %>">
                             <input type="hidden" id="type" name="searchType" value=<%= type %>>
 
-                            <button id="add" type="submit" class="btn btn-primary">
-                              <h3>Add to My List!</h3>
-                            </button>
+                            <button id="add" type="submit">
+                              Add to My List!
+                             </button>
                           </form>
 
                         </div>
 
-                      <div class="itembody">
+                      <div>
                         <span>Price: JP¥ <%= price %></span><br>
                         <span> Buy now from <a href=<%= image %>>  Rakuten </a>  </span><br>
                       </div>

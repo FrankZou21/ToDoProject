@@ -68,8 +68,9 @@ a:hover {
 
 #navbutton {
   margin: 10px;
-  width: 150px;
-  height: 40px;
+  width: 300px;
+  height: 45px;
+  margin-bottom: 20px;
   color: #ffb74a;
   background: none;
   border: 2px solid #ffb74a;
