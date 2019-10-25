@@ -29,6 +29,7 @@ module.exports = (db) => {
             name: firstName.rows[0].first_name,
             cookie: req.session.user_id[0]
           }
+
           res.render("index", templateVars);
         })
         .catch(err => console.error(err));

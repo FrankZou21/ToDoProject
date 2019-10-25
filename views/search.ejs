@@ -4,35 +4,23 @@
 <head>
   <title>List It!</title>
 
-  <!-- External Styles -->
-
-  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>List It!</title>
 
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/helpers.js"></script>
+
+
+  <!-- Styling  -->
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
-
-  <link rel="stylesheet" href="../vendor/normalize-4.1.1.css" type="text/css" />
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
-
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/lists.css" type="text/css" />
   <link rel="stylesheet" href="/styles/todo-boxes.css" type="text/css" />
-
-  <script type="text/javascript" src="/scripts/app.js"></script>
-  <script type="text/javascript" src="/scripts/scripts.js"></script>
 
   <!-- External Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Arvo|Modak&display=swap" rel="stylesheet">
@@ -51,9 +39,10 @@
     <main class="container">
 
       <header class="siteheader">
+          <form id="searchvalue" action="/api/search" method="GET">
         <h2 class="headingtext">Add what interests you!</h2>
 
-        <form id="searchvalue" action="/api/search" method="GET">
+
           <textarea class="input" rows="1" name="queryparams" placeholder="What are you interested in?"></textarea><input
             id="navbutton" type="submit" width=20px value="Find It!">
         </form>
@@ -65,15 +54,17 @@
       <h2 id="mylist">Search Results</h2>
     </div>
     <div class="columns">
+
+
       <div class="searchresult">
         <h2>Search Results</h2>
 
+        <% if (type === "films") { %>
 
+          <article class="searchResult">
+              <div class="resulthead">
 
-          <article class="category">
-              <div class="itemheader">
-
-                  <span><%= title %></span>
+                  <span><h3 class="searchtitle"><%= title %> </h3></span>
 
 
                   <form action="/api/users/index" method="POST">
@@ -81,51 +72,131 @@
                     <input type="hidden" id="type" name="searchType" value=<%= type %>>
 
                     <button id="add" type="submit">
-                      <h4>Add to My List!</h4>
+                     Add to My List!
                     </button>
                   </form>
 
                 </div>
 
               <div class="itembody">
+                <div>
                 <span>Genre: <%= genre %></span><br>
                 <span>Rating: <img src="/pics/star.gif"> <%= rating %>/10 (via <a
                     href="http://www.imdb.com">IMDB</a>)</span><br>
-                <span><img class="poster" src=<%= poster %>></span><br>
+                  </div>
+                  <div class="itemsRight">
+                <span><img class="image" src=<%= poster %>></span><br>
               </div>
-
+            </div>
             </article>
 
+            <% } else if (type === "books") { %>
+
+              <article class="searchResult">
+                  <div class="itemheader">
+
+                      <span><%= title %></span>
+
+
+                      <form action="/api/users/index" method="POST">
+                        <input type="hidden" id="title" name="searchInput" value="<%= title %>">
+                        <input type="hidden" id="type" name="searchType" value=<%= type %>>
+
+                        <button id="add" type="submit">
+                          Add to My List!
+                         </button>
+                      </form>
+
+                    </div>
+
+                  <div class="itembody">
+                      <div>
+                    <span>Author: <%= author %></span><br>
+                    <span>Rating: <img src="/pics/star.gif"> <%= rating %> /10 (via <a
+                        href="http://www.goodreads.com">Goodreads</a>)</span><br>
+                      <span>Length: <%= page_count %> pages</span>
+                  </div>
+                </div>
+                </article>
+
+            <% } else if (type === "restaurants") { %>
+
+              <article class="searchResult">
+                  <div class="itemheader">
+
+                      <span><h3><%= title %></h3></span>
+
+
+                      <form action="/api/users/index" method="POST">
+                        <input type="hidden" id="title" name="searchInput" value="<%= title %>">
+                        <input type="hidden" id="type" name="searchType" value=<%= type %>>
+
+                        <button id="add" type="submit">
+                          Add to My List!
+                         </button>
+                      </form>
+
+                    </div>
+
+                  <div class="itembody">
+                      <div>
+                      <span>Address: <%= address %></span><br>
+                      <span>Phone number: <%= phone_number %></span><br>
+                    <span>Type: <%= type_of_food %></span><br>
+                    <span>Rating: <img src="/pics/star.gif"> <%= rating %>/10 (via <a
+                        href="http://www.yelp.com">Yelp</a>)</span><br>
+                      </div>
+                      <div class="itemsRight">
+                    <span><img class="image" src=<%= image_url %>></span><br>
+                  </div>
+                </div>
+
+                </article>
+
+              <% } else if (type === "products") { %>
+
+                  <article class="searchResult">
+                      <div class="itemheader">
+
+                          <span><h3><%= title %></h3></span>
+
+
+                          <form action="/api/users/index" method="POST">
+                            <input type="hidden" id="title" name="searchInput" value="<%= title %>">
+                            <input type="hidden" id="type" name="searchType" value=<%= type %>>
+
+                            <button id="add" type="submit">
+                              Add to My List!
+                             </button>
+                          </form>
+
+                        </div>
+
+                      <div>
+                        <span>Price: JP¥ <%= price %></span><br>
+                        <span> Buy now from <a href=<%= image %>>  Rakuten </a>  </span><br>
+                      </div>
+
+                    </article>
+
+
+                    <% } else { %>
 
 
 
-<!--
-        <article class="category">
-          <div class="itemheader">
+                      <article class="category">
+                          <div class="itemheader">
 
-              <span><%= title %></span>
+                              <span>No Results Found! Please try another search.</span>
+
+                          </div>
+
+                        </article>
 
 
-              <form action="/api/users/index" method="POST">
-                <input type="hidden" id="title" name="searchInput" value="<%= title %>">
-                <input type="hidden" id="type" name="searchType" value=<%= type %>>
+                <% } %>
 
-                <button id="add" type="submit" class="btn btn-primary">
-                  <h4>Add to My List!</h4>
-                </button>
-              </form>
 
-            </div>
-
-          <div class="itembody">
-            <span>Genre: <%= genre %></span><br>
-            <span>Rating: <img src="/pics/star.gif"> <%= rating %>/10 (via <a
-                href="http://www.imdb.com">IMDB</a>)</span><br>
-            <span><img class="poster" src=<%= poster %>></span><br>
-          </div>
-
-        </article>
- -->
 
 
 
@@ -136,7 +207,7 @@
     </div>
 
     </div>
-    <!-- Populate data here - "add to list" functionality, etc.  -->
+
 
     </div>
   </main>

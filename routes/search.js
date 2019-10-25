@@ -99,7 +99,7 @@ module.exports = (db) => {
           cookie: req.session.user_id[0]
         }
 
-        const searchOutputProduct = { // Info for restaurants
+        const searchOutputProduct = { // Info for products
           title: product.Items[0].Item.itemName,
           price: product.Items[0].Item.itemPrice,
           image: product.Items[0].Item.itemUrl,

@@ -3,7 +3,7 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
-.css-label {
+ .css-label {
   font-size: 14pt;
   color: navy;
 }
@@ -26,7 +26,7 @@ body {
   color: #ffffff;
   background-color: #090a1b;
   font-size: 24px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Prompt', sans-serif;
 }
 
 main {
@@ -35,7 +35,9 @@ main {
   margin: auto;
   display: flex;
   justify-content: space-between;
-  height: 100%;
+  flex-direction: column;
+  /* height: 100%; */
+
 }
 
 .container {
@@ -62,10 +64,82 @@ button {
   border-radius: 15px;
 }
 
+span {
+  vertical-align: text-top;
+  font-size: 15pt;
+}
+
+.itemheading {
+  font-size: 16pt;
+  font-weight: bolder;
+}
+
+.searchresult {
+  background-color: #d8e2e1;
+  font-family: Prompt, sans-serif;
+  color: #00032a;
+  border: 2px solid #2b3557;
+  border-radius: 20px;
+  padding: 30px;
+  margin: auto;
+}
+
+.login-container {
+display: flex;
+flex-direction: column;
+}
+
+.image {
+  width: 140px;
+  height: auto;
+}
+
+
+/* SEARCH RESULT CSS */
+
+
+article.searchResult {
+  width: 45vw;
+  background-color: white;
+  font-family: Prompt, sans-serif;
+  font-size: 14pt;
+  display: flex;
+flex-direction: column;
+}
+
+
+
+
+/* // CSS FOR LOGIN/REGISTRATION PAGES  */
+
+.login-header {
+  padding-bottom: 150px;
+  padding-top: 50px;
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top; 150px;
+}
+
+
 .login-main {
   display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 30px;
   align-content: center;
-  height: 100%;
+  justify-content: center;
+  padding-bottom: 400px;
+}
+
+.register {
+  font-family: Prompt, sans-serif;
+  font-size: 16pt;
+  border-radius: 15px;
+
 }
 
 #login-button {
@@ -91,30 +165,18 @@ button {
 
 .login {
   border-radius: 20px;
-  width: 300px;
-}
-
-span {
-  vertical-align: text-top;
-}
-
-.searchresult {
-  background-color: #d8e2e1;
-  font-family: Garamond, sans-serif;
-  color: #00032a;
-  border: 2px solid #2b3557;
-  border-radius: 20px;
-  padding: 30px;
-  margin: auto;
-}
-
-.login-main {
-  display: flex;
-  padding: 30px;
+  width: 400px;
   align-content: center;
-  justify-content: center;
-  margin: auto;
+  margin: 10px;
 }
+
+.loginform {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+
 
 
 /* Laptops / Desktops: MIN width of 1024px */
@@ -143,10 +205,10 @@ span {
   }
 
   .columns {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    border-radius: 10px;
+      display: flex;
+      flex-direction: row;
+      padding-top: 10px;
+      justify-content: space-between;
   }
 
   .loginheader {
@@ -161,12 +223,7 @@ span {
     font-size: 50px;
     color: #ff8800;
   }
-  .columns {
-    display: flex;
-    flex-direction: row;
-    padding-top: 10px;
-    justify-content: space-between;
-  }
+
   .column {
     margin-top: 10px;
     flex-direction: column;

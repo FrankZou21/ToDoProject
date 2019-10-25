@@ -9,18 +9,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-   <!-- App JS -->
-   <script type="text/javascript" src="/scripts/helpers.js"></script>
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/helpers.js"></script>
 
 
-   <!-- Styling  -->
+  <!-- Styling  -->
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/lists.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/lists.scss" type="text/css" />
   <link rel="stylesheet" href="/styles/todo-boxes.css" type="text/css" />
+
 
   <!-- External Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Arvo|Modak&display=swap" rel="stylesheet">
@@ -65,43 +67,46 @@
           <% for(let film in films) { %>
           <article class="itembody">
             <div class="itemheader">
-              <div class="lefthead">
-                <span><%= films[film].film_title %></span>
-              </div>
-              <div class="righthead"><span>
-                <div class="dropdown">
-                    <button onclick="myFunction(event)" class="dropbtn">Edit Category</button>
-                    <div id="myDropdown" class="dropdown-content">
-                  <form method="POST"  action="/api/users/edit">
-                          <input type="hidden" id="title" name="editInput" value="<%= films[film].film_title %>">
-                          <input type="hidden" id="title" name="oldType" value="films">
-                          <input type="radio" name="category" value="films"> Film<br>
-                          <input type="radio" name="category" value="books"> Book <br>
-                          <input type="radio" name="category" value="restaurants"> Restaurant<br>
-                          <input type="radio" name="category" value="products"> Product <br>
-                          <input type="submit">
-                        </form>
-                        </div>
-                      </div>
-              </div>
-            </div>
-            <div class="itembody">
-              <span>Genre: <%= films[film].genre %></span><br>
-              <span>Rating: <img src="/pics/star.gif"> <%= films[film].imdb_rating %>/10 (via <a
-                  href="http://www.imdb.com">IMDB</a>)</span><br>
-              <span><img class="poster" src=<%= films[film].film_poster %>> </span><br>
-            </div>
-            <div class="itemfooter">
+              <span class="itemheading"><%= films[film].film_title %></span>
               <span>
-                <form method="POST" action="/api/users/remove">
-                  <input type="hidden" id="title" name="removeInput" value="<%= films[film].film_title %>">
-                  <input type="hidden" id="title" name="removeType" value="films">
-                  <button type="submit" class="remove">Remove from My List
-                  </button>
-                </form>
-              </span>
+                <div class="dropdown">
+                  <button onclick="myFunction(event)" class="dropbtn">Edit Category</button>
+                  <div id="myDropdown" class="dropdown-content">
+                    <form method="POST" action="/api/users/edit">
+                      <input type="hidden" id="title" name="editInput" value="<%= films[film].film_title %>">
+                      <input type="hidden" id="title" name="oldType" value="films">
+                      <input type="radio" name="category" value="films" checked> Film<br>
+                      <input type="radio" name="category" value="books"> Book <br>
+                      <input type="radio" name="category" value="restaurants"> Restaurant<br>
+                      <input type="radio" name="category" value="products"> Product <br>
+                      <input type="submit">
+                    </form>
+                  </div><br>
+                </div>
             </div>
+            <div class="mainitem">
+              <div class="itemsLeft">
+                <div class="content">
+                  <span>Genre: <%= films[film].genre %></span><br>
+                  <span>Rating: <img src="/pics/star.gif"> <%= films[film].imdb_rating %>/10 (via <a
+                      href="http://www.imdb.com">IMDB</a>)</span><br>
+                </div>
+                <div class="removebtn">
+                  <span>
+                    <form method="POST" action="/api/users/remove">
+                      <input type="hidden" id="title" name="removeInput" value="<%= films[film].film_title %>">
+                      <input type="hidden" id="title" name="removeType" value="films">
+                      <button type="submit" class="remove">Remove from My List
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </div>
+              <div class="itemsRight">
+                <span><img class="image" src=<%= films[film].poster_img %>> </span>
+              </div>
           </article>
+
           <% } %>
 
         </div>
@@ -112,39 +117,43 @@
           <article class="itembody">
             <div class="itemheader">
               <div class="lefthead">
-                <span> <%= books[book].book_title %></span>
+                <span class="itemheading"><%= books[book].book_title %></span>
               </div>
-              <div class="righthead"><span>
+              <span>
                 <div class="dropdown">
-                    <button onclick="myFunction(event)" class="dropbtn">Edit Category</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <form method="POST" action="/api/users/edit">
-                            <input type="hidden" id="title" name="editInput" value="<%= books[book].book_title %>">
-                            <input type="hidden" id="title" name="oldType" value="books">
-                            <input type="radio" name="category" value="films" > Film<br>
-                            <input type="radio" name="category" value="books" checked> Book <br>
-                            <input type="radio" name="category" value="restaurants"> Restaurant<br>
-                            <input type="radio" name="category" value="products"> Product <br>
-                            <input type="submit">
-                          </form>
-                    </div>
-              </div>
-            </div><br>
-          </div>
-            <div class="itembody">
-              <span>Author: <%= books[book].author %></span><br>
-              <span>Rating: <img src="/pics/star.gif"> <%= books[book].book_rating %> stars (via <a
-                  href="http://www.goodreads.com">Goodreads</a>)</span><br>
-              <span>Length: <%= books[book].page_count %> pages</span><br>
+                  <button onclick="myFunction(event)" class="dropbtn">Edit Category</button>
+                  <div id="myDropdown" class="dropdown-content">
+                    <form method="POST" action="/api/users/edit">
+                      <input type="hidden" id="title" name="editInput" value="<%= books[book].book_title %>">
+                      <input type="hidden" id="title" name="oldType" value="books">
+                      <input type="radio" name="category" value="films"> Film<br>
+                      <input type="radio" name="category" value="books" checked> Book <br>
+                      <input type="radio" name="category" value="restaurants"> Restaurant<br>
+                      <input type="radio" name="category" value="products"> Product <br>
+                      <input type="submit">
+                    </form>
+
+                  </div>
+                </div><br>
             </div>
-            <div class="itemfooter">
-              <form method="POST" action="/api/users/remove">
-                <input type="hidden" id="title" name="removeInput" value="<%= books[book].book_title %>">
-                <input type="hidden" id="title" name="removeType" value="books">
-                <button type="submit" class="remove">Remove from My List</button>
+            <div class="mainitem">
+              <div class="content">
+                <span>Author: <%= books[book].author %></span><br>
+                <span>Rating: <img src="/pics/star.gif"> <%= books[book].book_rating %> stars (via <a
+                    href="http://www.goodreads.com">Goodreads</a>)</span><br>
+                <span>Length: <%= books[book].page_count %> pages</span><br>
+              </div>
+            </div>
+            <br>
+              <div>
+                <form method="POST" action="/api/users/remove">
+                  <input type="hidden" id="title" name="removeInput" value="<%= books[book].book_title %>">
+                  <input type="hidden" id="title" name="removeType" value="books">
+                  <button type="submit" class="remove">Remove from My List</button>
                 </form>
-            </span>
-          </div>
+              </div>
+
+
 
           </article>
           <% } %>
@@ -157,44 +166,52 @@
           <h2>Places to Eat</h2>
 
           <% for(let restaurant in restaurants) { %>
-          <article class="itembody">
-            <div class="itemheader">
-              <div class="lefthead">
-
-                <span> <%= restaurants[restaurant].restaurant_name %></span>
-              </div>
-              <div class="righthead"><span>
-                  <div class="dropdown">
+            <article class="itembody">
+                <div class="itemheader">
+                  <span class="itemheading"><%= restaurants[restaurant].restaurant_name %></span>
+                  <span>
+                    <div class="dropdown">
                       <button onclick="myFunction(event)" class="dropbtn">Edit Category</button>
                       <div id="myDropdown" class="dropdown-content">
-                          <form method="POST" action="/api/users/edit">
-                              <input type="hidden" id="title" name="editInput" value="<%= restaurants[restaurant].restaurant_name %>">
-                              <input type="hidden" id="title" name="oldType" value="restaurants">
-                              <input type="radio" name="category" value="films" > Film<br>
-                              <input type="radio" name="category" value="books"> Book <br>
-                              <input type="radio" name="category" value="restaurants" checked> Restaurant<br>
-                              <input type="radio" name="category" value="products"> Product <br>
-                              <input type="submit">
-                            </form>
-                      </div>
+                        <form method="POST" action="/api/users/edit">
+                          <input type="hidden" id="title" name="editInput" value="<%= restaurants[restaurant].restaurant_name %>">
+                          <input type="hidden" id="title" name="oldType" value="restaurants">
+                          <input type="radio" name="category" value="films"> Film<br>
+                          <input type="radio" name="category" value="books"> Book <br>
+                          <input type="radio" name="category" value="restaurants" checked> Restaurant<br>
+                          <input type="radio" name="category" value="products"> Product <br>
+                          <input type="submit">
+                        </form>
+                      </div><br>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="itembody">
-              <span>Address: <%= restaurants[restaurant].address %></span><br>
-              <span>Type of food: <%= restaurants[restaurant].type_of_food %></span><br>
-              <span>Rating: <img src="/pics/star.gif"> <%= restaurants[restaurant].restaurant_rating %> stars (via <a
-                  href="http://wwww.yelp.com">Yelp</a>)</span><br>
-            </div>
-            <div class="itemfooter">
-                <form method="POST" action="/api/users/remove">
-                  <input type="hidden" id="title" name="removeInput" value="<%= restaurants[restaurant].restaurant_name %>">
-                  <input type="hidden" id="title" name="removeType" value="restaurants">
-                  <button type="submit" class="remove">Remove from My List</button>
-                  </form>
-              </span>
-            </div>
-          </article>
+                <div class="mainitem">
+                  <div class="itemsLeft">
+
+                        <div> <span>Address: <%= restaurants[restaurant].address %></span><br>
+                          <span>Type: <%= restaurants[restaurant].type_of_food %></span><br>
+                          <span>Rating: <img src="/pics/star.gif"> <%= restaurants[restaurant].restaurant_rating %> stars (via
+                            <a href="http://wwww.yelp.com">Yelp</a>)</span><br>
+                    </div>
+                    <div class="removebtn">
+                      <span>
+                          <form method="POST" action="/api/users/remove">
+                            <input type="hidden" id="title" name="removeInput"
+                              value="<%= restaurants[restaurant].restaurant_name %>">
+                            <input type="hidden" id="title" name="removeType" value="restaurants">
+                          <button type="submit" class="remove">Remove from My List
+                          </button>
+                        </form>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="itemsRight">
+                      <div> <span><img class="image" src=<%= restaurants[restaurant].image_url %>></span><br>
+                  </div>
+              </article>
+
+
+
           <% } %>
         </div>
 
@@ -205,38 +222,41 @@
           <article class="itembody">
             <div class="itemheader">
               <div class="lefthead">
-                <span><%= products[product].product_name %></span>
+                <span class="itemheading"><%= products[product].product_name %></span>
               </div>
               <div class="righthead"><span>
                   <div class="dropdown">
-                      <button onclick="myFunction(event)" class="dropbtn">Edit Category</button>
-                      <div id="myDropdown" class="dropdown-content">
-                          <form method="POST"  action="/api/users/edit">
-                              <input type="hidden" id="title" name="editInput" value="<%= products[product].product_name %>">
-                              <input type="hidden" id="title" name="oldType" value="products">
-                              <input type="radio" name="category" value="films" > Film<br>
-                              <input type="radio" name="category" value="books" > Book <br>
-                              <input type="radio" name="category" value="restaurants"> Restaurant<br>
-                              <input type="radio" name="category" value="products" checked> Product <br>
-                              <input type="submit">
-                            </form>
-                      </div>
-                </div>
+                    <button onclick="myFunction(event)" class="dropbtn">Edit Category</button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <form method="POST" action="/api/users/edit">
+                        <input type="hidden" id="title" name="editInput" value="<%= products[product].product_name %>">
+                        <input type="hidden" id="title" name="oldType" value="products">
+                        <input type="radio" name="category" value="films"> Film<br>
+                        <input type="radio" name="category" value="books"> Book <br>
+                        <input type="radio" name="category" value="restaurants"> Restaurant<br>
+                        <input type="radio" name="category" value="products" checked> Product <br>
+                        <input type="submit">
+                      </form>
+                    </div>
+                  </div>
               </div>
             </div>
             <div class="itembody">
-              <span><%= products[product].product_image %> </span><br>
+
               <span>Price: JP¥<%= products[product].price %></span><br>
+            </div>
+            <div class="itembody">
+              <span> Buy now from <a href=<%= products[product].picture %>> Rakuten </a> </span><br>
               <span><%= products[product].type %></span><br>
             </div>
             <div class="itemfooter">
               <span>
-                  <form method="POST" action="/api/users/remove">
-                    <input type="hidden" id="title" name="removeInput" value="<%= products[product].product_name %>">
-                    <input type="hidden" id="title" name="removeType" value="products">
-                    <button type="submit" class="remove">Remove from My List</button>
-                    </form>
-                </span>
+                <form method="POST" action="/api/users/remove">
+                  <input type="hidden" id="title" name="removeInput" value="<%= products[product].product_name %>">
+                  <input type="hidden" id="title" name="removeType" value="products">
+                  <button type="submit" class="remove">Remove from My List</button>
+                </form>
+              </span>
             </div>
           </article>
 
