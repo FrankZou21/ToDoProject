@@ -4,7 +4,7 @@ nav {
   height: 90px;
   background-color: #08091a;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
-  color: #ff8800;
+  color: #ffa600;
   position: fixed;
   top: 0;
   left: 0;
@@ -18,7 +18,7 @@ nav {
 }
 
 a {
-  color: #ff6600;
+  color: #ff9d00;
   transition: all 0.5s;
 }
 
@@ -36,8 +36,8 @@ a:hover {
   display: flex;
   align-content: center;
   font-family: Prompt;
-  color: #ff6600;
-  font-size: 14pt;
+  color: #ffc400;
+  font-size: 15pt;
 
 }
 
@@ -46,15 +46,10 @@ a:hover {
   font-size: 30pt;
 }
 
-#rightnav {
-  display: flex;
-  font-family: Prompt, sans-serif;
-  font-size: 14pt;
-}
 
 .loginout {
   font-family: Prompt, sans-serif;
-  color: #ff6600;
+  color: #ffb300;
   background: none;
   border: 2px solid #ff6600;
   padding: 5px;

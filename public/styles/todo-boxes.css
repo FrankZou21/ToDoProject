@@ -32,18 +32,25 @@ article .itemheader {
   font-weight: normal;
   font-size: 20px;
   justify-content: space-between;
-  margin-bottom: 15px;
-  width: 95%;
+  /* margin-bottom: 15px; */
+  width: 98%;
 }
 
 article .resulthead {
+  margin-left: 10px;
+  padding-right: 10px;
   display: flex;
+  flex-direction: row;
   font-weight: normal;
   font-size: 20px;
   justify-content: space-between;
-  margin-bottom: 15px;
-  width: 95%;
+  vertical-align: bottom;
+  width: 100%;
 }
+
+article .searchtitle {
+  font-size: 18pt;
+  font-weight: bolder;
 }
 
 article .lefthead {
@@ -61,13 +68,48 @@ article .righthead {
 
 article .itembody {
   background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   color: #00051f;
   font-size: 16px;
   padding-left: 10px;
   padding-right: 10px;
-  line-height: 25px;
   align-items: left;
+}
 
+.mainitem {
+  background-color: #ffffff;
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.content {
+ padding-left: 10px;
+}
+
+/* .removebtn {
+  display: flex;
+  flex-direction: column;
+  vertical-align: bottom;
+  justify-content: space-between;
+  align-content: space-between;
+} */
+
+article .itemsLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+article .itemsRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
 }
 
 .article .itemfooter {
@@ -75,7 +117,7 @@ article .itembody {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-content: right;
+  align-content: left;
 }
 
 
@@ -94,12 +136,9 @@ article .itembody {
 
 
 button#add {
-  width: 220px;
-  text-align: center;
-  padding-top: 10px;
-  margin: auto;
+  margin-top: 20px;
+  padding: 10px;
   font-family: Prompt, sans-serif;
-  font-size: 12pt;
   background-color: rgb(255, 255, 255);
   color: #00520e;
   border: 2px solid #022a00;
@@ -109,9 +148,9 @@ button#add {
 }
 
 button#add:hover {
-  color: #ff3300;
+  color: #009c1a;
   background-color: rgb(255, 255, 255);
-  border: 2px solid #ff0800;
+  border: 2px solid #036600;
 }
 
 .poster {
@@ -125,6 +164,7 @@ button#add:hover {
 
 button.remove {
   align-self: right;
+  padding: 5px;
   font-family: Prompt, sans-serif;
   font-size: 11pt;
   font-weight: normal;
@@ -164,6 +204,7 @@ button.edit:hover {
 .dropbtn {
   background-color: rgb(101, 144, 172);
   color: white;
+  width: 150px;
   padding: 10px;
   font-size: 16px;
   border: none;
@@ -180,6 +221,7 @@ button.edit:hover {
 .dropdown {
   position: relative;
   display: inline-block;
+  margin-bottom: 30px;
 }
 
 /* Dropdown content (hidden by default) */

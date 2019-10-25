@@ -64,11 +64,17 @@ button {
 
 span {
   vertical-align: text-top;
+  font-size: 15pt;
+}
+
+.itemheading {
+  font-size: 16pt;
+  font-weight: bolder;
 }
 
 .searchresult {
   background-color: #d8e2e1;
-  font-family: Garamond, sans-serif;
+  font-family: Prompt, sans-serif;
   color: #00032a;
   border: 2px solid #2b3557;
   border-radius: 20px;
@@ -77,9 +83,25 @@ span {
 }
 
 .image {
-  width: 150px;
+  width: 140px;
   height: auto;
 }
+
+
+/* SEARCH RESULT CSS */
+
+
+article.searchResult {
+  width: 45vw;
+  background-color: white;
+  font-family: Prompt, sans-serif;
+  font-size: 14pt;
+  display: flex;
+flex-direction: column;
+}
+
+
+
 
 /* // CSS FOR LOGIN/REGISTRATION PAGES  */
 
