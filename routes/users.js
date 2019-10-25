@@ -9,10 +9,8 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
-
   router.get("/", (req, res) => {
     const userId = req.session.user_id;
-    // console.log(userId);
     if (userId) {
       Promise.all([
         db.query('SELECT * FROM films WHERE films.user_id_films=$1', userId),
@@ -31,9 +29,10 @@ module.exports = (db) => {
             name: firstName.rows[0].first_name,
             cookie: req.session.user_id[0]
           }
-          console.log(templateVars);
+
           res.render("index", templateVars);
         })
+        .catch(err => console.error(err));
     } else[
       res.redirect("/api/users/login")
     ]
@@ -67,6 +66,7 @@ module.exports = (db) => {
           res.redirect("/api/users/login");
         }
       })
+      .catch(err => console.error(err));
   })
 
   router.post("/register", (req, res) => {
@@ -76,13 +76,13 @@ module.exports = (db) => {
     const registerCred = [username, password, first_name]
     if (username !== null && password !== null && first_name !== null) {
       db.query(`INSERT INTO users (username, password, first_name, id)
-  Values($1, $2, $3, (SELECT (MAX(id)+1) from "users"))
-  RETURNING *`, registerCred)
+      Values($1, $2, $3, (SELECT (MAX(id)+1) from "users"))
+      RETURNING *`, registerCred)
         .then((data) => {
-          // console.log(`the output is ${data.rows[0].id}`);
           req.session.user_id = [data.rows[0].id];
           res.redirect("/api/users");
         })
+        .catch(err => console.error(err));
     } else {
       res.redirect("/api/users/register")
     }
@@ -108,13 +108,12 @@ module.exports = (db) => {
       selectorId = "user_id_products";
     }
     const queryInput = [req.session.user_id[0], name]
-    // console.log(queryInput);
     //UPDATE films SET user_id_films = 3 WHERE (SELECT id FROM films WHERE user_id_films=3 AND film_title=eragon)
-    // db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE ${selectorName} = $2`, queryInput)
     db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE id=(SELECT id FROM ${type} WHERE ${selectorId} is null AND ${selectorName}=$2 LIMIT 1)`, queryInput)
       .then(() => {
         res.redirect("/api/users/")
       })
+      .catch(err => console.error(err));
   })
 
 
@@ -141,19 +140,15 @@ module.exports = (db) => {
     const queryUpdate = [null, name, userId];
     //UPDATE films SET user_id_films = null WHERE film_title = eragon AND user_id_films = 3
     //UPDATE films SET user_id_films = null WHERE id = (SELECT id FROM films WHERE film_title = eragon AND user_id_films = 3 LIMIT 1)
-    //film_title = eragon AND user_id_films = 3
-    // db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE ${selectorName}=$2 AND ${selectorId}=$3`, queryUpdate)
     db.query(`UPDATE ${type} SET ${selectorId}=$1 WHERE id = (SELECT id FROM ${type} WHERE ${selectorName}=$2 AND ${selectorId}=$3 LIMIT 1)`, queryUpdate)
       .then(() => {
         res.redirect("/api/users");
       })
+      .catch(err => console.error(err));
   })
-
-
 
   //Editing the category of item (books, films, restaurants, products)
   router.post("/edit", (req, res) => {
-    // console.log(req.body);
     const name = req.body.editInput;
     const oldType = req.body.oldType;
     const newType = String(req.body.category);
@@ -192,28 +187,34 @@ module.exports = (db) => {
       newSelectorId = "user_id_products";
     }
 
-    // console.log(oldSelectorName);
-    // console.log(oldSelectorId);
-    // console.log(newSelectorName);
-    // console.log(newSelectorId);
-
     const oldQueryInput = [null, name, userId[0]];
     const newQueryInput = [userId[0], name];
-    //UPDATE films SET user_id_films = null WHERE  film_title = eragon AND user_id_films = 3;
-    //UPDATE books SET user_id_books = 3 WHERE  book_title = eragon AND user_id_books = null;
-    // db.query(`UPDATE ${type} SET ${selectorId} = $1 WHERE ${selectorName} = $2`, queryInput)
     //UPDATE films SET user_id_films = 3 WHERE (SELECT id FROM films WHERE user_id_films=3 AND film_title=eragon)
     //UPDATE ${oldType} SET ${oldSelectorId} = $1 WHERE id=(SELECT id FROM ${oldType} WHERE ${oldSelectorName}=$2 AND ${oldSelectorId}=$3)
     Promise.all([
-      // db.query(`UPDATE ${oldType} SET ${oldSelectorId} = $1 WHERE ${oldSelectorName}=$2 AND ${oldSelectorId}=$3`, oldQueryInput),
-      // db.query(`UPDATE ${newType} SET ${newSelectorId} = $1 WHERE ${newSelectorName}=$2 AND ${newSelectorId} is null`, newQ
-        db.query(`UPDATE ${oldType} SET ${oldSelectorId}=$1 WHERE id=(SELECT id FROM ${oldType} WHERE ${oldSelectorName}=$2 AND ${oldSelectorId}=$3 LIMIT 1)`, oldQueryInput),
-        db.query(`UPDATE ${newType} SET ${newSelectorId}=$1 WHERE id=(SELECT id FROM ${newType} WHERE ${newSelectorName}=$2 AND ${newSelectorId} is null LIMIT 1)`, newQueryInput)
+      db.query(`UPDATE ${oldType} SET ${oldSelectorId}=$1 WHERE id=(SELECT id FROM ${oldType} WHERE ${oldSelectorName}=$2 AND ${oldSelectorId}=$3 LIMIT 1)`, oldQueryInput),
+      db.query(`UPDATE ${newType} SET ${newSelectorId}=$1 WHERE id=(SELECT id FROM ${newType} WHERE ${newSelectorName}=$2 AND ${newSelectorId} is null LIMIT 1)`, newQueryInput)
     ])
       .then(() => {
         res.redirect("/api/users")
       })
+      .catch(err => console.error(err));
   })
+
+  // Backend code for updating database of users based on user input
+  // router.post("/userUpdates", (req, res) => {
+  //   const updatedName = req.body.first_name;
+  //   const updatedUsername = req.body.username;
+  //   const updatedPassword = req.body.password;
+  //   const id = req.session.user_id[0];
+
+  //   const queryInput = [updatedUsername, updatedName, updatedPassword, id];
+
+  //   db.query(`UPDATE users SET username = $1, first_name = $2, password = $3 WHERE id = $4`, queryInput)
+  //     .then(() => {
+  //       res.redirect("api/users")
+  //     })
+  // });
 
   return router;
 };
