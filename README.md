@@ -30,10 +30,10 @@ category on the list.
 
 ### Screenshots
 
-!["Front Page"](https://github.com/FrankZou21/scheduler/blob/master/docs/Front_Page.png?raw=true)
+!["Login Page"](https://github.com/FrankZou21/ToDoProject/blob/master/docs/Login.png?raw=true)
 
-!["Editing Appointments"](https://github.com/FrankZou21/scheduler/blob/master/docs/Editing_Appointment.png?raw=true)
+!["Front Page"](https://github.com/FrankZou21/ToDoProject/blob/master/docs/Main_Page.png?raw=true)
 
-!["Deleting Appointments"](https://github.com/FrankZou21/scheduler/blob/master/docs/Deleting_Appointment.png?raw=true)
+!["Search Result Page"](https://github.com/FrankZou21/ToDoProject/blob/master/docs/Search.png?raw=true)
 
-!["Switching Days"](https://github.com/FrankZou21/scheduler/blob/master/docs/Switching_Appointments.png?raw=true)
+!["Updated Front Page"](https://github.com/FrankZou21/ToDoProject/blob/master/docs/Result.png?raw=true)
